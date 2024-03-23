@@ -1,0 +1,10 @@
+{
+"SpaProxyServer": {
+"ServerUrl": "https://localhost:5173",
+"RedirectUrl": "",
+"LaunchCommand": "npm run dev",
+"WorkingDirectory": "C:\\Users\\arska\\source\\repos\\Terra1\\Terra1.Server\\..\\terra1.client",
+"MaxTimeoutInSeconds": "120",
+"KeepRunning": "false"
+}
+}

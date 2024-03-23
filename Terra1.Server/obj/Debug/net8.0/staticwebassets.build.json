@@ -1,0 +1,23 @@
+{
+  "Version": 1,
+  "Hash": "9xlB8RK7MpdD2k7pAUHPNsw3YELpOAsa/drWFnsIYCQ=",
+  "Source": "Terra1.Server",
+  "BasePath": "_content/Terra1.Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\arska\\source\\repos\\Terra1\\terra1.client\\terra1.client.esproj",
+      "Version": 2,
+      "Source": "terra1.client",
+      "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
