@@ -53,7 +53,7 @@
               "RelativeDocumentMoniker": "terra1.client\\src\\components\\Map\\Map.jsx",
               "ToolTip": "C:\\Users\\Virtical\\Desktop\\TerraTech\\terra1.client\\src\\components\\Map\\Map.jsx",
               "RelativeToolTip": "terra1.client\\src\\components\\Map\\Map.jsx",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAWAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
               "WhenOpened": "2024-03-24T06:04:15.254Z",
               "EditorCaption": ""
@@ -68,8 +68,7 @@
               "RelativeToolTip": "terra1.client\\src\\App.jsx",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
-              "WhenOpened": "2024-03-24T06:04:04.133Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-24T06:04:04.133Z"
             },
             {
               "$type": "Document",
@@ -81,8 +80,7 @@
               "RelativeToolTip": "terra1.client\\src\\components\\Widget\\Widget.jsx",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
-              "WhenOpened": "2024-03-24T05:57:33.583Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-24T05:57:33.583Z"
             },
             {
               "$type": "Document",
@@ -94,8 +92,7 @@
               "RelativeToolTip": "terra1.client\\node_modules\\@types\\react\\index.d.ts",
               "ViewState": "AQIAAKMQAAAAAAAAAAAwwLIQAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2024-03-24T05:48:50.864Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-24T05:48:50.864Z"
             }
           ]
         }
