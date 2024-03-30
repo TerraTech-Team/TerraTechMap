@@ -7,5 +7,5 @@ export default function App() {
         <Widget />
         <Map />
     </main>
-  ) 
+    ) 
 }
