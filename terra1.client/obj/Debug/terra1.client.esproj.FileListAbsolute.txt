@@ -1,2 +1,1 @@
-C:\Users\arska\source\repos\Terra1\terra1.client\obj\Debug\terra1.client.esproj.CoreCompileInputs.cache
 C:\Users\Virtical\Desktop\TerraTech\terra1.client\obj\Debug\terra1.client.esproj.CoreCompileInputs.cache

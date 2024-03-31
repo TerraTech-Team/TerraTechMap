@@ -1,15 +1,15 @@
 {
   "Version": 1,
-  "Hash": "NdwzOkqPr6M57/3pQBJCDMLXChtYOy/rw7NUMsxetIk=",
-  "Source": "Terra1.Server",
-  "BasePath": "_content/Terra1.Server",
+  "Hash": "rHWoVJyrXE7IROrGGs/3N7lmxTEnZqu8MBLsbHgby5o=",
+  "Source": "Terra.Server",
+  "BasePath": "_content/Terra.Server",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "C:\\Users\\Virtical\\Desktop\\TerraTech\\terra1.client\\terra1.client.esproj",
+      "Identity": "C:\\Users\\Virtical\\Desktop\\TerraTech\\terra1.client\\Terra.client.esproj",
       "Version": 2,
-      "Source": "terra1.client",
+      "Source": "Terra.client",
       "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
       "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
       "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained",
