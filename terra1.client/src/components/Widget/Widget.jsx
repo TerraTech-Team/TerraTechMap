@@ -1,10 +1,9 @@
 import './Widget.css';
-import questionImage from './checkpoint_widget.svg';
 
-export default function Widget({ onClick, isActive }) {
+export default function Widget({ onClick, isActive, image, isReady }) {
     return (
-        <div className={isActive ? "widget active_widget" : "widget"} onClick={onClick}>
-            <img src={questionImage} alt="Question" />
+        <div className={isActive ? "widget active_widget" : "widget"} style={isReady ? null : {"backgroundColor": "rgb(250, 172, 172)", "cursor": "not-allowed"}} onClick={onClick}>
+            <img src={image} alt="Question" />
         </div>
     )
 }
