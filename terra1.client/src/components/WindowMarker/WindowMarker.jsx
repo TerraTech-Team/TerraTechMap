@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import './WindowMarker.css';
 import loadImage from './load.png';
 
-export default function WindowMarker({onClick, position}) {
+export default function WindowMarker({onClickDelete, onClickSave, position, checkpointsData}) {
     const [lat, lng] = position;
 
     const [name, setName] = useState('')
@@ -11,14 +11,16 @@ export default function WindowMarker({onClick, position}) {
 
     function sendJSON() {
         let json = {
-            "position": [lat, lng],
+            "id": lat,
+            "x": lat,
+            "y": lng,
             "name": name,
             "description": description,
             "type": type,
         };
-        
-        console.log(json);
-        onClick();
+        checkpointsData.push(json);
+        onClickSave();
+        saveCheckpoints();
     }
 
 
@@ -46,8 +48,18 @@ export default function WindowMarker({onClick, position}) {
 
             <div className='buttons'>
                 <button className='button' onClick={sendJSON} style={{backgroundColor: '#11ff00', marginRight: '15px'}}>Сохранить</button>
-                <button className='button' onClick={onClick} style={{backgroundColor: '#ff4400', marginLeft: '15px'}}>Удалить</button>
+                <button className='button' onClick={onClickDelete} style={{backgroundColor: '#ff4400', marginLeft: '15px'}}>Удалить</button>
             </div>
         </div>
     )
+
+    async function saveCheckpoints() {
+        await fetch('https://localhost:7152/api/checkpoints', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+              },
+            body: JSON.stringify({ "x": lat, "y": lng })
+          });
+    }
 }

@@ -3,13 +3,13 @@ import 'leaflet/dist/leaflet.css';
 import './Map.css';
 import MarkerPoint from '../MarkerPoint/MarkerPoint.jsx';
 import { useState, useEffect } from 'react'
-import DataPoints from '../../../data-points.json'
 import WindowMarker from '../WindowMarker/WindowMarker.jsx';
 
-export default function Map({ isWidgetActive }) {
+export default function Map({ isWidgetActive, checkpoints, update }) {
 
     const [window, setWindow] = useState(false)
     const [position, setPosition] = useState(null)
+    const [checkpointsData, setCheckpointsData] = useState([])
 
     function LocationMarker() {
 
@@ -32,12 +32,13 @@ export default function Map({ isWidgetActive }) {
 
   return (
     <>
-      {window ? <WindowMarker position={position} onClick={() => (setWindow(false), setPosition(null))}/> : null}
+      {window ? <WindowMarker position={position} onClickDelete={() => (setWindow(false), setPosition(null))} onClickSave={() => setWindow(false)} checkpointsData={checkpointsData} onUpdate={setCheckpointsData}/> : null}
       <MapContainer className='map'center={[56.837405, 60.656652]} zoom={13}>
         <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
 
-        {/* {DataPoints.map((points) => <MarkerPoint key={points.name} position={points.position} />)} */}
+        { checkpointsData.map((points) => <MarkerPoint key={points.id} position={[points.x, points.y]} />) }
+        { checkpoints.map((points) => <MarkerPoint key={points.id} position={[points.x, points.y]} />) }
 
         {isWidgetActive ? <LocationMarker /> : null}
       </MapContainer>

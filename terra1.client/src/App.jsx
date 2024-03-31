@@ -1,15 +1,25 @@
 import Map from './components/Map/Map.jsx';
 import Widget from './components/Widget/Widget.jsx';
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function App() {
+    const [isWidgetActive, setIsWidgetActive] = useState(false);
+    const [checkpoints, setCheckpoints] = useState([]);
 
-  const [isWidgetActive, setIsWidgetActive] = useState(false);
+    useEffect(() => {
+        checkpointsData();
+    }, []);
 
-  return (
-    <main>
-        <Widget onClick={() => setIsWidgetActive(!isWidgetActive)} isActive={isWidgetActive} />
-        <Map isWidgetActive={isWidgetActive}/>
-    </main>
-  ) 
+    return (
+        <main>
+            <Widget onClick={() => setIsWidgetActive(!isWidgetActive)} isActive={isWidgetActive}/>
+            <Map isWidgetActive={ isWidgetActive } checkpoints={ checkpoints } update={checkpointsData}/>
+        </main>
+    );
+
+    async function checkpointsData() {
+        const response = await fetch('https://localhost:7152/api/checkpoints')
+        const data = await response.json();
+        setCheckpoints(data);
+    }
 }

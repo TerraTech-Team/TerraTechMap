@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\Virtical\\Desktop\\TerraTech\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FB1C3247-1DF7-45E9-B3C7-D0E0DAF65BE2}|terra1.client\\terra1.client.esproj|c:\\users\\virtical\\desktop\\terratech\\terra1.client\\src\\components\\map\\map.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{FB1C3247-1DF7-45E9-B3C7-D0E0DAF65BE2}|terra1.client\\terra1.client.esproj|C:\\Users\\Virtical\\Desktop\\TerraTech\\terra1.client\\src\\components\\map\\map.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{FB1C3247-1DF7-45E9-B3C7-D0E0DAF65BE2}|terra1.client\\terra1.client.esproj|solutionrelative:terra1.client\\src\\components\\map\\map.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
@@ -11,7 +11,7 @@
       "RelativeMoniker": "D:0:0:{FB1C3247-1DF7-45E9-B3C7-D0E0DAF65BE2}|terra1.client\\terra1.client.esproj|solutionrelative:terra1.client\\src\\app.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FB1C3247-1DF7-45E9-B3C7-D0E0DAF65BE2}|terra1.client\\terra1.client.esproj|c:\\users\\virtical\\desktop\\terratech\\terra1.client\\src\\components\\widget\\widget.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{FB1C3247-1DF7-45E9-B3C7-D0E0DAF65BE2}|terra1.client\\terra1.client.esproj|C:\\Users\\Virtical\\Desktop\\TerraTech\\terra1.client\\src\\components\\widget\\widget.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{FB1C3247-1DF7-45E9-B3C7-D0E0DAF65BE2}|terra1.client\\terra1.client.esproj|solutionrelative:terra1.client\\src\\components\\widget\\widget.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
@@ -19,7 +19,7 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:terra1.client\\node_modules\\@types\\react\\index.d.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FB1C3247-1DF7-45E9-B3C7-D0E0DAF65BE2}|terra1.client\\terra1.client.esproj|c:\\users\\virtical\\desktop\\terratech\\terra1.client\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{FB1C3247-1DF7-45E9-B3C7-D0E0DAF65BE2}|terra1.client\\terra1.client.esproj|C:\\Users\\Virtical\\Desktop\\TerraTech\\terra1.client\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{FB1C3247-1DF7-45E9-B3C7-D0E0DAF65BE2}|terra1.client\\terra1.client.esproj|solutionrelative:terra1.client\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
@@ -53,7 +53,7 @@
               "RelativeDocumentMoniker": "terra1.client\\src\\components\\Map\\Map.jsx",
               "ToolTip": "C:\\Users\\Virtical\\Desktop\\TerraTech\\terra1.client\\src\\components\\Map\\Map.jsx",
               "RelativeToolTip": "terra1.client\\src\\components\\Map\\Map.jsx",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAuwCEAAAARAAAA",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAqwAgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
               "WhenOpened": "2024-03-24T06:04:15.254Z",
               "EditorCaption": ""
@@ -66,9 +66,10 @@
               "RelativeDocumentMoniker": "terra1.client\\src\\App.jsx",
               "ToolTip": "C:\\Users\\Virtical\\Desktop\\TerraTech\\terra1.client\\src\\App.jsx",
               "RelativeToolTip": "terra1.client\\src\\App.jsx",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAKAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAABOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
-              "WhenOpened": "2024-03-24T06:04:04.133Z"
+              "WhenOpened": "2024-03-24T06:04:04.133Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
