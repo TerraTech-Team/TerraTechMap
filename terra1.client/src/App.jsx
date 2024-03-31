@@ -3,14 +3,6 @@ import Widget from './components/Widget/Widget.jsx';
 import { useEffect, useState } from 'react';
 
 export default function App() {
-<<<<<<< HEAD
-  return (
-    <main>
-        <Widget />
-        <Map />
-    </main>
-    ) 
-=======
     const [isWidgetActive, setIsWidgetActive] = useState(false);
     const [checkpoints, setCheckpoints] = useState([]);
 
@@ -30,5 +22,4 @@ export default function App() {
         const data = await response.json();
         setCheckpoints(data);
     }
->>>>>>> origin/Virtical
 }

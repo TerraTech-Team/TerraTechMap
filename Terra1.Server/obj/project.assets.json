@@ -8286,32 +8286,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\arska\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Virtical\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
-      "projectUniqueName": "C:\\Users\\arska\\OneDrive\\Рабочий стол\\git\\Terra1.Server\\Terra1.Server.csproj",
-      "projectName": "Terra1.Server",
-      "projectPath": "C:\\Users\\arska\\OneDrive\\Рабочий стол\\git\\Terra1.Server\\Terra1.Server.csproj",
-      "packagesPath": "C:\\Users\\arska\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\arska\\OneDrive\\Рабочий стол\\git\\Terra1.Server\\obj\\",
-=======
-      "projectUniqueName": "C:\\Users\\Virtical\\Desktop\\TerraTech\\Terra1.Server\\Terra.Server.csproj",
+      "projectUniqueName": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\Terra1.Server\\Terra.Server.csproj",
       "projectName": "Terra.Server",
-      "projectPath": "C:\\Users\\Virtical\\Desktop\\TerraTech\\Terra1.Server\\Terra.Server.csproj",
+      "projectPath": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\Terra1.Server\\Terra.Server.csproj",
       "packagesPath": "C:\\Users\\Virtical\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Virtical\\Desktop\\TerraTech\\Terra1.Server\\obj\\",
->>>>>>> origin/Virtical
+      "outputPath": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\Terra1.Server\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\arska\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Virtical\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
