@@ -1,38 +1,45 @@
-import Map from './components/Map/Map.jsx';
-import Widget from './components/Widget/Widget.jsx';
-import { useEffect, useState } from 'react';
 import './App.css'
-
-import checkpointWidgetImage from '/checkpoint_widget.svg';
-import handWidgetImage from '/hand_widget.svg';
-import magnifierWidgetImage from '/magnifier_widget.svg';
-import rulerWidgetImage from '/ruler_widget.svg';
-import trackWidgetImage from '/track_widget.svg';
+import Map from './Map/Map'
+import MarkerPointCreationWindow from './MarkerPointCreationWindow/MarkerPointCreationWindow';
+import Toolbar from './Toolbar/Toolbar'
+import { useState, useEffect } from 'react';
 
 export default function App() {
-    const [isWidgetActive, setIsWidgetActive] = useState(false);
-    const [checkpoints, setCheckpoints] = useState([]);
+  const isbuttonsActive = {
+    "MagnifierActive": false,
+    "TrackActive": false,
+    "CheckpointActive": false,
+    "RulerActive": false
+  }
 
-    useEffect(() => {
-        checkpointsData();
-    }, []);
+  const [checkpoints, setCheckpoints] = useState(null);
+  const [isWidgetsActive, setIsWidgetsActive] = useState(isbuttonsActive);
+  const [creationWindow, setCreationWindow] = useState(false)
 
-    return (
-        <main>
-            <div className="toolbar">
-                <Widget image={magnifierWidgetImage} isReady={false} />                
-                {/* <Widget image={handWidgetImage} isReady={false} /> */}
-                <Widget image={trackWidgetImage} isReady={false} />
-                <Widget onClick={() => setIsWidgetActive(!isWidgetActive)} isActive={isWidgetActive} image={checkpointWidgetImage} isReady={true} />
-                <Widget image={rulerWidgetImage} isReady={false} />
-            </div>
-            <Map isWidgetActive={ isWidgetActive } checkpoints={ checkpoints } update={checkpointsData}/>
-        </main>
-    );
+  useEffect(() => {
+    checkpointsData();
+  }, []);
 
-    async function checkpointsData() {
-        const response = await fetch('https://localhost:7152/api/checkpoints')
-        const data = await response.json();
-        setCheckpoints(data);
-    }
+  return (
+    <main>
+      <Toolbar 
+          onToggleWidget={(newState) => {setIsWidgetsActive(newState);}}
+          isWidgetsActive={isWidgetsActive}
+      />
+
+      <Map 
+          checkpoints={checkpoints} 
+          isWidgetActive={isWidgetsActive.CheckpointActive}
+          setCreationWindow={(newState) => {setCreationWindow(newState)}}
+      />
+
+      { creationWindow ? <MarkerPointCreationWindow /> : null }
+    </main>
+  )
+
+  async function checkpointsData() {
+    const response = await fetch('https://localhost:7152/api/checkpoints')
+    const data = await response.json();
+    setCheckpoints(data);
+  }
 }

@@ -1,13 +1,6 @@
-﻿.toolbar {
-    cursor: grab;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 70px;
-    height: 100%;
-    position: absolute;
-    margin: auto 0;
-    top: 0; left: 0; bottom: 0; right: 0;
-    z-index: 2;
+main {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
 }
