@@ -5,8 +5,7 @@ import MarkerPoint from '../MarkerPoint/MarkerPoint';
 import { useState, useEffect } from 'react';
 
 
-export default function Map({ checkpoints, isWidgetActive, setCreationWindow, typeCheckpoint }) {
-  const [position, setPosition] = useState(null)
+export default function Map({ checkpoints, isWidgetActive, setCreationWindow, typeCheckpoint, position, setPosition }) {
 
   function LocationMarker() {
 

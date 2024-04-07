@@ -16,6 +16,7 @@ export default function App() {
   const [isWidgetsActive, setIsWidgetsActive] = useState(isbuttonsActive);
   const [creationWindow, setCreationWindow] = useState(false)
   const [typeCheckpoint, setTypeCheckpoint] = useState(0)
+  const [position, setPosition] = useState(null)
 
   useEffect(() => {
     checkpointsData();
@@ -26,6 +27,7 @@ export default function App() {
       <Toolbar 
           onToggleWidget={(newState) => {setIsWidgetsActive(newState);}}
           isWidgetsActive={isWidgetsActive}
+          setTypeCheckpoint={(newState) => {setTypeCheckpoint(newState)}}
       />
 
       <Map 
@@ -33,9 +35,17 @@ export default function App() {
           isWidgetActive={isWidgetsActive.CheckpointActive}
           setCreationWindow={(newState) => {setCreationWindow(newState)}}
           typeCheckpoint={typeCheckpoint}
+          position={position}
+          setPosition={(newState) => {setPosition(newState)}}
       />
 
-      { creationWindow ? <MarkerPointCreationWindow typeCheckpoint={typeCheckpoint} setTypeCheckpoint={(newState) => {setTypeCheckpoint(newState)}} /> : null }
+      { creationWindow ? <MarkerPointCreationWindow typeCheckpoint={typeCheckpoint} 
+                                                    setTypeCheckpoint={(newState) => {setTypeCheckpoint(newState)}} 
+                                                    setCreationWindow={(newState) => {setCreationWindow(newState)}}
+                                                    setPosition={(newState) => {setPosition(newState)}}
+                                                    position={position}
+                                                    checkpointsData={() => checkpointsData()}
+                          /> : null }
     </main>
   )
 

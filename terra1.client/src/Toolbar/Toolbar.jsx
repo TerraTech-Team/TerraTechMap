@@ -6,7 +6,7 @@ import rulerWidgetImage from './img/ruler_widget.svg';
 import trackWidgetImage from './img/track_widget.svg';
 
 
-export default function Toolbar({ onToggleWidget, isWidgetsActive }) {
+export default function Toolbar({ onToggleWidget, isWidgetsActive, setTypeCheckpoint }) {
 
     const toggleWidget = (widgetName) => {
         onToggleWidget(prevState => ({
@@ -19,7 +19,7 @@ export default function Toolbar({ onToggleWidget, isWidgetsActive }) {
         <div className="toolbar">
             <Widget 
                 image={checkpointWidgetImage} 
-                onClick={() => toggleWidget('CheckpointActive')} 
+                onClick={() => {toggleWidget('CheckpointActive'); setTypeCheckpoint(0)}} 
                 isActive={isWidgetsActive.CheckpointActive}
                 isReady={true}/>
 

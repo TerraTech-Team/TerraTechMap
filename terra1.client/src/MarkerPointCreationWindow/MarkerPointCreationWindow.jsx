@@ -5,10 +5,12 @@ import haltImage from './img/halt.svg';
 import noteImage from './img/note.svg';
 import sightImage from './img/sight.svg';
 
-export default function MarkerPointCreationWindow({typeCheckpoint, setTypeCheckpoint}) {
+export default function MarkerPointCreationWindow({ checkpointsData, typeCheckpoint, setTypeCheckpoint, setCreationWindow, setPosition, position }) {
 
     const [files, setFiles] = useState([])
     const [dragActive, setDragActive] = useState(false)
+    const [name, setName] = useState("")
+    const [description, setDescription] = useState("")
 
     const handleChange = (e) => {
         e.preventDefault();
@@ -37,22 +39,56 @@ export default function MarkerPointCreationWindow({typeCheckpoint, setTypeCheckp
 
     const handleReset = () => {
         setFiles([]);
-      };
+    };
     
-      const handleSubmit = (e) => {
-        e.preventDefault();
-        const data = new FormData();
-        files.forEach((file) => {
-          data.append("file", file, "test.png");
+    const handleSave = async () => {
+        const id = await sendChecpoints(); /*отправляет данные о чекпоинте и возвращает его id*/
+        await sendPhoto(id); /*отправляет фотку, переименовывая её в id.png*/
+        checkpointsData(); /*запрашивает данные с бд, пересобирая чек-поинты*/
+    };
+    
+    async function sendChecpoints() {
+        const [lat, lng] = position;
+        let json = {"x": lat, "y": lng, "type": typeCheckpoint};
+        if (name.length > 0) {
+            json["name"] = name;
+        }
+        if (description.length > 0) {
+            json["description"] = description;
+        }
+    
+        const response = await fetch('https://localhost:7152/api/checkpoints', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(json)
         });
 
-        console.log(data.get("file"))
+        const responseData = await response.json();
+        return responseData.id;
+    };
 
-        fetch("https://localhost:7152/api/Image/UploadFile", { method: "POST", body: data })
-          .then((response) => response.json())
-          .then(() => setFiles([]))
-          .catch(() => setFiles([]));
-      };
+    async function sendPhoto(id) {
+        const data = new FormData();
+        if (files.length > 0) 
+        {
+            files.forEach((file) => {
+                data.append("file", file, `${id}.png`);
+              });
+      
+              await fetch("https://localhost:7152/api/Image/UploadFile", { method: "POST", body: data })
+                .then((response) => response.json())
+                .then(() => setFiles([]))
+                .catch(() => setFiles([]));
+        }
+    };
+
+    const handleDelete = () => {
+        setCreationWindow(false);
+        setPosition(null);
+        setTypeCheckpoint(0);
+    };
 
     return (
         <div className="creationWindow">
@@ -60,12 +96,12 @@ export default function MarkerPointCreationWindow({typeCheckpoint, setTypeCheckp
             <form>
                 <div className="name">
                     <label htmlFor="name">Введите название:</label>
-                    <input type="text" id="name" className="textInput"></input>
+                    <input type="text" id="name" className="textInput" value={name} onChange={(event) => setName(event.target.value)} ></input>
                 </div>
 
                 <div className="description">
                     <label htmlFor='description'>Описание точки:</label>
-                    <textarea id='description' className='descriptionInput'/>
+                    <textarea id='description' className='descriptionInput' value={description} onChange={(event) => setDescription(event.target.value)} />
                 </div>
 
                 <div className="type">
@@ -116,16 +152,15 @@ export default function MarkerPointCreationWindow({typeCheckpoint, setTypeCheckp
                                     <li key={id}>{name}</li>
                                 ))}
                             </ul>
-                            <button className="button-reset" type="reset" onClick={handleReset}>Отменить</button>
-                            <button className="button-submit" type="submit" onClick={handleSubmit}>Отправить</button>
+                            <button className="button-reset" type="reset" onClick={handleReset}>Удалить файлы</button>
                         </>
                     )}
                 </form>
             </div>
 
             <div className="buttons">
-                <button className="button" style={{"backgroundColor": "#a7ffa1"}}>Сохранить</button>
-                <button className="button" style={{"backgroundColor": "#ffa1a1"}}>Отменить</button>
+                <button className="button" style={{"backgroundColor": "#58ed5f"}} onClick={handleSave}>Сохранить</button>
+                <button className="button" style={{"backgroundColor": "#ed5858"}} onClick={handleDelete}>Отменить</button>
             </div>
         </div>
     );
