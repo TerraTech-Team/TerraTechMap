@@ -15,6 +15,7 @@ export default function App() {
   const [checkpoints, setCheckpoints] = useState(null);
   const [isWidgetsActive, setIsWidgetsActive] = useState(isbuttonsActive);
   const [creationWindow, setCreationWindow] = useState(false)
+  const [typeCheckpoint, setTypeCheckpoint] = useState(0)
 
   useEffect(() => {
     checkpointsData();
@@ -31,9 +32,10 @@ export default function App() {
           checkpoints={checkpoints} 
           isWidgetActive={isWidgetsActive.CheckpointActive}
           setCreationWindow={(newState) => {setCreationWindow(newState)}}
+          typeCheckpoint={typeCheckpoint}
       />
 
-      { creationWindow ? <MarkerPointCreationWindow /> : null }
+      { creationWindow ? <MarkerPointCreationWindow typeCheckpoint={typeCheckpoint} setTypeCheckpoint={(newState) => {setTypeCheckpoint(newState)}} /> : null }
     </main>
   )
 

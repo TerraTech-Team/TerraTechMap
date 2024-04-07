@@ -1,7 +1,11 @@
 import { useState } from "react"
 import "./MarkerPointCreationWindow.css"
+import dangerImage from './img/danger.svg';
+import haltImage from './img/halt.svg';
+import noteImage from './img/note.svg';
+import sightImage from './img/sight.svg';
 
-export default function MarkerPointCreationWindow() {
+export default function MarkerPointCreationWindow({typeCheckpoint, setTypeCheckpoint}) {
 
     const [files, setFiles] = useState([])
     const [dragActive, setDragActive] = useState(false)
@@ -39,9 +43,12 @@ export default function MarkerPointCreationWindow() {
         e.preventDefault();
         const data = new FormData();
         files.forEach((file) => {
-          data.append("file", file);
+          data.append("file", file, "test.png");
         });
-        fetch("https://someapi"/*Вот тут должен быть адрес*/, { method: "POST", body: data }) /* <------------------------ АРСЕНИЙ */
+
+        console.log(data.get("file"))
+
+        fetch("https://localhost:7152/api/Image/UploadFile", { method: "POST", body: data })
           .then((response) => response.json())
           .then(() => setFiles([]))
           .catch(() => setFiles([]));
@@ -49,14 +56,57 @@ export default function MarkerPointCreationWindow() {
 
     return (
         <div className="creationWindow">
+            <h1>Создание нового Чек-поинта</h1>
+            <form>
+                <div className="name">
+                    <label htmlFor="name">Введите название:</label>
+                    <input type="text" id="name" className="textInput"></input>
+                </div>
+
+                <div className="description">
+                    <label htmlFor='description'>Описание точки:</label>
+                    <textarea id='description' className='descriptionInput'/>
+                </div>
+
+                <div className="type">
+                    <label htmlFor='type'>Тип точки:</label>
+                    <ul id="type" className="typeSelection">
+                        <li className={`typeSelectionItem ${typeCheckpoint === 0 ? "activeType" : ""}`} 
+                            style={{"backgroundColor": "#90F79A"}} 
+                            onClick={() => setTypeCheckpoint(0)}
+                            >
+                                <img src={haltImage} alt="haltType" />
+                        </li>
+                        <li className={`typeSelectionItem ${typeCheckpoint === 1 ? "activeType" : ""}`} 
+                            style={{"backgroundColor": "#F37C7C"}} 
+                            onClick={() => setTypeCheckpoint(1)}
+                            >
+                                <img src={dangerImage} alt="dangerType" />
+                        </li>
+                        <li className={`typeSelectionItem ${typeCheckpoint === 2 ? "activeType" : ""}`} 
+                            style={{"backgroundColor": "#76EFEF"}} 
+                            onClick={() => setTypeCheckpoint(2)}
+                            >
+                                <img src={noteImage} alt="noteType" />
+                        </li>
+                        <li className={`typeSelectionItem ${typeCheckpoint === 3 ? "activeType" : ""}`} 
+                            style={{"backgroundColor": "#EDF772"}} 
+                            onClick={() => setTypeCheckpoint(3)}
+                            >
+                                <img src={sightImage} alt="sightType" />
+                        </li>
+                    </ul>
+                </div>
+            </form>
+
             <div className="wrapper">
-                <h1>Drag & Drop</h1>
-                <form className={`form ${dragActive ? "drag" : ""}`} onDragEnter={handleDrag} onDragOver={handleDrag} onDragLeave={handleLeave} onDrop={handleDrop}>
+                <label htmlFor='photoInput'>Загрузить фотографии:</label>
+                <form className={`form ${dragActive ? "drag" : ""}`} id="photoInput" onDragEnter={handleDrag} onDragOver={handleDrag} onDragLeave={handleLeave} onDrop={handleDrop}>
                     <h2>Перетащи файлы сюда</h2>
                     <p>или</p>
                     <label className="label">
                         <span>Загрузите файлы</span>
-                        <input type="file" className="input" multiple={true} onChange={handleChange}/>
+                        <input type="file" className="input" multiple={false} onChange={handleChange}/>
                     </label>
 
                     {files.length > 0 && (
@@ -71,6 +121,11 @@ export default function MarkerPointCreationWindow() {
                         </>
                     )}
                 </form>
+            </div>
+
+            <div className="buttons">
+                <button className="button" style={{"backgroundColor": "#a7ffa1"}}>Сохранить</button>
+                <button className="button" style={{"backgroundColor": "#ffa1a1"}}>Отменить</button>
             </div>
         </div>
     );
