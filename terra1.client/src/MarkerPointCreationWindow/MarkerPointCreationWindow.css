@@ -136,7 +136,7 @@ div.name {
 
 .textInput {
     box-sizing: border-box;
-    border: 1px solid #ccc;
+    border: 1.5px solid #ccc;
 	border-radius: 5px;
 	padding: 0.5rem 1rem;
 	width: 100%;
@@ -154,7 +154,7 @@ div.name label {
 
 .descriptionInput {
     box-sizing: border-box;
-    border: 1px solid #ccc;
+    border: 1.5px solid #ccc;
 	border-radius: 5px;
 	padding: 0.5rem 1rem;
 	width: 100%;
@@ -243,6 +243,16 @@ div.wrapper label {
 
 .button:hover {
 	opacity: 0.5;
+}
+
+.button:disabled {
+    opacity: 0.7;
+    cursor: default;
+}
+
+.button:disabled:hover {
+    opacity: 0.7;
+    cursor: default;
 }
 
 .button.active {

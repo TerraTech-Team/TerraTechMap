@@ -1,0 +1,23 @@
+{
+  "Version": 1,
+  "Hash": "lHfULu2/djXbNqMWEbjO8yPqtXu67uV563gn7iIB9SI=",
+  "Source": "Terra.Server",
+  "BasePath": "_content/Terra.Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\terra1.client\\Terra.client.esproj",
+      "Version": 2,
+      "Source": "Terra.client",
+      "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;Configuration;Platform;TargetFramework;RuntimeIdentifier;SelfContained",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;Configuration;Platform;TargetFramework;RuntimeIdentifier;SelfContained"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

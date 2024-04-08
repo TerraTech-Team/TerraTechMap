@@ -10,6 +10,7 @@ export default function MarkerPointCreationWindow({ checkpointsData, typeCheckpo
     const [files, setFiles] = useState([])
     const [dragActive, setDragActive] = useState(false)
     const [name, setName] = useState("")
+    const [hasNameError, setHasNameError] = useState(false)
     const [description, setDescription] = useState("")
 
     const handleChange = (e) => {
@@ -42,9 +43,11 @@ export default function MarkerPointCreationWindow({ checkpointsData, typeCheckpo
     };
     
     const handleSave = async () => {
-        const id = await sendChecpoints(); /*отправляет данные о чекпоинте и возвращает его id*/
-        await sendPhoto(id); /*отправляет фотку, переименовывая её в id.png*/
-        checkpointsData(); /*запрашивает данные с бд, пересобирая чек-поинты*/
+        const id = await sendChecpoints();
+        await sendPhoto(id);
+        checkpointsData();
+        setCreationWindow(false);
+        setPosition(null);
     };
     
     async function sendChecpoints() {
@@ -74,7 +77,7 @@ export default function MarkerPointCreationWindow({ checkpointsData, typeCheckpo
         if (files.length > 0) 
         {
             files.forEach((file) => {
-                data.append("file", file, `${id}.png`);
+                data.append("file", file, `${id}.jpg`);
               });
       
               await fetch("https://localhost:7152/api/Image/UploadFile", { method: "POST", body: data })
@@ -90,13 +93,18 @@ export default function MarkerPointCreationWindow({ checkpointsData, typeCheckpo
         setTypeCheckpoint(0);
     };
 
+    const handleChangeName = (e) => {
+        setName(e.target.value);
+        setHasNameError(e.target.value.trim().length > 20);
+    }
+
     return (
         <div className="creationWindow">
             <h1>Создание нового Чек-поинта</h1>
             <form>
                 <div className="name">
                     <label htmlFor="name">Введите название:</label>
-                    <input type="text" id="name" className="textInput" value={name} onChange={(event) => setName(event.target.value)} ></input>
+                    <input type="text" id="name" className="textInput" value={name} onChange={handleChangeName} style={hasNameError ? {"border": "1.5px solid red"} : null}></input>
                 </div>
 
                 <div className="description">
@@ -159,7 +167,7 @@ export default function MarkerPointCreationWindow({ checkpointsData, typeCheckpo
             </div>
 
             <div className="buttons">
-                <button className="button" style={{"backgroundColor": "#58ed5f"}} onClick={handleSave}>Сохранить</button>
+                <button className="button" style={{"backgroundColor": "#58ed5f"}} onClick={handleSave} disabled={hasNameError}>Сохранить</button>
                 <button className="button" style={{"backgroundColor": "#ed5858"}} onClick={handleDelete}>Отменить</button>
             </div>
         </div>

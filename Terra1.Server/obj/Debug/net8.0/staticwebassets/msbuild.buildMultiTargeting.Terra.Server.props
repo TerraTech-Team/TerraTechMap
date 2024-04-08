@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Terra.Server.props" />
+</Project>
