@@ -1,2 +1,0 @@
-C:\Users\Virtical\Desktop\TerraTech\terra1.client\obj\Debug\Terra.client.esproj.CoreCompileInputs.cache
-C:\Users\Virtical\Desktop\TerraTechMap\terra1.client\obj\Debug\Terra.client.esproj.CoreCompileInputs.cache

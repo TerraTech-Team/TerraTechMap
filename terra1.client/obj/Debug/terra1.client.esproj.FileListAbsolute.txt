@@ -1,2 +1,0 @@
-C:\Users\Virtical\Desktop\TerraTech\terra1.client\obj\Debug\terra1.client.esproj.CoreCompileInputs.cache
-C:\Users\arska\OneDrive\Рабочий стол\git\terra1.client\obj\Debug\terra1.client.esproj.CoreCompileInputs.cache
