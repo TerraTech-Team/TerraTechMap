@@ -33,13 +33,25 @@ namespace Terra.Server.Controllers
             }
         }
 
-        [HttpGet()]
-        public async Task<IActionResult> GetImage(string imageName)
-        {
 
-            Byte[] b;
-            b = await System.IO.File.ReadAllBytesAsync(Path.Combine(_environment.ContentRootPath, "Images", $"{imageName}"));
-            return File(b, "image/jpeg");
+        [HttpGet()]
+        public async Task<IActionResult> GetAllImages()
+        {
+            var imageDirectory = Path.Combine(_environment.ContentRootPath, "Images");
+            List<FileContentResult> images = new List<FileContentResult>();
+
+            string[] imagePaths = Directory.GetFiles(imageDirectory);
+
+            foreach (var imagePath in imagePaths)
+            {
+                Byte[] b = await System.IO.File.ReadAllBytesAsync(imagePath);
+                var splitedPath = imagePath.Split('\\');
+                var fileName = splitedPath[splitedPath.Length - 1];
+                var file = File(b, "image/jpeg", fileName);
+                images.Add(file);
+            }
+
+            return Ok(images);
         }
     }
 }

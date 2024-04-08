@@ -2,11 +2,10 @@ import { MapContainer, TileLayer, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import './Map.css';
 import MarkerPoint from '../MarkerPoint/MarkerPoint';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 
-export default function Map({ checkpoints, isWidgetActive, setCreationWindow }) {
-  const [position, setPosition] = useState(null)
+export default function Map({ checkpoints, isWidgetActive, setCreationWindow, typeCheckpoint, position, setPosition, imagesForCheckpoints }) {
 
   function LocationMarker() {
 
@@ -17,7 +16,7 @@ export default function Map({ checkpoints, isWidgetActive, setCreationWindow }) 
       }
     })
   
-    return position === null ? null : <MarkerPoint position={position} />
+    return position === null ? null : <MarkerPoint position={position} imageIcon={typeCheckpoint} isPopup={false}/>
   }
 
   useEffect(() => {
@@ -33,7 +32,16 @@ export default function Map({ checkpoints, isWidgetActive, setCreationWindow }) 
           <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
 
-          {checkpoints && checkpoints.map((points) => <MarkerPoint idPoint={points.id}  key={points.id} position={[points.x, points.y]} name={points.name} description={points.description} />) }
+              {checkpoints && checkpoints.map((points) => <MarkerPoint 
+                                                              idPoint={points.id} 
+                                                              key={points.id} 
+                                                              position={[points.x, points.y]} 
+                                                              name={points.name} 
+                                                              description={points.description} 
+                                                              imageIcon={points.type}
+                                                              isPopup={true}
+                                                              image={imagesForCheckpoints.find(file => file.fileDownloadName === `${points.id}.jpg`) || null}
+                                                          />) }
         
           {isWidgetActive ? <LocationMarker /> : null}
 

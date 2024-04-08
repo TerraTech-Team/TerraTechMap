@@ -1,10 +1,17 @@
 import { useState } from "react"
 import "./MarkerPointCreationWindow.css"
+import dangerImage from './img/danger.svg';
+import haltImage from './img/halt.svg';
+import noteImage from './img/note.svg';
+import sightImage from './img/sight.svg';
 
-export default function MarkerPointCreationWindow() {
+export default function MarkerPointCreationWindow({ checkpointsData, typeCheckpoint, setTypeCheckpoint, setCreationWindow, setPosition, position }) {
 
     const [files, setFiles] = useState([])
     const [dragActive, setDragActive] = useState(false)
+    const [name, setName] = useState("")
+    const [hasNameError, setHasNameError] = useState(false)
+    const [description, setDescription] = useState("")
 
     const handleChange = (e) => {
         e.preventDefault();
@@ -33,30 +40,117 @@ export default function MarkerPointCreationWindow() {
 
     const handleReset = () => {
         setFiles([]);
-      };
+    };
     
-      const handleSubmit = (e) => {
-        e.preventDefault();
-        const data = new FormData();
-        files.forEach((file) => {
-          data.append("file", file);
+    const handleSave = async () => {
+        const id = await sendChecpoints();
+        await sendPhoto(id);
+        checkpointsData();
+        setCreationWindow(false);
+        setPosition(null);
+    };
+    
+    async function sendChecpoints() {
+        const [lat, lng] = position;
+        let json = {"x": lat, "y": lng, "type": typeCheckpoint};
+        if (name.length > 0) {
+            json["name"] = name;
+        }
+        if (description.length > 0) {
+            json["description"] = description;
+        }
+    
+        const response = await fetch('https://localhost:7152/api/checkpoints', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(json)
         });
-        fetch("https://someapi"/*Вот тут должен быть адрес*/, { method: "POST", body: data }) /* <------------------------ АРСЕНИЙ */
-          .then((response) => response.json())
-          .then(() => setFiles([]))
-          .catch(() => setFiles([]));
-      };
+
+        const responseData = await response.json();
+        return responseData.id;
+    };
+
+    async function sendPhoto(id) {
+        const data = new FormData();
+        if (files.length > 0) 
+        {
+            files.forEach((file) => {
+                data.append("file", file, `${id}.jpg`);
+              });
+      
+              await fetch("https://localhost:7152/api/Image/UploadFile", { method: "POST", body: data })
+                .then((response) => response.json())
+                .then(() => setFiles([]))
+                .catch(() => setFiles([]));
+        }
+    };
+
+    const handleDelete = () => {
+        setCreationWindow(false);
+        setPosition(null);
+        setTypeCheckpoint(0);
+    };
+
+    const handleChangeName = (e) => {
+        setName(e.target.value);
+        setHasNameError(e.target.value.trim().length > 20);
+    }
 
     return (
         <div className="creationWindow">
+            <h1>Создание нового Чек-поинта</h1>
+            <form>
+                <div className="name">
+                    <label htmlFor="name">Введите название:</label>
+                    <input type="text" id="name" className="textInput" value={name} onChange={handleChangeName} style={hasNameError ? {"border": "1.5px solid red"} : null}></input>
+                </div>
+
+                <div className="description">
+                    <label htmlFor='description'>Описание точки:</label>
+                    <textarea id='description' className='descriptionInput' value={description} onChange={(event) => setDescription(event.target.value)} />
+                </div>
+
+                <div className="type">
+                    <label htmlFor='type'>Тип точки:</label>
+                    <ul id="type" className="typeSelection">
+                        <li className={`typeSelectionItem ${typeCheckpoint === 0 ? "activeType" : ""}`} 
+                            style={{"backgroundColor": "#90F79A"}} 
+                            onClick={() => setTypeCheckpoint(0)}
+                            >
+                                <img src={haltImage} alt="haltType" />
+                        </li>
+                        <li className={`typeSelectionItem ${typeCheckpoint === 1 ? "activeType" : ""}`} 
+                            style={{"backgroundColor": "#F37C7C"}} 
+                            onClick={() => setTypeCheckpoint(1)}
+                            >
+                                <img src={dangerImage} alt="dangerType" />
+                        </li>
+                        <li className={`typeSelectionItem ${typeCheckpoint === 2 ? "activeType" : ""}`} 
+                            style={{"backgroundColor": "#76EFEF"}} 
+                            onClick={() => setTypeCheckpoint(2)}
+                            >
+                                <img src={noteImage} alt="noteType" />
+                        </li>
+                        <li className={`typeSelectionItem ${typeCheckpoint === 3 ? "activeType" : ""}`} 
+                            style={{"backgroundColor": "#EDF772"}} 
+                            onClick={() => setTypeCheckpoint(3)}
+                            >
+                                <img src={sightImage} alt="sightType" />
+                        </li>
+                    </ul>
+                </div>
+            </form>
+
             <div className="wrapper">
-                <h1>Drag & Drop</h1>
-                <form className={`form ${dragActive ? "drag" : ""}`} onDragEnter={handleDrag} onDragOver={handleDrag} onDragLeave={handleLeave} onDrop={handleDrop}>
+                <label htmlFor='photoInput'>Загрузить фотографии:</label>
+                <form className={`form ${dragActive ? "drag" : ""}`} id="photoInput" onDragEnter={handleDrag} onDragOver={handleDrag} onDragLeave={handleLeave} onDrop={handleDrop}>
                     <h2>Перетащи файлы сюда</h2>
                     <p>или</p>
                     <label className="label">
                         <span>Загрузите файлы</span>
-                        <input type="file" className="input" multiple={true} onChange={handleChange}/>
+                        <input type="file" className="input" multiple={false} onChange={handleChange}/>
                     </label>
 
                     {files.length > 0 && (
@@ -66,11 +160,15 @@ export default function MarkerPointCreationWindow() {
                                     <li key={id}>{name}</li>
                                 ))}
                             </ul>
-                            <button className="button-reset" type="reset" onClick={handleReset}>Отменить</button>
-                            <button className="button-submit" type="submit" onClick={handleSubmit}>Отправить</button>
+                            <button className="button-reset" type="reset" onClick={handleReset}>Удалить файлы</button>
                         </>
                     )}
                 </form>
+            </div>
+
+            <div className="buttons">
+                <button className="button" style={{"backgroundColor": "#58ed5f"}} onClick={handleSave} disabled={hasNameError}>Сохранить</button>
+                <button className="button" style={{"backgroundColor": "#ed5858"}} onClick={handleDelete}>Отменить</button>
             </div>
         </div>
     );

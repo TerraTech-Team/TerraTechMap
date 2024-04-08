@@ -1,5 +1,40 @@
 .popup {
-    background-color: aquamarine;
-    width: 100%;
-    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: min-content;
+    min-height: 15px;
+    height: min-content;
 }
+
+.nameCheckpoints {
+    box-sizing: content-box;
+    margin: 0;
+    padding: 0;
+    width: 150px;
+    height: 14px;
+    font-size: 12px;
+    margin-right: 15px;
+    color:black;
+    border: 1px solid #bdbdbd;
+}
+
+.descriptionCheckpoints {
+    box-sizing: content-box;
+    display: block;
+    margin: 0;
+    margin-top: 5px;
+    padding: 0;
+    width: 168px;
+    font-size: 14px;
+    color: black;
+    hyphens: auto;
+}
+
+.photoCheckpoints {
+    position: block;
+    z-index: 100;
+    width: 100%;
+    height: auto;
+    top: 0; bottom: 0; right: 0; left: 0;
+    background-color: rgb(53, 29, 0);
+  }
