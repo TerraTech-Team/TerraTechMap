@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\Terra1.Server\\Terra.Server.csproj": {}
+    "C:\\Users\\arska\\OneDrive\\Рабочий стол\\git\\Terra1.Server\\Terra.Server.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\Terra1.Server\\Terra.Server.csproj": {
+    "C:\\Users\\arska\\OneDrive\\Рабочий стол\\git\\Terra1.Server\\Terra.Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\Terra1.Server\\Terra.Server.csproj",
+        "projectUniqueName": "C:\\Users\\arska\\OneDrive\\Рабочий стол\\git\\Terra1.Server\\Terra.Server.csproj",
         "projectName": "Terra.Server",
-        "projectPath": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\Terra1.Server\\Terra.Server.csproj",
-        "packagesPath": "C:\\Users\\Virtical\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\Terra1.Server\\obj\\",
+        "projectPath": "C:\\Users\\arska\\OneDrive\\Рабочий стол\\git\\Terra1.Server\\Terra.Server.csproj",
+        "packagesPath": "C:\\Users\\arska\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\arska\\OneDrive\\Рабочий стол\\git\\Terra1.Server\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Virtical\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\arska\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -57,7 +61,7 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.3, )"
+              "version": "[8.0.4, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
@@ -87,7 +91,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
