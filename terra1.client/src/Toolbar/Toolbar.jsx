@@ -6,11 +6,14 @@ import rulerWidgetImage from './img/ruler_widget.svg';
 import trackWidgetImage from './img/track_widget.svg';
 
 
-export default function Toolbar({ onToggleWidget, isWidgetsActive, setTypeCheckpoint }) {
+export default function Toolbar({ onToggleWidget, isWidgetsActive, setTypeCheckpoint, setTrack }) {
 
     const toggleWidget = (widgetName) => {
         onToggleWidget(prevState => ({
-            ...prevState,
+            ['CheckpointActive']: false,
+            ['MagnifierActive']: false,
+            ['TrackActive']: false,
+            ['RulerActive']: false,
             [widgetName]: !prevState[widgetName]
         }));
     };
@@ -24,6 +27,12 @@ export default function Toolbar({ onToggleWidget, isWidgetsActive, setTypeCheckp
                 isReady={true}/>
 
             <Widget 
+                image={trackWidgetImage}
+                onClick={() => {toggleWidget('TrackActive'); getRequest()} }
+                isActive={isWidgetsActive.TrackActive}
+                isReady={true}/>
+
+            <Widget 
                 image={magnifierWidgetImage}
                 onClick={() => toggleWidget('MagnifierActive')} 
                 isActive={isWidgetsActive.MagnifierActive}
@@ -34,12 +43,13 @@ export default function Toolbar({ onToggleWidget, isWidgetsActive, setTypeCheckp
                 onClick={() => toggleWidget('RulerActive')} 
                 isActive={isWidgetsActive.RulerActive}
                 isReady={false}/>
-
-            <Widget 
-                image={trackWidgetImage}
-                onClick={() => toggleWidget('TrackActive')} 
-                isActive={isWidgetsActive.TrackActive}
-                isReady={false}/>
         </div>
     )
+
+    async function getRequest() {
+        let response = await fetch('https://router.project-osrm.org/route/v1/foot/60.70657,55.76289;60.65666,56.83736?alternatives=true&geometries=geojson')
+        let data = await response.json()
+        let routes = data.routes[0].geometry.coordinates;
+        setTrack(routes)
+    }
 }

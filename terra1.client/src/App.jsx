@@ -18,6 +18,7 @@ export default function App() {
   const [typeCheckpoint, setTypeCheckpoint] = useState(0); /*Переменная отвечающая за хранения состояния типа чекпоинта при установке Чек-поинта*/
   const [position, setPosition] = useState(null); /*Переменная отвечающая за хранение координат при установке Чек-поинта*/
   const [imagesForCheckpoints, setImagesForCheckpoints] = useState([]);
+  const [track, setTrack] = useState([]);
 
   useEffect(() => {
       checkpointsData();
@@ -29,16 +30,18 @@ export default function App() {
               onToggleWidget={(newState) => {setIsWidgetsActive(newState);}}
               isWidgetsActive={isWidgetsActive}
               setTypeCheckpoint={(newState) => {setTypeCheckpoint(newState)}}
+              setTrack={(newState) => {setTrack(newState)}}
           />
 
           <Map 
               checkpoints={checkpoints} 
-              isWidgetActive={isWidgetsActive.CheckpointActive}
+              isWidgetsActive={isWidgetsActive}
               setCreationWindow={(newState) => {setCreationWindow(newState)}}
               typeCheckpoint={typeCheckpoint}
               position={position}
               setPosition={(newState) => {setPosition(newState)}}
               imagesForCheckpoints={imagesForCheckpoints}
+              track={track}
           />
 
           { creationWindow ? <MarkerPointCreationWindow 
