@@ -1,11 +1,12 @@
 import { useState } from "react"
-import "./MarkerPointCreationWindow.css"
+import "./CheckpointCreationWindow.css"
+import "../CreationWindow.css"
 import dangerImage from './img/danger.svg';
 import haltImage from './img/halt.svg';
 import noteImage from './img/note.svg';
 import sightImage from './img/sight.svg';
 
-export default function MarkerPointCreationWindow({ checkpointsData, typeCheckpoint, setTypeCheckpoint, setCreationWindow, setPosition, position }) {
+export default function CheckpointCreationWindow({ checkpointsData, typeCheckpoint, setTypeCheckpoint, setCreationWindow, setPositionOfNewCheckpoint, positionOfNewCheckpoint }) {
 
     const [files, setFiles] = useState([])
     const [dragActive, setDragActive] = useState(false)
@@ -47,11 +48,11 @@ export default function MarkerPointCreationWindow({ checkpointsData, typeCheckpo
         await sendPhoto(id);
         checkpointsData();
         setCreationWindow(false);
-        setPosition(null);
+        setPositionOfNewCheckpoint(null);
     };
     
     async function sendChecpoints() {
-        const [lat, lng] = position;
+        const [lat, lng] = positionOfNewCheckpoint;
         let json = {"x": lat, "y": lng, "type": typeCheckpoint};
         if (name.length > 0) {
             json["name"] = name;
@@ -89,7 +90,7 @@ export default function MarkerPointCreationWindow({ checkpointsData, typeCheckpo
 
     const handleDelete = () => {
         setCreationWindow(false);
-        setPosition(null);
+        setPositionOfNewCheckpoint(null);
         setTypeCheckpoint(0);
     };
 
@@ -144,7 +145,7 @@ export default function MarkerPointCreationWindow({ checkpointsData, typeCheckpo
             </form>
 
             <div className="wrapper">
-                <label htmlFor='photoInput'>Загрузить фотографии:</label>
+                <label htmlFor='photoInput'>Загрузите фотографии:</label>
                 <form className={`form ${dragActive ? "drag" : ""}`} id="photoInput" onDragEnter={handleDrag} onDragOver={handleDrag} onDragLeave={handleLeave} onDrop={handleDrop}>
                     <h2>Перетащи файлы сюда</h2>
                     <p>или</p>
