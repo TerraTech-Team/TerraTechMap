@@ -4,6 +4,7 @@
     {
         Car,
         Bicycle,
-        OnFoot
+        OnFoot,
+        Combined
     }
 }
