@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "Hash": "3F1TjD/mb/giVCUPaikt/I1DRkq7h/z9QrygaOI0LA4=",
+  "Hash": "ZVFMfxKPBAacuBzRwylFmewilfPUob8Bbb1xc0toYFc=",
   "Source": "Terra.Server",
   "BasePath": "_content/Terra.Server",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "C:\\Users\\arska\\OneDrive\\Рабочий стол\\git\\terra1.client\\Terra.client.esproj",
+      "Identity": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\terra1.client\\Terra.client.esproj",
       "Version": 2,
       "Source": "Terra.client",
       "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",

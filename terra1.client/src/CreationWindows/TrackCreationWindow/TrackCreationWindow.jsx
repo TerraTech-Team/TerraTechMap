@@ -1,9 +1,12 @@
 import "../CreationWindow.css"
 import "./TrackCreactionWindow.css"
 import { useState } from "react";
+import car  from './img/car.svg'
+import bike  from './img/bike.svg'
+import foot  from './img/foot.svg'
 
-export default function TrackCreationWindow({ modeBuilding, handleModeBuildingChange}) {
-    const [lengthTrack, setLengthTrack] = useState(0);
+export default function TrackCreationWindow({ track, setLengthTrack, setPositionOfIntermediateCheckpoint, setPositionOfEndCheckpoint, setPositionOfStartCheckpoint, setTrack, setCreationTrackWindow, lengthTrack, modeBuilding, handleModeBuildingChange, transport, setTransport, setModeBuilding}) {
+
     const [season, setSeason] = useState(0)
     const [name, setName] = useState("")
     const [time, setTime] = useState('00:00');
@@ -13,12 +16,64 @@ export default function TrackCreationWindow({ modeBuilding, handleModeBuildingCh
         setSeason(n);
     }
 
+    const handleTransportChange = (e, n) => {
+        e.preventDefault();
+        setTransport(n);
+        if (n === 0){
+            setModeBuilding(0);
+        } else {
+            setModeBuilding(1);
+        }
+    }
+
     const handleChangeName = (e) => {
         setName(e.target.value);
     }
 
     const handleTimeChange = (e) => {
         setTime(e.target.value);
+    };
+
+    const handleDelete = () => {
+        setCreationTrackWindow(false);
+        setTrack([]);
+        setPositionOfIntermediateCheckpoint([]);
+        setPositionOfEndCheckpoint(null);
+        setPositionOfStartCheckpoint(null);
+        setTransport(0);
+        setModeBuilding(0);
+        setLengthTrack(0);
+    };
+
+    const handleSave = async () => {
+        await sendTrack();
+        // trackData();
+        handleDelete();
+    };
+
+    async function sendTrack() {
+        // const [lat, lng] = positionOfNewCheckpoint;
+        let json = {"cordinates": track.map(cords => ({"cords": cords})),
+                    "season": season,
+                    "transport": transport,
+                    "length": length,
+                    "color": "#2172D4"
+                    };
+        console.log(json);
+        if (name.length > 0) {
+            json["name"] = name;
+        }
+        if (time !== "00:00") {
+            json["time"] = time;
+        }
+    
+        await fetch('https://localhost:7152/api/Ways', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+           body: JSON.stringify(json)
+        });
     };
 
     return (
@@ -78,10 +133,28 @@ export default function TrackCreationWindow({ modeBuilding, handleModeBuildingCh
                     </ul>
                 </div>
 
-                <div className="length">
-                    <label htmlFor="length">Введите длину:</label>
-                    <input type="range" id="length" min="0" max="250" className="lengthInput" value={lengthTrack} onChange={(e) => setLengthTrack(e.target.value)}></input>
-                    <p>{lengthTrack} км</p>
+                <div className='transport'>
+                    <label htmlFor='transport'>Транспорт:</label>
+                    <ul className="transportInput" id="transport">
+                        <li><button 
+                                    className="button" 
+                                    style={{"backgroundColor": "#D9D9D9"}}  
+                                    onClick={(e) => handleTransportChange(e, 0)}
+                                    disabled={transport === 0 ? true : false}
+                                    ><img src={car}/></button></li>
+                        <li><button 
+                                    className="button" 
+                                    style={{"backgroundColor": "#D9D9D9"}} 
+                                    onClick={(e) => handleTransportChange(e, 1)}
+                                    disabled={transport === 1 ? true : false}
+                                    ><img src={bike}/></button></li>
+                        <li><button 
+                                    className="button" 
+                                    style={{"backgroundColor": "#D9D9D9"}} 
+                                    onClick={(e) => handleTransportChange(e, 2)}
+                                    disabled={transport === 2 ? true : false}
+                                    ><img src={foot}/></button></li>
+                    </ul>
                 </div>
 
                 <div className="time">
@@ -96,9 +169,13 @@ export default function TrackCreationWindow({ modeBuilding, handleModeBuildingCh
                 </div>
             </form>
 
+            <div className="length">
+                <label htmlFor="length">Длина маршрута: {Math.floor(lengthTrack/1000)} км</label>
+            </div>
+
             <div className="buttons">
-                    <button className="button" style={{"backgroundColor": "#58ed5f"}} >Сохранить</button>
-                    <button className="button" style={{"backgroundColor": "#ed5858"}} >Отменить</button>
+                    <button className="button" style={{"backgroundColor": "#58ed5f"}} onClick={handleSave}>Сохранить</button>
+                    <button className="button" style={{"backgroundColor": "#ed5858"}} onClick={handleDelete}>Отменить</button>
                 </div>
         </div>
     );

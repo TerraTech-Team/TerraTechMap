@@ -25,6 +25,8 @@ export default function App() {
     const [imagesForCheckpoints, setImagesForCheckpoints] = useState([]);
     const [track, setTrack] = useState([]);
     const [modeBuilding, setModeBuilding] = useState(0)
+    const [lengthTrack, setLengthTrack] = useState(0);    
+    const [transport, setTransport] = useState(0)
 
     useEffect(() => {
         checkpointsData();
@@ -33,6 +35,7 @@ export default function App() {
     const handleModeBuildingChange = (e, n) => {
         e.preventDefault();
         setModeBuilding(n);
+        setTransport(n);
     }
 
     return (
@@ -61,6 +64,7 @@ export default function App() {
               track={track}
               setTrack={(newState) => {setTrack(newState)}}
               modeBuilding={modeBuilding}
+              setLengthTrack={setLengthTrack}
           />
 
             { creationCheckpointWindow ? <CheckpointCreationWindow 
@@ -73,8 +77,20 @@ export default function App() {
                               /> : null }
 
             { creationTrackWindow ? <TrackCreationWindow 
+                                lengthTrack={lengthTrack}
                                 modeBuilding={modeBuilding}
-                                handleModeBuildingChange={handleModeBuildingChange}/> : null }
+                                handleModeBuildingChange={handleModeBuildingChange}
+                                transport={transport}
+                                setTransport={setTransport}
+                                setModeBuilding={setModeBuilding}
+                                setCreationTrackWindow={setCreationTrackWindow}
+                                setTrack={setTrack}
+                                setPositionOfStartCheckpoint={(newState) => {setPositionOfStartCheckpoint(newState)}}
+                                setPositionOfEndCheckpoint={(newState) => {setPositionOfEndCheckpoint(newState)}}
+                                setPositionOfIntermediateCheckpoint={(newState) => {setPositionOfIntermediateCheckpoint(newState)}}
+                                setLengthTrack={setLengthTrack}
+                                track={track}
+                                /> : null }
       </main>
   )
     /*Загрузка актуальных Чек-поинтов из БД*/

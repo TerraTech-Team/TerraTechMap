@@ -5,7 +5,7 @@ import MarkerPoint from '../MarkerPoint/MarkerPoint';
 import { useEffect, useState } from 'react';
 
 
-export default function Map({ intermediateCheckpoint, setPositionOfIntermediateCheckpoint, modeBuilding, checkpoints, isWidgetsActive, setTrack, setCreationCheckpointWindow, setCreationTrackWindow, typeCheckpoint, positionOfNewCheckpoint, setPositionOfNewCheckpoint, startCheckpoint, setPositionOfStartCheckpoint, endCheckpoint, setPositionOfEndCheckpoint, imagesForCheckpoints, track }) {
+export default function Map({ setLengthTrack, intermediateCheckpoint, setPositionOfIntermediateCheckpoint, modeBuilding, checkpoints, isWidgetsActive, setTrack, setCreationCheckpointWindow, setCreationTrackWindow, typeCheckpoint, positionOfNewCheckpoint, setPositionOfNewCheckpoint, startCheckpoint, setPositionOfStartCheckpoint, endCheckpoint, setPositionOfEndCheckpoint, imagesForCheckpoints, track }) {
   const [colour, setColour] = useState(true);
   const [weight, setWeight] = useState(5);
 
@@ -59,6 +59,7 @@ export default function Map({ intermediateCheckpoint, setPositionOfIntermediateC
         setCreationTrackWindow(false);
         setPositionOfStartCheckpoint(null);
         setPositionOfEndCheckpoint(null);
+        setTrack([]);
     }
   }, [isWidgetsActive.TrackActive]);
 
@@ -73,7 +74,9 @@ export default function Map({ intermediateCheckpoint, setPositionOfIntermediateC
         }
         else
         {
+            let lengthTrack = distance(startCheckpoint[0], startCheckpoint[1], endCheckpoint[0], endCheckpoint[1])
             setTrack(prev => [...prev, [startCheckpoint[1], startCheckpoint[0]], [endCheckpoint[1], endCheckpoint[0]]]);
+            setLengthTrack(prev => prev += lengthTrack)
         }
       }
       else
@@ -84,11 +87,28 @@ export default function Map({ intermediateCheckpoint, setPositionOfIntermediateC
         }
         else
         {
+            let lengthTrack = distance(startCheckpoint[0], startCheckpoint[1], endCheckpoint[0], endCheckpoint[1])
             setTrack(prev => [...prev, [intermediateCheckpoint[intermediateCheckpoint.length - 1][1],intermediateCheckpoint[intermediateCheckpoint.length - 1][0]], [endCheckpoint[1], endCheckpoint[0]]]);
+            setLengthTrack(prev => prev += lengthTrack)
         }
       }
     }
   }, [endCheckpoint]);
+
+  function distance(lat_1, lon_1, lat_2, lon_2) {
+
+      let radius_earth = 6371;
+      let lat_1_new = deg2rad(lat_1);
+      let lon_1_new = deg2rad(lon_1);
+      let lat_2_new = deg2rad(lat_2);
+      let lon_2_new = deg2rad(lon_2);
+      let d = 2 * radius_earth * Math.asin(Math.sqrt(Math.sin((lat_2_new - lat_1_new) / 2) ** 2 + Math.cos(lat_1_new) * Math.cos(lat_2_new) * Math.sin((lon_2_new - lon_1_new) / 2) ** 2));
+    return d.toFixed(3)*1000;
+  }
+
+  function deg2rad(num) {
+    return num * Math.PI / 180;
+  }
 
   function changeColorAndWeight() {
     setColour(prevColour => !prevColour);
@@ -131,8 +151,9 @@ export default function Map({ intermediateCheckpoint, setPositionOfIntermediateC
   )
 
   async function getRequest(start, end) {
-    let response = await fetch(`https://router.project-osrm.org/route/v1/foot/${start[1]},${start[0]};${end[1]},${end[0]}?alternatives=true&geometries=geojson`)
+    let response = await fetch(`https://router.project-osrm.org/route/v1/foot-walking/${start[1]},${start[0]};${end[1]},${end[0]}?alternatives=false&geometries=geojson`)
     let data = await response.json()
+    setLengthTrack(prev => prev += data.routes[0].distance)
     let routes = data.routes[0].geometry.coordinates;
     setTrack(prev => [...prev, ...routes]);
   }

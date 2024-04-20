@@ -64,8 +64,8 @@ div.season {
 }
 
 .seasonInput li .button {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 18px;
+    padding-right: 18px;
 }
 
 label {
@@ -82,16 +82,10 @@ label {
     margin-bottom: 0;
 }
 
-.length p {
-    display: block;
-    margin: 0;
-    font-size: 14px;
-    color: #454545;
-}
-
 div.length {
     box-sizing: border-box;
     margin-bottom: 2rem;
+    margin-top: auto;
 }
 
 div.time {
@@ -111,5 +105,33 @@ div.time {
 }
 
 .buttons {
+    margin-top: 0;
+}
+
+.transport .button {
+    padding: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.button img {
+    display: block;
+    width: 40px;
+    height: 100%;
+}
+
+.transport .button:disabled {
+    opacity: 0.4;
+}
+
+.transportInput {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    width: 100%;
     margin-top: auto;
+    margin-bottom: 2rem;
 }

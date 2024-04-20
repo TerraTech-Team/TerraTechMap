@@ -6,7 +6,7 @@ import haltImage from './img/halt.svg';
 import noteImage from './img/note.svg';
 import sightImage from './img/sight.svg';
 
-export default function CheckpointCreationWindow({ checkpointsData, typeCheckpoint, setTypeCheckpoint, setCreationWindow, setPositionOfNewCheckpoint, positionOfNewCheckpoint }) {
+export default function CheckpointCreationWindow({ checkpointsData, typeCheckpoint, setTypeCheckpoint, setCreationCheckpointWindow, setPositionOfNewCheckpoint, positionOfNewCheckpoint }) {
 
     const [files, setFiles] = useState([])
     const [dragActive, setDragActive] = useState(false)
@@ -47,8 +47,7 @@ export default function CheckpointCreationWindow({ checkpointsData, typeCheckpoi
         const id = await sendChecpoints();
         await sendPhoto(id);
         checkpointsData();
-        setCreationWindow(false);
-        setPositionOfNewCheckpoint(null);
+        handleDelete()
     };
     
     async function sendChecpoints() {
@@ -89,9 +88,10 @@ export default function CheckpointCreationWindow({ checkpointsData, typeCheckpoi
     };
 
     const handleDelete = () => {
-        setCreationWindow(false);
+        setCreationCheckpointWindow(false);
         setPositionOfNewCheckpoint(null);
         setTypeCheckpoint(0);
+        
     };
 
     const handleChangeName = (e) => {
