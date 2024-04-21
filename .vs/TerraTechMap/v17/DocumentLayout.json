@@ -3,20 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{61328AE8-6B56-48DD-848F-85E604C530E3}|Terra1.Server\\Terra.Server.csproj|c:\\users\\virtical\\desktop\\terratechmap\\terra1.server\\models\\enums\\transporttype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{61328AE8-6B56-48DD-848F-85E604C530E3}|Terra1.Server\\Terra.Server.csproj|solutionrelative:terra1.server\\models\\enums\\transporttype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{61328AE8-6B56-48DD-848F-85E604C530E3}|Terra1.Server\\Terra.Server.csproj|c:\\users\\virtical\\desktop\\terratechmap\\terra1.server\\models\\way.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{61328AE8-6B56-48DD-848F-85E604C530E3}|Terra1.Server\\Terra.Server.csproj|solutionrelative:terra1.server\\models\\way.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{61328AE8-6B56-48DD-848F-85E604C530E3}|Terra1.Server\\Terra.Server.csproj|C:\\Users\\Virtical\\Desktop\\TerraTechMap\\terra1.server\\migrations\\20240330144337_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{61328AE8-6B56-48DD-848F-85E604C530E3}|Terra1.Server\\Terra.Server.csproj|solutionrelative:terra1.server\\migrations\\20240330144337_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{61328AE8-6B56-48DD-848F-85E604C530E3}|Terra1.Server\\Terra.Server.csproj|C:\\Users\\Virtical\\Desktop\\TerraTechMap\\terra1.server\\migrations\\20240415161340_initialcreate1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{61328AE8-6B56-48DD-848F-85E604C530E3}|Terra1.Server\\Terra.Server.csproj|solutionrelative:terra1.server\\migrations\\20240415161340_initialcreate1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,52 +19,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "TransportType.cs",
-              "DocumentMoniker": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\Terra1.Server\\Models\\enums\\TransportType.cs",
-              "RelativeDocumentMoniker": "Terra1.Server\\Models\\enums\\TransportType.cs",
-              "ToolTip": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\Terra1.Server\\Models\\enums\\TransportType.cs",
-              "RelativeToolTip": "Terra1.Server\\Models\\enums\\TransportType.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-20T14:02:45.649Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "Way.cs",
               "DocumentMoniker": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\Terra1.Server\\Models\\Way.cs",
               "RelativeDocumentMoniker": "Terra1.Server\\Models\\Way.cs",
               "ToolTip": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\Terra1.Server\\Models\\Way.cs",
               "RelativeToolTip": "Terra1.Server\\Models\\Way.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAABAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-20T13:05:03.253Z",
+              "WhenOpened": "2024-04-21T12:56:48.942Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "20240330144337_InitialCreate.cs",
-              "DocumentMoniker": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\Terra1.Server\\Migrations\\20240330144337_InitialCreate.cs",
-              "RelativeDocumentMoniker": "Terra1.Server\\Migrations\\20240330144337_InitialCreate.cs",
-              "ToolTip": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\Terra1.Server\\Migrations\\20240330144337_InitialCreate.cs",
-              "RelativeToolTip": "Terra1.Server\\Migrations\\20240330144337_InitialCreate.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-20T12:56:35.455Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "20240415161340_InitialCreate1.cs",
-              "DocumentMoniker": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\Terra1.Server\\Migrations\\20240415161340_InitialCreate1.cs",
-              "RelativeDocumentMoniker": "Terra1.Server\\Migrations\\20240415161340_InitialCreate1.cs",
-              "ToolTip": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\Terra1.Server\\Migrations\\20240415161340_InitialCreate1.cs",
-              "RelativeToolTip": "Terra1.Server\\Migrations\\20240415161340_InitialCreate1.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-20T12:56:34.099Z"
             }
           ]
         }

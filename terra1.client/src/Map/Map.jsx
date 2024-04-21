@@ -2,12 +2,10 @@ import { MapContainer, TileLayer, useMapEvents, Polyline, Marker } from 'react-l
 import 'leaflet/dist/leaflet.css';
 import './Map.css';
 import MarkerPoint from '../MarkerPoint/MarkerPoint';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 
-export default function Map({ setLengthTrack, intermediateCheckpoint, setPositionOfIntermediateCheckpoint, modeBuilding, checkpoints, isWidgetsActive, setTrack, setCreationCheckpointWindow, setCreationTrackWindow, typeCheckpoint, positionOfNewCheckpoint, setPositionOfNewCheckpoint, startCheckpoint, setPositionOfStartCheckpoint, endCheckpoint, setPositionOfEndCheckpoint, imagesForCheckpoints, track }) {
-  const [colour, setColour] = useState(true);
-  const [weight, setWeight] = useState(5);
+export default function Map({ color_type, season, setIsInfoWindowActive, setTracks, tracks, setLengthTrack, intermediateCheckpoint, setPositionOfIntermediateCheckpoint, modeBuilding, checkpoints, isWidgetsActive, setTrack, setCreationCheckpointWindow, setCreationTrackWindow, typeCheckpoint, positionOfNewCheckpoint, setPositionOfNewCheckpoint, startCheckpoint, setPositionOfStartCheckpoint, endCheckpoint, setPositionOfEndCheckpoint, imagesForCheckpoints, track }) {
 
   function CheckpointMarker() {
     useMapEvents({
@@ -51,6 +49,9 @@ export default function Map({ setLengthTrack, intermediateCheckpoint, setPositio
     if (!isWidgetsActive.CheckpointActive) {
         setCreationCheckpointWindow(false);
         setPositionOfNewCheckpoint(null);
+    } else {
+      setIsInfoWindowActive([false, 0])
+      setTracks(tracks.map(t => {return {...t, active: false}}))
     }
   }, [isWidgetsActive.CheckpointActive]);
 
@@ -60,6 +61,9 @@ export default function Map({ setLengthTrack, intermediateCheckpoint, setPositio
         setPositionOfStartCheckpoint(null);
         setPositionOfEndCheckpoint(null);
         setTrack([]);
+    } else {
+      setIsInfoWindowActive([false, 0])
+      setTracks(tracks.map(t => {return {...t, active: false}}))
     }
   }, [isWidgetsActive.TrackActive]);
 
@@ -110,9 +114,16 @@ export default function Map({ setLengthTrack, intermediateCheckpoint, setPositio
     return num * Math.PI / 180;
   }
 
-  function changeColorAndWeight() {
-    setColour(prevColour => !prevColour);
-    setWeight(prevWeight => prevWeight === 5 ? 8 : 5);
+  function changeHighlightingID(id) {
+    setTracks(tracks.map(t => t.id == id ? {...t, active: !t.active} : {...t, active: false}))
+    setIsInfoWindowActive([!tracks.find(t => t.id == id).active, id])
+  }
+
+  const colorSet = {
+    "#2172D4": "#1F5393",
+    "#dec400": "#cca700",
+    "#47ba00": "#358a00",
+    "#fca800": "#c28100"
   }
 
   return (
@@ -143,9 +154,13 @@ export default function Map({ setLengthTrack, intermediateCheckpoint, setPositio
 
 
           <Polyline positions={track.map(point => [point[1], point[0]])} 
-                    pathOptions={{color: colour ? "#2172D4" : "#1F5393", weight:weight}} 
-                    eventHandlers={{click: changeColorAndWeight}} />
+                    pathOptions={{color: color_type[season], weight: 5}}/>
 
+          {tracks.map(track => <Polyline positions={track.cordinates.map(point => [point.cords[1], point.cords[0]])} 
+                                        key={track.id}
+                                        pathOptions={{color: track.active ? colorSet[track.color]: track.color, weight: track.active ? 7 : 5}} 
+                                        eventHandlers={{click: () => {if (!Object.values(isWidgetsActive).some(value => value == true)) changeHighlightingID(track.id)}}} 
+                                        />)}
         </MapContainer>
       </>
   )

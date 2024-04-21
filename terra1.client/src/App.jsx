@@ -4,6 +4,7 @@ import CheckpointCreationWindow from './CreationWindows/CheckpointCreationWindow
 import Toolbar from './Toolbar/Toolbar'
 import { useState, useEffect } from 'react';
 import TrackCreationWindow from './CreationWindows/TrackCreationWindow/TrackCreationWindow';
+import InfoTrackWindow from './InfoWindows/InfoTrackWindow/InfoTrackWindow';
 
 export default function App() {
     const widgetsActive = {
@@ -14,6 +15,7 @@ export default function App() {
     }
 
     const [checkpoints, setCheckpoints] = useState(null);
+    const [tracks, setTracks] = useState([]);
     const [isWidgetsActive, setIsWidgetsActive] = useState(widgetsActive);
     const [creationCheckpointWindow, setCreationCheckpointWindow] = useState(false);
     const [creationTrackWindow, setCreationTrackWindow] = useState(false);
@@ -27,9 +29,19 @@ export default function App() {
     const [modeBuilding, setModeBuilding] = useState(0)
     const [lengthTrack, setLengthTrack] = useState(0);    
     const [transport, setTransport] = useState(0)
+    const [isInfoWindowActive, setIsInfoWindowActive] = useState([false, 0]);
+    const [season, setSeason] = useState(0);
+
+    const color_type = {
+        0: "#2172D4",
+        1: "#ffe100",
+        2: "#47ba00",
+        3: "#fca800"
+      }
 
     useEffect(() => {
         checkpointsData();
+        tracksData();
     }, []);
 
     const handleModeBuildingChange = (e, n) => {
@@ -65,6 +77,11 @@ export default function App() {
               setTrack={(newState) => {setTrack(newState)}}
               modeBuilding={modeBuilding}
               setLengthTrack={setLengthTrack}
+              tracks={tracks}
+              setTracks={setTracks}
+              setIsInfoWindowActive={setIsInfoWindowActive}
+              color_type={color_type}
+              season={season}
           />
 
             { creationCheckpointWindow ? <CheckpointCreationWindow 
@@ -90,7 +107,12 @@ export default function App() {
                                 setPositionOfIntermediateCheckpoint={(newState) => {setPositionOfIntermediateCheckpoint(newState)}}
                                 setLengthTrack={setLengthTrack}
                                 track={track}
+                                tracksData={tracksData}
+                                color_type={color_type}
+                                season={season}
+                                setSeason={setSeason}
                                 /> : null }
+            { isInfoWindowActive[0] ? <InfoTrackWindow ID={isInfoWindowActive[1]} tracks={tracks} /> : null}
       </main>
   )
     /*Загрузка актуальных Чек-поинтов из БД*/
@@ -102,5 +124,17 @@ export default function App() {
         const response1 = await fetch('https://localhost:7152/api/Image')
         const data1 = await response1.json();
         setImagesForCheckpoints(data1);
+    }
+
+    async function tracksData() {
+        const response = await fetch('https://localhost:7152/api/Ways')
+        const data = await response.json();
+        let ways = data.map(item => {
+            return {
+                ...item,
+                active: false
+            };
+        });
+        setTracks(ways);
     }
 }

@@ -1,15 +1,15 @@
 import "../CreationWindow.css"
 import "./TrackCreactionWindow.css"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import car  from './img/car.svg'
 import bike  from './img/bike.svg'
 import foot  from './img/foot.svg'
 
-export default function TrackCreationWindow({ track, setLengthTrack, setPositionOfIntermediateCheckpoint, setPositionOfEndCheckpoint, setPositionOfStartCheckpoint, setTrack, setCreationTrackWindow, lengthTrack, modeBuilding, handleModeBuildingChange, transport, setTransport, setModeBuilding}) {
-
-    const [season, setSeason] = useState(0)
-    const [name, setName] = useState("")
+export default function TrackCreationWindow({ season, setSeason, color_type, tracksData, track, setLengthTrack, setPositionOfIntermediateCheckpoint, setPositionOfEndCheckpoint, setPositionOfStartCheckpoint, setTrack, setCreationTrackWindow, lengthTrack, modeBuilding, handleModeBuildingChange, transport, setTransport, setModeBuilding}) {
+    const [name, setName] = useState("");
+    const [author, setAuthor] = useState("");
     const [time, setTime] = useState('00:00');
+    const [isCombined, setIsCombined] = useState(false);
 
     const handleSeasonChange = (e, n) => {
         e.preventDefault();
@@ -26,8 +26,19 @@ export default function TrackCreationWindow({ track, setLengthTrack, setPosition
         }
     }
 
+    useEffect(() => {
+        if (track.length !== 0 && isCombined != true) 
+        {
+            setIsCombined(true);
+        }
+    }, [transport])
+
     const handleChangeName = (e) => {
         setName(e.target.value);
+    }
+
+    const handleChangeAuthor = (e) => {
+        setAuthor(e.target.value);
     }
 
     const handleTimeChange = (e) => {
@@ -47,24 +58,31 @@ export default function TrackCreationWindow({ track, setLengthTrack, setPosition
 
     const handleSave = async () => {
         await sendTrack();
-        // trackData();
+        tracksData();
         handleDelete();
     };
 
     async function sendTrack() {
-        // const [lat, lng] = positionOfNewCheckpoint;
+
+        let time2 = time.split(":")
+        let timeNumbers = time2.map(numStr => parseInt(numStr))
+        console.log(timeNumbers[0]*60 + timeNumbers[1])
+
         let json = {"cordinates": track.map(cords => ({"cords": cords})),
                     "season": season,
                     "transport": transport,
-                    "length": length,
-                    "color": "#2172D4"
+                    "length": lengthTrack,
+                    "color": color_type[season]
                     };
         console.log(json);
         if (name.length > 0) {
             json["name"] = name;
         }
-        if (time !== "00:00") {
-            json["time"] = time;
+        if (author.length > 0) {
+            json["author"] = author;
+        }
+        if (timeNumbers[0]*60 + timeNumbers[1] !== 0) {
+            json["time"] = timeNumbers[0]*60 + timeNumbers[1];
         }
     
         await fetch('https://localhost:7152/api/Ways', {
@@ -166,6 +184,11 @@ export default function TrackCreationWindow({ track, setLengthTrack, setPosition
                             value={time}
                             onChange={handleTimeChange}
                     />
+                </div>
+
+                <div className="author">
+                    <label htmlFor="author">Введите авторство:</label>
+                    <input type="text" id="author" className="authorInput" value={author} onChange={handleChangeAuthor}></input>
                 </div>
             </form>
 
