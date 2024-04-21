@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Terra1.Server.Models;
+using Terra.Server.Models;
 
 namespace Terra1.Server.Data
 {
@@ -15,5 +16,7 @@ namespace Terra1.Server.Data
         }
 
         public DbSet<Terra1.Server.Models.Checkpoint> Checkpoint { get; set; } = default!;
+        public DbSet<Terra.Server.Models.Way> Way { get; set; } = default!;
+
     }
 }

@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FB1C3247-1DF7-45E9-B3C7-D0E0DAF65BE2}|terra1.client\\Terra.client.esproj|c:\\users\\virtical\\desktop\\terratechmap\\terra1.client\\src\\markerpointcreationwindow\\markerpointcreationwindow.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{FB1C3247-1DF7-45E9-B3C7-D0E0DAF65BE2}|terra1.client\\Terra.client.esproj|solutionrelative:terra1.client\\src\\markerpointcreationwindow\\markerpointcreationwindow.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{FB1C3247-1DF7-45E9-B3C7-D0E0DAF65BE2}|terra1.client\\Terra.client.esproj|c:\\users\\virtical\\desktop\\terratechmap\\terra1.client\\src\\infowindows\\infotrackwindow\\infotrackwindow.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{FB1C3247-1DF7-45E9-B3C7-D0E0DAF65BE2}|terra1.client\\Terra.client.esproj|solutionrelative:terra1.client\\src\\infowindows\\infotrackwindow\\infotrackwindow.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FB1C3247-1DF7-45E9-B3C7-D0E0DAF65BE2}|terra1.client\\Terra.client.esproj|C:\\Users\\Virtical\\Desktop\\TerraTechMap\\terra1.client\\terra.client.esproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{FB1C3247-1DF7-45E9-B3C7-D0E0DAF65BE2}|terra1.client\\Terra.client.esproj|solutionrelative:terra1.client\\terra.client.esproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{FB1C3247-1DF7-45E9-B3C7-D0E0DAF65BE2}|terra1.client\\Terra.client.esproj|c:\\users\\virtical\\desktop\\terratechmap\\terra1.client\\src\\creationwindows\\trackcreationwindow\\trackcreationwindow.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{FB1C3247-1DF7-45E9-B3C7-D0E0DAF65BE2}|terra1.client\\Terra.client.esproj|solutionrelative:terra1.client\\src\\creationwindows\\trackcreationwindow\\trackcreationwindow.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|c:\\users\\virtical\\desktop\\terratechmap\\terra1.client\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:terra1.client\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+      "AbsoluteMoniker": "D:0:0:{61328AE8-6B56-48DD-848F-85E604C530E3}|Terra1.Server\\Terra.Server.csproj|c:\\users\\virtical\\desktop\\terratechmap\\terra1.server\\models\\way.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61328AE8-6B56-48DD-848F-85E604C530E3}|Terra1.Server\\Terra.Server.csproj|solutionrelative:terra1.server\\models\\way.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,44 +22,46 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": ".gitignore",
-              "DocumentMoniker": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\terra1.client\\.gitignore",
-              "RelativeDocumentMoniker": "terra1.client\\.gitignore",
-              "ToolTip": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\terra1.client\\.gitignore",
-              "RelativeToolTip": "terra1.client\\.gitignore",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHgSURBVEhLtZVdTsJAFIWroTyDK3ELJuCbsA1ZhQRFRETkV6yV8AAsgAI\u002BugW3wAr0RUop7Tj3dmagtLXFhJOc3mEynXu\u002BSWmlg4oQcsSGqOFwSKcIzAcY7rFZdeZkWf42DOMsl7v8ZNsEazAYEMuyXF5zr7nXWG3bJqPRiMznc6Kqb1\u002BtdueUbePSMasoSASiN0sW2AJbwrSRMKwBJZNJKZVOJeJx\u002BaPRbHma\u002BDbAqzOMpBPa5DydxiZsSijGKoo30MZjrH8pm81iVRQFKygmxxNs6K9\u002Bv4/nvlqZ1CticBuOl8IGWS4NogsviWmuSe2p7uH2EMAKTQsn2FUmkxUnEKher4dPjH9ymjogva47BNXHWhgBXCRpomnOxB6KRKCqKhJsznoneUD6BSOoPFSjEUwnByJQlFf8l7rTO6ndyalZcm7TNEn5vhJG4CD8h\u002BAikwkn6HZf8F3jSSu8OfNt/yx0sqIEpbtyOAGsmE4nzsQeikTQ7jwTkxKItCyxX2qenBsIirelcAJAmB2KoNlq4/Psl1Z4K/UuQeGmGIGA6n02xbqPgIBuwH4FqN5o4vMMKYOSBhkI8oVrTwfPBwdWxOQYWt7D/P5duT768D7HJhFtU9MBVj5XyF\u002B59jywJOkX7ucXnGOxDX8AAAAASUVORK5CYII=",
-              "WhenOpened": "2024-04-06T15:38:54.825Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "MarkerPointCreationWindow.jsx",
-              "DocumentMoniker": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\terra1.client\\src\\MarkerPointCreationWindow\\MarkerPointCreationWindow.jsx",
-              "RelativeDocumentMoniker": "terra1.client\\src\\MarkerPointCreationWindow\\MarkerPointCreationWindow.jsx",
-              "ToolTip": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\terra1.client\\src\\MarkerPointCreationWindow\\MarkerPointCreationWindow.jsx",
-              "RelativeToolTip": "terra1.client\\src\\MarkerPointCreationWindow\\MarkerPointCreationWindow.jsx",
-              "ViewState": "AQIAABIAAAAAAAAAAAAAACcAAAAAAAAA",
+              "Title": "InfoTrackWindow.jsx",
+              "DocumentMoniker": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\terra1.client\\src\\InfoWindows\\InfoTrackWindow\\InfoTrackWindow.jsx",
+              "RelativeDocumentMoniker": "terra1.client\\src\\InfoWindows\\InfoTrackWindow\\InfoTrackWindow.jsx",
+              "ToolTip": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\terra1.client\\src\\InfoWindows\\InfoTrackWindow\\InfoTrackWindow.jsx",
+              "RelativeToolTip": "terra1.client\\src\\InfoWindows\\InfoTrackWindow\\InfoTrackWindow.jsx",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
-              "WhenOpened": "2024-04-06T15:37:58.54Z",
+              "WhenOpened": "2024-04-21T14:27:59.368Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Terra.client.esproj",
-              "DocumentMoniker": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\terra1.client\\Terra.client.esproj",
-              "RelativeDocumentMoniker": "terra1.client\\Terra.client.esproj",
-              "ToolTip": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\terra1.client\\Terra.client.esproj",
-              "RelativeToolTip": "terra1.client\\Terra.client.esproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-31T18:09:42.807Z"
+              "Title": "TrackCreationWindow.jsx",
+              "DocumentMoniker": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\terra1.client\\src\\CreationWindows\\TrackCreationWindow\\TrackCreationWindow.jsx",
+              "RelativeDocumentMoniker": "terra1.client\\src\\CreationWindows\\TrackCreationWindow\\TrackCreationWindow.jsx",
+              "ToolTip": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\terra1.client\\src\\CreationWindows\\TrackCreationWindow\\TrackCreationWindow.jsx",
+              "RelativeToolTip": "terra1.client\\src\\CreationWindows\\TrackCreationWindow\\TrackCreationWindow.jsx",
+              "ViewState": "AQIAACYAAAAAAAAAAAAAwEgAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
+              "WhenOpened": "2024-04-21T14:26:02.411Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Way.cs",
+              "DocumentMoniker": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\Terra1.Server\\Models\\Way.cs",
+              "RelativeDocumentMoniker": "Terra1.Server\\Models\\Way.cs",
+              "ToolTip": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\Terra1.Server\\Models\\Way.cs",
+              "RelativeToolTip": "Terra1.Server\\Models\\Way.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-21T12:56:48.942Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -1,0 +1,249 @@
+.wrapper {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: min-content;
+    padding: 5px;
+}
+
+h1 {
+    margin-bottom: 35px;
+    font-size: 25px;
+    color: #3a3a3a;
+}
+
+h2, p {
+    font-size: 24px;
+    font-weight: 400;
+    color: #007195;
+    text-align: center;
+}
+
+p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 300px;
+    padding: 10px 20px;
+    background-color:#ededed;
+    border: 2px dashed rgb(186, 191, 195);
+    border-radius: 10px;
+    box-shadow: 0 0 4px 4px rgba(255, 255, 255, 0.5);
+    transition: border-color 0.3s, background-color 0.3s,
+}
+
+form.drag {
+    border-color: rgb(62, 201, 80);
+    background-color: #e6ffe3;
+}
+
+.label {
+    padding: 5px 10px;
+    background-color: #0998d3;
+    border-radius: 5px;
+    font-size: 16px;
+    color :#ffffff ;
+    cursor: pointer;
+}
+
+.input {
+    margin: 0;
+    padding: 0;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+.file-list {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    padding: 0;
+    list-style-type: none;
+}
+
+.file-list li {
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+    padding: 6px 16px;
+    border: 1px dashed rgb(187, 183, 183);
+    border-radius: 4px;
+    font-size: 15px;
+    line-height: 1;
+    color: #515151;
+}
+
+.file-list li:nth-child(n + 2) {
+    margin-top: 4px;
+}
+
+.button-reset {
+  position: block;
+  margin-top: 10px;
+  width: 125px;
+  padding: 5px;
+  border: 0;
+  cursor: pointer;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.button-reset {
+  left: 40px;
+  background-color: #da6b6b;
+}
+
+.button-submit {
+  right: 40px;
+  background-color: #6bb554;
+}
+
+div.name {
+    box-sizing: border-box;
+}
+
+.textInput {
+    box-sizing: border-box;
+    border: 1.5px solid #ccc;
+	border-radius: 5px;
+	padding: 0.5rem 1rem;
+	width: 100%;
+	margin-bottom: 1rem;
+    resize: none;
+}
+
+div.name label {
+    display: inline-block;
+    font-size: 18px;
+    margin-bottom: 6px;
+    width: 100%;
+    text-align: center;
+}
+
+.descriptionInput {
+    box-sizing: border-box;
+    border: 1.5px solid #ccc;
+	border-radius: 5px;
+	padding: 0.5rem 1rem;
+	width: 100%;
+	margin-bottom: 1rem;
+    min-height: 50px;
+    max-height: 200px;
+    resize: vertical;
+}
+
+div.description label {
+    display: inline-block;
+    font-size: 18px;
+    margin-bottom: 6px;
+    width: 100%;
+    text-align: center;
+}
+
+div.type {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    height: max-content;
+    margin-bottom: 1rem;
+}
+
+div.type label {
+    display: inline-block;
+    font-size: 18px;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.typeSelection{
+    margin: 0;
+    padding: 0 10px;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.typeSelectionItem {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    border: 3px solid rgba(0, 0, 0, 0.5);
+}
+
+.typeSelectionItem:hover {
+    filter: brightness(70%);
+}
+
+.typeSelectionItem img{
+    display: block;
+    width: 35px;
+    height: 35px;
+}
+
+div.wrapper label {
+    display: inline-block;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.buttons {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: auto;
+}
+
+.button {
+    box-sizing: border-box;
+	padding: 0.8rem 2rem;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: all 0.3s;
+	font-weight: bold;
+	margin: 0;
+    border: 3px solid rgba(0, 0, 0, 0.3);
+}
+
+.button:hover {
+	opacity: 0.5;
+}
+
+.button:disabled {
+    opacity: 0.7;
+    cursor: default;
+}
+
+.button:disabled:hover {
+    opacity: 0.7;
+    cursor: default;
+}
+
+.button.active {
+	background: #3e6ae1;
+	color: #fff;
+}
+
+.activeType {
+    filter: brightness(50%);
+}
+
+.typeSelectionItem.activeType:hover {
+    filter: brightness(50%);
+}

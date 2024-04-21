@@ -2,19 +2,22 @@ import { Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import './MarkerPoint.css'
 import {Icon} from 'leaflet'
-import dangerChecpoints from './img/dangerChecpoints.svg'
-import haltChecpoints from './img/haltChecpoints.svg'
-import noteChecpoints from './img/noteChecpoints.svg'
-import sightChecpoints from './img/sightChecpoints.svg'
+import dangerCheckpoint from './img/dangerCheckpoint.svg'
+import haltCheckpoint from './img/haltCheckpoint.svg'
+import noteCheckpoint from './img/noteCheckpoint.svg'
+import sightCheckpoint from './img/sightCheckpoint.svg'
+import startCheckpoint from './img/startCheckpoint.svg'
+import endCheckpoint from './img/endCheckpoint.svg'
+import intermediateCheckpoint from './img/intermediateCheckpoint.svg'
 
 export default function MarkerPoint({ position, name, description, imageIcon, isPopup, image }) {
 
-    const iconChecpoints = [haltChecpoints, dangerChecpoints, noteChecpoints, sightChecpoints]
+    const iconChecpoints = [haltCheckpoint, dangerCheckpoint, noteCheckpoint, sightCheckpoint, startCheckpoint, endCheckpoint, intermediateCheckpoint]
 
     const icon = new Icon ({
         iconUrl : iconChecpoints[imageIcon],
-        iconSize : [40,40],
-        iconAnchor: [17, 35],
+        iconSize : [41,41],
+        iconAnchor: [20, 41],
         popupAnchor: [4, -30]
       })
     return (
