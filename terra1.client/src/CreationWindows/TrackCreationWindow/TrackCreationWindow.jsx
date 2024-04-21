@@ -70,7 +70,7 @@ export default function TrackCreationWindow({ season, setSeason, color_type, tra
 
         let json = {"cordinates": track.map(cords => ({"cords": cords})),
                     "season": season,
-                    "transport": transport,
+                    "transport": isCombined ? 3 : transport,
                     "length": lengthTrack,
                     "color": color_type[season]
                     };

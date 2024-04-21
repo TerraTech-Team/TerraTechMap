@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{FB1C3247-1DF7-45E9-B3C7-D0E0DAF65BE2}|terra1.client\\Terra.client.esproj|c:\\users\\virtical\\desktop\\terratechmap\\terra1.client\\src\\infowindows\\infotrackwindow\\infotrackwindow.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{FB1C3247-1DF7-45E9-B3C7-D0E0DAF65BE2}|terra1.client\\Terra.client.esproj|solutionrelative:terra1.client\\src\\infowindows\\infotrackwindow\\infotrackwindow.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB1C3247-1DF7-45E9-B3C7-D0E0DAF65BE2}|terra1.client\\Terra.client.esproj|c:\\users\\virtical\\desktop\\terratechmap\\terra1.client\\src\\creationwindows\\trackcreationwindow\\trackcreationwindow.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{FB1C3247-1DF7-45E9-B3C7-D0E0DAF65BE2}|terra1.client\\Terra.client.esproj|solutionrelative:terra1.client\\src\\creationwindows\\trackcreationwindow\\trackcreationwindow.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{61328AE8-6B56-48DD-848F-85E604C530E3}|Terra1.Server\\Terra.Server.csproj|c:\\users\\virtical\\desktop\\terratechmap\\terra1.server\\models\\way.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{61328AE8-6B56-48DD-848F-85E604C530E3}|Terra1.Server\\Terra.Server.csproj|solutionrelative:terra1.server\\models\\way.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -19,12 +27,38 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "InfoTrackWindow.jsx",
+              "DocumentMoniker": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\terra1.client\\src\\InfoWindows\\InfoTrackWindow\\InfoTrackWindow.jsx",
+              "RelativeDocumentMoniker": "terra1.client\\src\\InfoWindows\\InfoTrackWindow\\InfoTrackWindow.jsx",
+              "ToolTip": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\terra1.client\\src\\InfoWindows\\InfoTrackWindow\\InfoTrackWindow.jsx",
+              "RelativeToolTip": "terra1.client\\src\\InfoWindows\\InfoTrackWindow\\InfoTrackWindow.jsx",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
+              "WhenOpened": "2024-04-21T14:27:59.368Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TrackCreationWindow.jsx",
+              "DocumentMoniker": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\terra1.client\\src\\CreationWindows\\TrackCreationWindow\\TrackCreationWindow.jsx",
+              "RelativeDocumentMoniker": "terra1.client\\src\\CreationWindows\\TrackCreationWindow\\TrackCreationWindow.jsx",
+              "ToolTip": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\terra1.client\\src\\CreationWindows\\TrackCreationWindow\\TrackCreationWindow.jsx",
+              "RelativeToolTip": "terra1.client\\src\\CreationWindows\\TrackCreationWindow\\TrackCreationWindow.jsx",
+              "ViewState": "AQIAACYAAAAAAAAAAAAAwEgAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
+              "WhenOpened": "2024-04-21T14:26:02.411Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Way.cs",
               "DocumentMoniker": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\Terra1.Server\\Models\\Way.cs",
               "RelativeDocumentMoniker": "Terra1.Server\\Models\\Way.cs",
               "ToolTip": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\Terra1.Server\\Models\\Way.cs",
               "RelativeToolTip": "Terra1.Server\\Models\\Way.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAFAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-21T12:56:48.942Z",
               "EditorCaption": ""
