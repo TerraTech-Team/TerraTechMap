@@ -33,15 +33,15 @@ export default function Toolbar({ onToggleWidget, isWidgetsActive, setTypeCheckp
                 isReady={true}/>
 
             <Widget 
-                image={magnifierWidgetImage}
-                onClick={() => toggleWidget('MagnifierActive')} 
-                isActive={isWidgetsActive.MagnifierActive}
-                isReady={false}/>
-
-            <Widget 
                 image={rulerWidgetImage}
                 onClick={() => toggleWidget('RulerActive')} 
                 isActive={isWidgetsActive.RulerActive}
+                isReady={true}/>
+
+            <Widget 
+                image={magnifierWidgetImage}
+                onClick={() => toggleWidget('MagnifierActive')} 
+                isActive={isWidgetsActive.MagnifierActive}
                 isReady={false}/>
         </div>
     )

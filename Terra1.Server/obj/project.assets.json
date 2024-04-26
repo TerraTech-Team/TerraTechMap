@@ -8291,11 +8291,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\Terra1.Server\\Terra.Server.csproj",
+      "projectUniqueName": "C:\\Users\\Virtical\\Desktop\\TerraTechTeam\\Terra1.Server\\Terra.Server.csproj",
       "projectName": "Terra.Server",
-      "projectPath": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\Terra1.Server\\Terra.Server.csproj",
+      "projectPath": "C:\\Users\\Virtical\\Desktop\\TerraTechTeam\\Terra1.Server\\Terra.Server.csproj",
       "packagesPath": "C:\\Users\\Virtical\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\Terra1.Server\\obj\\",
+      "outputPath": "C:\\Users\\Virtical\\Desktop\\TerraTechTeam\\Terra1.Server\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Virtical\\AppData\\Roaming\\NuGet\\NuGet.Config",

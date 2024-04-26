@@ -5,7 +5,7 @@ import MarkerPoint from '../MarkerPoint/MarkerPoint';
 import { useEffect } from 'react';
 
 
-export default function Map({ color_type, season, setIsInfoWindowActive, setTracks, tracks, setLengthTrack, intermediateCheckpoint, setPositionOfIntermediateCheckpoint, modeBuilding, checkpoints, isWidgetsActive, setTrack, setCreationCheckpointWindow, setCreationTrackWindow, typeCheckpoint, positionOfNewCheckpoint, setPositionOfNewCheckpoint, startCheckpoint, setPositionOfStartCheckpoint, endCheckpoint, setPositionOfEndCheckpoint, imagesForCheckpoints, track }) {
+export default function Map({ layerActive, color_type, season, setIsInfoWindowActive, setTracks, tracks, setLengthTrack, intermediateCheckpoint, setPositionOfIntermediateCheckpoint, modeBuilding, checkpoints, isWidgetsActive, setTrack, setCreationCheckpointWindow, setCreationTrackWindow, typeCheckpoint, positionOfNewCheckpoint, setPositionOfNewCheckpoint, startCheckpoint, setPositionOfStartCheckpoint, endCheckpoint, setPositionOfEndCheckpoint, imagesForCheckpoints, track }) {
 
   function CheckpointMarker() {
     useMapEvents({
@@ -131,11 +131,26 @@ export default function Map({ color_type, season, setIsInfoWindowActive, setTrac
         <MapContainer 
                     zoomControl={false} 
                     attributionControl={false} 
-                    className='map'center={[56.837405, 60.656652]} 
+                    className='map'
+                    center={[56.837405, 60.656652]} 
                     zoom={13} 
                     doubleClickZoom={false}>
 
-          <TileLayer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'/>
+            {layerActive ? (
+                    <TileLayer 
+                      key="google"
+                      url={'https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}'}
+                      subdomains={['mt1','mt2','mt3']}
+                    />
+                  ) : (
+                    <TileLayer 
+                      key="osm"
+                      url={'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'}
+                      subdomains={['a', 'b', 'c']}
+                    />
+                  )}
+
+
 
               {checkpoints && checkpoints.map((points) => <MarkerPoint 
                                                               idPoint={points.id} 

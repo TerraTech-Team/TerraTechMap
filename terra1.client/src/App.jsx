@@ -5,6 +5,7 @@ import Toolbar from './Toolbar/Toolbar'
 import { useState, useEffect } from 'react';
 import TrackCreationWindow from './CreationWindows/TrackCreationWindow/TrackCreationWindow';
 import InfoTrackWindow from './InfoWindows/InfoTrackWindow/InfoTrackWindow';
+import Layer from './Layer/Layer';
 
 export default function App() {
     const widgetsActive = {
@@ -31,6 +32,7 @@ export default function App() {
     const [transport, setTransport] = useState(0)
     const [isInfoWindowActive, setIsInfoWindowActive] = useState([false, 0]);
     const [season, setSeason] = useState(0);
+    const [layerActive, setLayerActive] = useState(false);
 
     const color_type = {
         0: "#2172D4",
@@ -52,37 +54,40 @@ export default function App() {
 
     return (
       <main>
-          <Toolbar 
-              onToggleWidget={(newState) => {setIsWidgetsActive(newState);}}
-              isWidgetsActive={isWidgetsActive}
-              setTypeCheckpoint={(newState) => {setTypeCheckpoint(newState)}}
-          />
+            <Layer layerActive={layerActive} setLayerActive={setLayerActive} isWindowOpen={creationCheckpointWindow || creationTrackWindow}/>
+            
+            <Toolbar 
+                onToggleWidget={(newState) => {setIsWidgetsActive(newState);}}
+                isWidgetsActive={isWidgetsActive}
+                setTypeCheckpoint={(newState) => {setTypeCheckpoint(newState)}}
+            />
 
-          <Map 
-              checkpoints={checkpoints} 
-              isWidgetsActive={isWidgetsActive}
-              setCreationCheckpointWindow={(newState) => {setCreationCheckpointWindow(newState)}}
-              setCreationTrackWindow={(newState) => {setCreationTrackWindow(newState)}}
-              typeCheckpoint={typeCheckpoint}
-              positionOfNewCheckpoint={positionOfNewCheckpoint}
-              setPositionOfNewCheckpoint={(newState) => {setPositionOfNewCheckpoint(newState)}}
-              startCheckpoint={positionOfStartCheckpoint}
-              setPositionOfStartCheckpoint={(newState) => {setPositionOfStartCheckpoint(newState)}}
-              endCheckpoint={positionOfEndCheckpoint}
-              setPositionOfEndCheckpoint={(newState) => {setPositionOfEndCheckpoint(newState)}}
-              intermediateCheckpoint={positionOfIntermediateCheckpoint}
-              setPositionOfIntermediateCheckpoint={(newState) => {setPositionOfIntermediateCheckpoint(newState)}}
-              imagesForCheckpoints={imagesForCheckpoints}
-              track={track}
-              setTrack={(newState) => {setTrack(newState)}}
-              modeBuilding={modeBuilding}
-              setLengthTrack={setLengthTrack}
-              tracks={tracks}
-              setTracks={setTracks}
-              setIsInfoWindowActive={setIsInfoWindowActive}
-              color_type={color_type}
-              season={season}
-          />
+            <Map 
+                checkpoints={checkpoints} 
+                isWidgetsActive={isWidgetsActive}
+                setCreationCheckpointWindow={(newState) => {setCreationCheckpointWindow(newState)}}
+                setCreationTrackWindow={(newState) => {setCreationTrackWindow(newState)}}
+                typeCheckpoint={typeCheckpoint}
+                positionOfNewCheckpoint={positionOfNewCheckpoint}
+                setPositionOfNewCheckpoint={(newState) => {setPositionOfNewCheckpoint(newState)}}
+                startCheckpoint={positionOfStartCheckpoint}
+                setPositionOfStartCheckpoint={(newState) => {setPositionOfStartCheckpoint(newState)}}
+                endCheckpoint={positionOfEndCheckpoint}
+                setPositionOfEndCheckpoint={(newState) => {setPositionOfEndCheckpoint(newState)}}
+                intermediateCheckpoint={positionOfIntermediateCheckpoint}
+                setPositionOfIntermediateCheckpoint={(newState) => {setPositionOfIntermediateCheckpoint(newState)}}
+                imagesForCheckpoints={imagesForCheckpoints}
+                track={track}
+                setTrack={(newState) => {setTrack(newState)}}
+                modeBuilding={modeBuilding}
+                setLengthTrack={setLengthTrack}
+                tracks={tracks}
+                setTracks={setTracks}
+                setIsInfoWindowActive={setIsInfoWindowActive}
+                color_type={color_type}
+                season={season}
+                layerActive={layerActive}
+            />
 
             { creationCheckpointWindow ? <CheckpointCreationWindow 
                                   typeCheckpoint={typeCheckpoint} 
