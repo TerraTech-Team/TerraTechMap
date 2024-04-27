@@ -14,6 +14,36 @@ namespace Terra.Server.Models
         public string Color { get; set; }
         public string? Author { get; set; }
         public List<Cordinate> Cordinates { get; set; }
+
+
+        public static double[] GetWayCenter(List<Cordinate> cordinates)
+        {
+            var minX = double.MaxValue;
+            var maxX = double.MinValue;
+            var minY = double.MaxValue;
+            var maxY = double.MinValue;
+
+            foreach (var cordinate in cordinates)
+            {
+                var x = cordinate.Cords[0];
+                var y = cordinate.Cords[1];
+
+                if (x < minX)
+                    minX = x;
+                if (x > maxX)
+                    maxX = x;
+                if (y < minY)
+                    minY = y;
+                if (y > maxY)
+                    maxY = y;
+            }
+            var midpoint = new double[]
+            {
+                (minX + maxX) / 2,
+                (minY + maxY) / 2
+            };
+            return midpoint;
+        }
     }
 
     public class Cordinate
