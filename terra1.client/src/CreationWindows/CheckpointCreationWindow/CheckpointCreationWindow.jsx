@@ -1,6 +1,5 @@
 import { useState } from "react"
 import "./CheckpointCreationWindow.css"
-import "../CreationWindow.css"
 import dangerImage from './img/danger.svg';
 import haltImage from './img/halt.svg';
 import noteImage from './img/note.svg';
@@ -100,7 +99,7 @@ export default function CheckpointCreationWindow({ checkpointsData, typeCheckpoi
     }
 
     return (
-        <div className="creationWindow">
+        <div className="checkpointCreationWindow">
             <h1>Создание нового Чек-поинта</h1>
             <form>
                 <div className="name">

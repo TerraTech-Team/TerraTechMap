@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8c2Om2R9sflx8d8GbTdliWO+rwZnxeOs1zta219R80ieGEJgf3XnPBAq6AAH3ze9TtnAXxd9PAyJmokwLbIrvw==",
+  "dgSpecHash": "+EpZC3Dtq0TrQfUsFOoMSqCwZ6q1rr8DHEk7Civl3TllC8T23VgL2qocyIuDP21NnV238pKF0bgDK4bUSyzI3A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Virtical\\Desktop\\TerraTechTeam\\Terra1.Server\\Terra.Server.csproj",
+  "projectFilePath": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\Terra1.Server\\Terra.Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Virtical\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Virtical\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

@@ -2,10 +2,13 @@ import { MapContainer, TileLayer, useMapEvents, Polyline, Marker } from 'react-l
 import 'leaflet/dist/leaflet.css';
 import './Map.css';
 import MarkerPoint from '../MarkerPoint/MarkerPoint';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 
-export default function Map({ layerActive, color_type, season, setIsInfoWindowActive, setTracks, tracks, setLengthTrack, intermediateCheckpoint, setPositionOfIntermediateCheckpoint, modeBuilding, checkpoints, isWidgetsActive, setTrack, setCreationCheckpointWindow, setCreationTrackWindow, typeCheckpoint, positionOfNewCheckpoint, setPositionOfNewCheckpoint, startCheckpoint, setPositionOfStartCheckpoint, endCheckpoint, setPositionOfEndCheckpoint, imagesForCheckpoints, track }) {
+export default function Map({ setFindWindow, layerActive, color_type, season, setIsInfoWindowActive, setTracks, tracks, setLengthTrack, intermediateCheckpoint, setPositionOfIntermediateCheckpoint, modeBuilding, checkpoints, isWidgetsActive, setTrack, setCreationCheckpointWindow, setCreationTrackWindow, typeCheckpoint, positionOfNewCheckpoint, setPositionOfNewCheckpoint, startCheckpoint, setPositionOfStartCheckpoint, endCheckpoint, setPositionOfEndCheckpoint, imagesForCheckpoints, track }) {
+
+  const [rulerCheckpoint, setRulerCheckpoint] = useState([])
+  const [rulerLenght, setRulerLength] = useState(0)
 
   function CheckpointMarker() {
     useMapEvents({
@@ -126,6 +129,35 @@ export default function Map({ layerActive, color_type, season, setIsInfoWindowAc
     "#fca800": "#c28100"
   }
 
+  function Ruler() {
+    useMapEvents({
+      click(e) {
+        setRulerCheckpoint(prev => [...prev, [e.latlng.lat, e.latlng.lng]])
+        if (rulerCheckpoint.length > 0) 
+        {
+          let length = distance(rulerCheckpoint[rulerCheckpoint.length - 1][0], rulerCheckpoint[rulerCheckpoint.length - 1][1], e.latlng.lat, e.latlng.lng)
+          setRulerLength(prev => prev + length)
+          console.log(rulerLenght);
+        }
+      }
+    })
+  }
+
+  useEffect(( )=> {
+    if (!isWidgetsActive.RulerActive)
+    {
+      setRulerCheckpoint([]);
+      setRulerLength(0);
+    }
+  }, [isWidgetsActive.RulerActive])
+
+  useEffect(() => {
+    if (!isWidgetsActive.MagnifierActive)
+    {
+      setFindWindow(false);
+    }
+  })
+
   return (
       <>
         <MapContainer 
@@ -167,6 +199,12 @@ export default function Map({ layerActive, color_type, season, setIsInfoWindowAc
           
           {isWidgetsActive.TrackActive ? <TrackMarker /> : null}
 
+          {isWidgetsActive.RulerActive ? <Ruler/> : null}
+          
+          <Polyline positions={rulerCheckpoint} 
+                    pathOptions={{color: "#919191", weight: 5}}/>
+
+          {rulerCheckpoint.map(point => <MarkerPoint key={point} position={point} imageIcon={7} isPopup={false} size={[16, 16]} anchor={[8, 8]}/>)}
 
           <Polyline positions={track.map(point => [point[1], point[0]])} 
                     pathOptions={{color: color_type[season], weight: 5}}/>

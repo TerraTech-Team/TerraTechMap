@@ -9,20 +9,21 @@ import sightCheckpoint from './img/sightCheckpoint.svg'
 import startCheckpoint from './img/startCheckpoint.svg'
 import endCheckpoint from './img/endCheckpoint.svg'
 import intermediateCheckpoint from './img/intermediateCheckpoint.svg'
+import sizeCheckpoint from './img/size.svg'
 
-export default function MarkerPoint({ position, name, description, imageIcon, isPopup, image }) {
+export default function MarkerPoint({ anchor, size, position, name, description, imageIcon, isPopup, image }) {
 
-    const iconChecpoints = [haltCheckpoint, dangerCheckpoint, noteCheckpoint, sightCheckpoint, startCheckpoint, endCheckpoint, intermediateCheckpoint]
+    const iconChecpoints = [haltCheckpoint, dangerCheckpoint, noteCheckpoint, sightCheckpoint, startCheckpoint, endCheckpoint, intermediateCheckpoint, sizeCheckpoint]
 
     const icon = new Icon ({
         iconUrl : iconChecpoints[imageIcon],
-        iconSize : [41,41],
-        iconAnchor: [20, 41],
+        iconSize : size,
+        iconAnchor: anchor,
         popupAnchor: [4, -30]
       })
     return (
         <Marker position={position} icon={icon}>
-            {isPopup ? <Popup>
+            {isPopup ? <Popup closeButton={false}>
                 <div className='popup'>
                     <p className='nameCheckpoints'>{name ? name : "Чекпоинт без названия"}</p>
                     <p className='descriptionCheckpoints'>{description}</p>
@@ -32,4 +33,9 @@ export default function MarkerPoint({ position, name, description, imageIcon, is
             
         </Marker>
     ) 
+}
+
+MarkerPoint.defaultProps = {
+    size: [41, 41],
+    anchor: [20, 41]
 }

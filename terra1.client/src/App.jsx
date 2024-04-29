@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import TrackCreationWindow from './CreationWindows/TrackCreationWindow/TrackCreationWindow';
 import InfoTrackWindow from './InfoWindows/InfoTrackWindow/InfoTrackWindow';
 import Layer from './Layer/Layer';
+import FinderCretionWindow from './CreationWindows/FinderCreationWindow/FinderCreationWindow';
 
 export default function App() {
     const widgetsActive = {
@@ -20,6 +21,7 @@ export default function App() {
     const [isWidgetsActive, setIsWidgetsActive] = useState(widgetsActive);
     const [creationCheckpointWindow, setCreationCheckpointWindow] = useState(false);
     const [creationTrackWindow, setCreationTrackWindow] = useState(false);
+    const [findWindow, setFindWindow] = useState(false);
     const [typeCheckpoint, setTypeCheckpoint] = useState(0);
     const [positionOfNewCheckpoint, setPositionOfNewCheckpoint] = useState(null);
     const [positionOfStartCheckpoint, setPositionOfStartCheckpoint] = useState(null);
@@ -60,6 +62,7 @@ export default function App() {
                 onToggleWidget={(newState) => {setIsWidgetsActive(newState);}}
                 isWidgetsActive={isWidgetsActive}
                 setTypeCheckpoint={(newState) => {setTypeCheckpoint(newState)}}
+                setFindWindow={setFindWindow}
             />
 
             <Map 
@@ -87,6 +90,7 @@ export default function App() {
                 color_type={color_type}
                 season={season}
                 layerActive={layerActive}
+                setFindWindow={setFindWindow}
             />
 
             { creationCheckpointWindow ? <CheckpointCreationWindow 
@@ -117,6 +121,9 @@ export default function App() {
                                 season={season}
                                 setSeason={setSeason}
                                 /> : null }
+
+            {findWindow ? <FinderCretionWindow /> : null}
+
             { isInfoWindowActive[0] ? <InfoTrackWindow ID={isInfoWindowActive[1]} tracks={tracks} /> : null}
       </main>
   )

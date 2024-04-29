@@ -1,4 +1,3 @@
-import "../CreationWindow.css"
 import "./TrackCreactionWindow.css"
 import { useState, useEffect } from "react";
 import car  from './img/car.svg'
@@ -95,7 +94,7 @@ export default function TrackCreationWindow({ season, setSeason, color_type, tra
     };
 
     return (
-        <div className="creationWindow">
+        <div className="trackCreationWindow">
             <h1>Создание нового трека</h1>
             <form>
                 <div className='mode'>
