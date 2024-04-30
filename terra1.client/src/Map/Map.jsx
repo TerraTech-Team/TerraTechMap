@@ -2,10 +2,10 @@ import { MapContainer, TileLayer, useMapEvents, Polyline, Marker } from 'react-l
 import 'leaflet/dist/leaflet.css';
 import './Map.css';
 import MarkerPoint from '../MarkerPoint/MarkerPoint';
-import { useEffect, useState } from 'react';
+import { useEffect, useState} from 'react';
 
 
-export default function Map({ setFindWindow, layerActive, color_type, season, setIsInfoWindowActive, setTracks, tracks, setLengthTrack, intermediateCheckpoint, setPositionOfIntermediateCheckpoint, modeBuilding, checkpoints, isWidgetsActive, setTrack, setCreationCheckpointWindow, setCreationTrackWindow, typeCheckpoint, positionOfNewCheckpoint, setPositionOfNewCheckpoint, startCheckpoint, setPositionOfStartCheckpoint, endCheckpoint, setPositionOfEndCheckpoint, imagesForCheckpoints, track }) {
+export default function Map({ mapRef, mid, setFindWindow, layerActive, color_type, season, setIsInfoWindowActive, setTracks, tracks, setLengthTrack, intermediateCheckpoint, setPositionOfIntermediateCheckpoint, modeBuilding, checkpoints, isWidgetsActive, setTrack, setCreationCheckpointWindow, setCreationTrackWindow, typeCheckpoint, positionOfNewCheckpoint, setPositionOfNewCheckpoint, startCheckpoint, setPositionOfStartCheckpoint, endCheckpoint, setPositionOfEndCheckpoint, imagesForCheckpoints, track }) {
 
   const [rulerCheckpoint, setRulerCheckpoint] = useState([])
   const [rulerLenght, setRulerLength] = useState(0)
@@ -156,7 +156,7 @@ export default function Map({ setFindWindow, layerActive, color_type, season, se
     {
       setFindWindow(false);
     }
-  })
+  }, [isWidgetsActive.MagnifierActive])
 
   return (
       <>
@@ -166,7 +166,8 @@ export default function Map({ setFindWindow, layerActive, color_type, season, se
                     className='map'
                     center={[56.837405, 60.656652]} 
                     zoom={13} 
-                    doubleClickZoom={false}>
+                    doubleClickZoom={false}
+                    ref={mapRef}>
 
             {layerActive ? (
                     <TileLayer 
@@ -200,6 +201,8 @@ export default function Map({ setFindWindow, layerActive, color_type, season, se
           {isWidgetsActive.TrackActive ? <TrackMarker /> : null}
 
           {isWidgetsActive.RulerActive ? <Ruler/> : null}
+
+          {mid !== null ? <MarkerPoint position={[mid[1], mid[0]]} imageIcon={7} isPopup={false} size={[16, 16]} anchor={[8, 8]}/> : null}
           
           <Polyline positions={rulerCheckpoint} 
                     pathOptions={{color: "#919191", weight: 5}}/>
@@ -212,7 +215,7 @@ export default function Map({ setFindWindow, layerActive, color_type, season, se
           {tracks.map(track => <Polyline positions={track.cordinates.map(point => [point.cords[1], point.cords[0]])} 
                                         key={track.id}
                                         pathOptions={{color: track.active ? colorSet[track.color]: track.color, weight: track.active ? 7 : 5}} 
-                                        eventHandlers={{click: () => {if (!Object.values(isWidgetsActive).some(value => value == true)) changeHighlightingID(track.id)}}} 
+                                        eventHandlers={{click: () => {if (!Object.values(isWidgetsActive).some(value => value === true)) changeHighlightingID(track.id)}}} 
                                         />)}
         </MapContainer>
       </>

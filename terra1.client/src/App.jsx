@@ -2,7 +2,7 @@ import './App.css'
 import Map from './Map/Map'
 import CheckpointCreationWindow from './CreationWindows/CheckpointCreationWindow/CheckpointCreationWindow';
 import Toolbar from './Toolbar/Toolbar'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef  } from 'react';
 import TrackCreationWindow from './CreationWindows/TrackCreationWindow/TrackCreationWindow';
 import InfoTrackWindow from './InfoWindows/InfoTrackWindow/InfoTrackWindow';
 import Layer from './Layer/Layer';
@@ -35,6 +35,8 @@ export default function App() {
     const [isInfoWindowActive, setIsInfoWindowActive] = useState([false, 0]);
     const [season, setSeason] = useState(0);
     const [layerActive, setLayerActive] = useState(false);
+    const [mid, setMid] = useState(null);
+    const mapRef = useRef(null);
 
     const color_type = {
         0: "#2172D4",
@@ -56,7 +58,7 @@ export default function App() {
 
     return (
       <main>
-            <Layer layerActive={layerActive} setLayerActive={setLayerActive} isWindowOpen={creationCheckpointWindow || creationTrackWindow}/>
+            <Layer layerActive={layerActive} setLayerActive={setLayerActive} isWindowOpen={creationCheckpointWindow || creationTrackWindow || isInfoWindowActive[0]}/>
             
             <Toolbar 
                 onToggleWidget={(newState) => {setIsWidgetsActive(newState);}}
@@ -91,6 +93,8 @@ export default function App() {
                 season={season}
                 layerActive={layerActive}
                 setFindWindow={setFindWindow}
+                mid={mid}
+                mapRef={mapRef}
             />
 
             { creationCheckpointWindow ? <CheckpointCreationWindow 
@@ -122,7 +126,7 @@ export default function App() {
                                 setSeason={setSeason}
                                 /> : null }
 
-            {findWindow ? <FinderCretionWindow /> : null}
+            {findWindow ? <FinderCretionWindow setMid={setMid} mapRef={mapRef} /> : null}
 
             { isInfoWindowActive[0] ? <InfoTrackWindow ID={isInfoWindowActive[1]} tracks={tracks} /> : null}
       </main>
