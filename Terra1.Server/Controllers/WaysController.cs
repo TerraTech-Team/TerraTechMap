@@ -44,7 +44,7 @@ namespace Terra.Server.Controllers
         }
 
         [HttpGet("{id}/midpoint")]
-        public async Task<ActionResult<double[]>> GetMidPoint(int id)
+        public async Task<ActionResult<Midpoint>> GetMidPoint(int id)
         {
             var way = await _context.Way
                 .Include(w => w.Cordinates)
@@ -54,7 +54,10 @@ namespace Terra.Server.Controllers
             {
                 return NotFound();
             }
-            var midPoint = Way.GetWayCenter(way.Cordinates);
+            var responce = new Dictionary<string, object>();
+            var midPoint = new Midpoint(way.Cordinates);
+            responce.Add("zoom", midPoint.Zoom);
+            responce.Add("midpoint", midPoint.Center);
             return midPoint;
         }
 
