@@ -36,7 +36,6 @@ export default function App() {
     const [season, setSeason] = useState(0);
     const [layerActive, setLayerActive] = useState(false);
     const [mid, setMid] = useState(null);
-    const mapRef = useRef(null);
 
     const color_type = {
         0: "#2172D4",
@@ -94,7 +93,6 @@ export default function App() {
                 layerActive={layerActive}
                 setFindWindow={setFindWindow}
                 mid={mid}
-                mapRef={mapRef}
             />
 
             { creationCheckpointWindow ? <CheckpointCreationWindow 

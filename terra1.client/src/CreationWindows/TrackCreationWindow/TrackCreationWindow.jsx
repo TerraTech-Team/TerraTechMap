@@ -9,6 +9,7 @@ export default function TrackCreationWindow({ season, setSeason, color_type, tra
     const [author, setAuthor] = useState("");
     const [time, setTime] = useState('00:00');
     const [isCombined, setIsCombined] = useState(false);
+    const [nameError, setNameError] = useState(true);
 
     const handleSeasonChange = (e, n) => {
         e.preventDefault();
@@ -33,7 +34,14 @@ export default function TrackCreationWindow({ season, setSeason, color_type, tra
     }, [transport])
 
     const handleChangeName = (e) => {
-        setName(e.target.value);
+        let newName = e.target.value;
+        setName(newName);
+        if (newName.length > 0 && newName.length < 21)
+        {
+            setNameError(false);
+        } else {
+            setNameError(true);
+        }
     }
 
     const handleChangeAuthor = (e) => {
@@ -65,7 +73,6 @@ export default function TrackCreationWindow({ season, setSeason, color_type, tra
 
         let time2 = time.split(":")
         let timeNumbers = time2.map(numStr => parseInt(numStr))
-        console.log(timeNumbers[0]*60 + timeNumbers[1])
 
         let json = {"cordinates": track.map(cords => ({"cords": cords})),
                     "season": season,
@@ -73,7 +80,6 @@ export default function TrackCreationWindow({ season, setSeason, color_type, tra
                     "length": lengthTrack,
                     "color": color_type[season]
                     };
-        console.log(json);
         if (name.length > 0) {
             json["name"] = name;
         }
@@ -117,7 +123,7 @@ export default function TrackCreationWindow({ season, setSeason, color_type, tra
 
                 <div className="name">
                     <label htmlFor="name">Введите название:</label>
-                    <input type="text" id="name" className="textInput" value={name} onChange={handleChangeName}></input>
+                    <input type="text" id="name" className="textInput" value={name} onChange={handleChangeName} style={nameError ? {"border": "1.5px solid red"} : null}></input>
                 </div>
 
                 <div className='season'>
@@ -196,7 +202,7 @@ export default function TrackCreationWindow({ season, setSeason, color_type, tra
             </div>
 
             <div className="buttons">
-                    <button className="button" style={{"backgroundColor": "#58ed5f"}} onClick={handleSave}>Сохранить</button>
+                    <button className="button" style={{"backgroundColor": "#58ed5f"}} onClick={handleSave} disabled={nameError || track.length === 0}>Сохранить</button>
                     <button className="button" style={{"backgroundColor": "#ed5858"}} onClick={handleDelete}>Отменить</button>
                 </div>
         </div>

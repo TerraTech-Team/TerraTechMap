@@ -103,7 +103,11 @@ div.time {
     border: 3px solid rgba(0, 0, 0);
 }
 
-.buttons {
+.trackCreationWindow .buttons {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
     margin-top: 0;
 }
 
@@ -121,6 +125,16 @@ div.time {
 
 .transport .button:disabled {
     opacity: 0.4;
+}
+
+.button:disabled {
+    opacity: 0.7;
+    cursor: default;
+}
+
+.button:disabled:hover {
+    opacity: 0.7;
+    cursor: default;
 }
 
 .transportInput {

@@ -11,15 +11,17 @@ import endCheckpoint from './img/endCheckpoint.svg'
 import intermediateCheckpoint from './img/intermediateCheckpoint.svg'
 import sizeCheckpoint from './img/size.svg'
 
-export default function MarkerPoint({ anchor, size, position, name, description, imageIcon, isPopup, image }) {
+export default function MarkerPoint({ isSetLenght, length, panchor, ianchor, size, position, name, description, imageIcon, isPopup, image }) {
 
     const iconChecpoints = [haltCheckpoint, dangerCheckpoint, noteCheckpoint, sightCheckpoint, startCheckpoint, endCheckpoint, intermediateCheckpoint, sizeCheckpoint]
+
+
 
     const icon = new Icon ({
         iconUrl : iconChecpoints[imageIcon],
         iconSize : size,
-        iconAnchor: anchor,
-        popupAnchor: [4, -30]
+        iconAnchor: ianchor,
+        popupAnchor: panchor
       })
     return (
         <Marker position={position} icon={icon}>
@@ -30,6 +32,11 @@ export default function MarkerPoint({ anchor, size, position, name, description,
                     {image !== null ? <img className="photoCheckpoints" key={image.fileDownloadName} src={`data:image/jpeg;base64,${image.fileContents}`} /> : null}
                 </div>
             </Popup> : null}
+
+            {isSetLenght ? 
+            <Popup closeButton={false} >
+                <p className='popLength'>{`${length.toFixed(0)} м`}</p>
+            </Popup> : null}
             
         </Marker>
     ) 
@@ -37,5 +44,6 @@ export default function MarkerPoint({ anchor, size, position, name, description,
 
 MarkerPoint.defaultProps = {
     size: [41, 41],
-    anchor: [20, 41]
+    ianchor: [20, 41],
+    panchor: [4, -30]
 }

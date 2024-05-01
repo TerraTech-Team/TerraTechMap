@@ -222,7 +222,7 @@ div.wrapper label {
     margin-bottom: 10px;
 }
 
-.buttons {
+.checkpointCreationWindow .buttons {
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;

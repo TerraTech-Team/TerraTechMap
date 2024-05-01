@@ -5,7 +5,7 @@ import MarkerPoint from '../MarkerPoint/MarkerPoint';
 import { useEffect, useState} from 'react';
 
 
-export default function Map({ mapRef, mid, setFindWindow, layerActive, color_type, season, setIsInfoWindowActive, setTracks, tracks, setLengthTrack, intermediateCheckpoint, setPositionOfIntermediateCheckpoint, modeBuilding, checkpoints, isWidgetsActive, setTrack, setCreationCheckpointWindow, setCreationTrackWindow, typeCheckpoint, positionOfNewCheckpoint, setPositionOfNewCheckpoint, startCheckpoint, setPositionOfStartCheckpoint, endCheckpoint, setPositionOfEndCheckpoint, imagesForCheckpoints, track }) {
+export default function Map({mapRef, setFindWindow, layerActive, color_type, season, setIsInfoWindowActive, setTracks, tracks, setLengthTrack, intermediateCheckpoint, setPositionOfIntermediateCheckpoint, modeBuilding, checkpoints, isWidgetsActive, setTrack, setCreationCheckpointWindow, setCreationTrackWindow, typeCheckpoint, positionOfNewCheckpoint, setPositionOfNewCheckpoint, startCheckpoint, setPositionOfStartCheckpoint, endCheckpoint, setPositionOfEndCheckpoint, imagesForCheckpoints, track }) {
 
   const [rulerCheckpoint, setRulerCheckpoint] = useState([])
   const [rulerLenght, setRulerLength] = useState(0)
@@ -94,7 +94,7 @@ export default function Map({ mapRef, mid, setFindWindow, layerActive, color_typ
         }
         else
         {
-            let lengthTrack = distance(startCheckpoint[0], startCheckpoint[1], endCheckpoint[0], endCheckpoint[1])
+            let lengthTrack = distance(intermediateCheckpoint[intermediateCheckpoint.length - 1][0],intermediateCheckpoint[intermediateCheckpoint.length - 1][1], endCheckpoint[0], endCheckpoint[1])
             setTrack(prev => [...prev, [intermediateCheckpoint[intermediateCheckpoint.length - 1][1],intermediateCheckpoint[intermediateCheckpoint.length - 1][0]], [endCheckpoint[1], endCheckpoint[0]]]);
             setLengthTrack(prev => prev += lengthTrack)
         }
@@ -103,14 +103,21 @@ export default function Map({ mapRef, mid, setFindWindow, layerActive, color_typ
   }, [endCheckpoint]);
 
   function distance(lat_1, lon_1, lat_2, lon_2) {
+    const radius_earth = 6371e3;
+    const lat1_rad = deg2rad(lat_1);
+    const lon1_rad = deg2rad(lon_1);
+    const lat2_rad = deg2rad(lat_2);
+    const lon2_rad = deg2rad(lon_2);
+    const delta_lat = lat2_rad - lat1_rad;
+    const delta_lon = lon2_rad - lon1_rad;
 
-      let radius_earth = 6371;
-      let lat_1_new = deg2rad(lat_1);
-      let lon_1_new = deg2rad(lon_1);
-      let lat_2_new = deg2rad(lat_2);
-      let lon_2_new = deg2rad(lon_2);
-      let d = 2 * radius_earth * Math.asin(Math.sqrt(Math.sin((lat_2_new - lat_1_new) / 2) ** 2 + Math.cos(lat_1_new) * Math.cos(lat_2_new) * Math.sin((lon_2_new - lon_1_new) / 2) ** 2));
-    return d.toFixed(3)*1000;
+    const a = Math.sin(delta_lat / 2) * Math.sin(delta_lat / 2) +
+              Math.cos(lat1_rad) * Math.cos(lat2_rad) *
+              Math.sin(delta_lon / 2) * Math.sin(delta_lon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+    const distance = radius_earth * c;
+    return distance;
   }
 
   function deg2rad(num) {
@@ -124,7 +131,7 @@ export default function Map({ mapRef, mid, setFindWindow, layerActive, color_typ
 
   const colorSet = {
     "#2172D4": "#1F5393",
-    "#dec400": "#cca700",
+    "#ffe100": "#ffc400",
     "#47ba00": "#358a00",
     "#fca800": "#c28100"
   }
@@ -137,7 +144,6 @@ export default function Map({ mapRef, mid, setFindWindow, layerActive, color_typ
         {
           let length = distance(rulerCheckpoint[rulerCheckpoint.length - 1][0], rulerCheckpoint[rulerCheckpoint.length - 1][1], e.latlng.lat, e.latlng.lng)
           setRulerLength(prev => prev + length)
-          console.log(rulerLenght);
         }
       }
     })
@@ -201,14 +207,13 @@ export default function Map({ mapRef, mid, setFindWindow, layerActive, color_typ
           {isWidgetsActive.TrackActive ? <TrackMarker /> : null}
 
           {isWidgetsActive.RulerActive ? <Ruler/> : null}
-
-          {mid !== null ? <MarkerPoint position={[mid[1], mid[0]]} imageIcon={7} isPopup={false} size={[16, 16]} anchor={[8, 8]}/> : null}
           
-          <Polyline positions={rulerCheckpoint} 
-                    pathOptions={{color: "#919191", weight: 5}}/>
+          <Polyline positions={rulerCheckpoint} pathOptions={{color: "#919191", weight: 5}}/>
 
-          {rulerCheckpoint.map(point => <MarkerPoint key={point} position={point} imageIcon={7} isPopup={false} size={[16, 16]} anchor={[8, 8]}/>)}
+          {rulerCheckpoint.slice(0, rulerCheckpoint.length - 1).map(point => <MarkerPoint key={point} position={point} imageIcon={7} isPopup={false} size={[16, 16]} ianchor={[8, 8]}/>)}
 
+          {rulerCheckpoint.length > 0 ? <MarkerPoint key={rulerCheckpoint[rulerCheckpoint.length - 1]} isSetLenght={true} length={rulerLenght} position={rulerCheckpoint[rulerCheckpoint.length - 1]} imageIcon={7} isPopup={false} size={[16, 16]} ianchor={[8, 8]} panchor={[0,0]}/> : null}
+          
           <Polyline positions={track.map(point => [point[1], point[0]])} 
                     pathOptions={{color: color_type[season], weight: 5}}/>
 
