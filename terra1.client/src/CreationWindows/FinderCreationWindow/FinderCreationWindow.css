@@ -1,17 +1,22 @@
+.find {
+    margin-left: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: -200px;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 50%;
+    width: min-content;
+    height: min-content;
+}
+
 .finderCretionWindow {
+    padding: 5px;
     display: flex;
     box-sizing: inherit;
     align-items: center;
-    margin-left: auto;
-    margin-right: -200px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding: 5px;
     gap: 5px;
     width: 400px;
     height: 2rem;
-    position: absolute;
-    top: 0; left: 0; bottom: 0; right: 50%;
     background-color: rgb(245, 248, 254);
     z-index: 1;
     border-radius: 5px;
@@ -53,4 +58,45 @@
 
 .findButton:hover {
     background-color: rgb(100, 100, 100);
+}
+
+[list]::-webkit-calendar-picker-indicator {
+    display: none !important;
+  }
+
+.Dataset {
+    position: relative;
+    top: -2px; left: -20px;
+    margin: 0 auto;
+    padding: 0;
+    width: 350px;
+    height: max-content;
+    background-color: rgb(227, 227, 227);
+    padding: 3px;
+    border-radius: 3px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+}
+
+.optionList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.optionItem {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    font-size: 18px;
+    padding: 2px;
+}
+
+.optionItem:hover {
+    background-color: #dedede;
+    border: 2px solid rgba(189, 189, 189, 0.5);
 }

@@ -36,6 +36,7 @@ export default function App() {
     const [season, setSeason] = useState(0);
     const [layerActive, setLayerActive] = useState(false);
     const [mid, setMid] = useState(null);
+    const mapRef = useRef(null);
 
     const color_type = {
         0: "#2172D4",
@@ -93,6 +94,7 @@ export default function App() {
                 layerActive={layerActive}
                 setFindWindow={setFindWindow}
                 mid={mid}
+                mapRef={mapRef}
             />
 
             { creationCheckpointWindow ? <CheckpointCreationWindow 
@@ -124,7 +126,7 @@ export default function App() {
                                 setSeason={setSeason}
                                 /> : null }
 
-            {findWindow ? <FinderCretionWindow setMid={setMid} mapRef={mapRef} /> : null}
+            {findWindow ? <FinderCretionWindow tracks={tracks} setMid={setMid} mapRef={mapRef} /> : null}
 
             { isInfoWindowActive[0] ? <InfoTrackWindow ID={isInfoWindowActive[1]} tracks={tracks} /> : null}
       </main>

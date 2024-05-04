@@ -5,7 +5,7 @@ import MarkerPoint from '../MarkerPoint/MarkerPoint';
 import { useEffect, useState} from 'react';
 
 
-export default function Map({mapRef, setFindWindow, layerActive, color_type, season, setIsInfoWindowActive, setTracks, tracks, setLengthTrack, intermediateCheckpoint, setPositionOfIntermediateCheckpoint, modeBuilding, checkpoints, isWidgetsActive, setTrack, setCreationCheckpointWindow, setCreationTrackWindow, typeCheckpoint, positionOfNewCheckpoint, setPositionOfNewCheckpoint, startCheckpoint, setPositionOfStartCheckpoint, endCheckpoint, setPositionOfEndCheckpoint, imagesForCheckpoints, track }) {
+export default function Map({ mapRef, setFindWindow, layerActive, color_type, season, setIsInfoWindowActive, setTracks, tracks, setLengthTrack, intermediateCheckpoint, setPositionOfIntermediateCheckpoint, modeBuilding, checkpoints, isWidgetsActive, setTrack, setCreationCheckpointWindow, setCreationTrackWindow, typeCheckpoint, positionOfNewCheckpoint, setPositionOfNewCheckpoint, startCheckpoint, setPositionOfStartCheckpoint, endCheckpoint, setPositionOfEndCheckpoint, imagesForCheckpoints, track }) {
 
   const [rulerCheckpoint, setRulerCheckpoint] = useState([])
   const [rulerLenght, setRulerLength] = useState(0)
@@ -161,6 +161,9 @@ export default function Map({mapRef, setFindWindow, layerActive, color_type, sea
     if (!isWidgetsActive.MagnifierActive)
     {
       setFindWindow(false);
+    } else {
+      setIsInfoWindowActive(false)
+      setTracks(prev => prev.map(item => ({...item, active: false})))
     }
   }, [isWidgetsActive.MagnifierActive])
 
