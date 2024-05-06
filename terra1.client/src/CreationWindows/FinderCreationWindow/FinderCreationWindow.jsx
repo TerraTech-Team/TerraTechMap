@@ -4,6 +4,7 @@ import magnifier from './img/magnifier.svg'
 
 export default function FinderCretionWindow({ tracks, setMid, mapRef }) {
     const [nameOfFind, setNameOfFind] = useState("");
+    const [idOfFind, setIdOfFind] = useState(null);
     const [activeFind, setActiveFind] = useState(false);
     const [listName, setListName] = useState(tracks.map(track => track.name))
 
@@ -82,14 +83,14 @@ export default function FinderCretionWindow({ tracks, setMid, mapRef }) {
             <div className="finderCretionWindow">
                 <input  type="search" className='findWindow' onBlur={() => setTimeout(() => setActiveFind(false), 125)} onFocus={() => setActiveFind(true)} value={nameOfFind} onChange={(e) => {handleChangeName(e); SemanticSearch()}} />
 
-                <button className='findButton' onClick={() => FindWindow(nameOfFind)}>
+                <button className='findButton' onClick={() => FindWindow(idOfFind)}>
                     <img src={magnifier} alt="magnifier" />
                 </button>
             </div>
 
             {activeFind ? <div className='Dataset'>
                             <ul className='optionList'>
-                                {listName.map(name => <li key={name} className='optionItem' onClick={() => setNameOfFind(name)}>{name}</li>)}
+                                {listName.map(name => <li key={name} className='optionItem' onClick={() => {setNameOfFind(name); setIdOfFind(tracks.find(track => track.name === name).id)}}>{name}</li>)}
                             </ul>
                         </div> : null}
         </div>
