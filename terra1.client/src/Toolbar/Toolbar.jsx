@@ -6,7 +6,7 @@ import rulerWidgetImage from './img/ruler_widget.svg';
 import trackWidgetImage from './img/track_widget.svg';
 
 
-export default function Toolbar({ onToggleWidget, isWidgetsActive, setTypeCheckpoint}) {
+export default function Toolbar({ setFindWindow, onToggleWidget, isWidgetsActive, setTypeCheckpoint}) {
 
     const toggleWidget = (widgetName) => {
         onToggleWidget(prevState => ({
@@ -33,16 +33,16 @@ export default function Toolbar({ onToggleWidget, isWidgetsActive, setTypeCheckp
                 isReady={true}/>
 
             <Widget 
-                image={magnifierWidgetImage}
-                onClick={() => toggleWidget('MagnifierActive')} 
-                isActive={isWidgetsActive.MagnifierActive}
-                isReady={false}/>
-
-            <Widget 
                 image={rulerWidgetImage}
                 onClick={() => toggleWidget('RulerActive')} 
                 isActive={isWidgetsActive.RulerActive}
-                isReady={false}/>
+                isReady={true}/>
+
+            <Widget 
+                image={magnifierWidgetImage}
+                onClick={() => {toggleWidget('MagnifierActive'), setFindWindow(prev => !prev)}} 
+                isActive={isWidgetsActive.MagnifierActive}
+                isReady={true}/>
         </div>
     )
 }

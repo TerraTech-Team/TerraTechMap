@@ -1,6 +1,5 @@
 import { useState } from "react"
 import "./CheckpointCreationWindow.css"
-import "../CreationWindow.css"
 import dangerImage from './img/danger.svg';
 import haltImage from './img/halt.svg';
 import noteImage from './img/note.svg';
@@ -11,7 +10,7 @@ export default function CheckpointCreationWindow({ checkpointsData, typeCheckpoi
     const [files, setFiles] = useState([])
     const [dragActive, setDragActive] = useState(false)
     const [name, setName] = useState("")
-    const [hasNameError, setHasNameError] = useState(false)
+    const [hasNameError, setHasNameError] = useState(true)
     const [description, setDescription] = useState("")
 
     const handleChange = (e) => {
@@ -95,12 +94,18 @@ export default function CheckpointCreationWindow({ checkpointsData, typeCheckpoi
     };
 
     const handleChangeName = (e) => {
-        setName(e.target.value);
-        setHasNameError(e.target.value.trim().length > 20);
+        let newName = e.target.value;
+        setName(newName);
+        if (newName.length > 0 && newName.length < 21)
+        {
+            setHasNameError(false);
+        } else {
+            setHasNameError(true);
+        }
     }
 
     return (
-        <div className="creationWindow">
+        <div className="checkpointCreationWindow">
             <h1>Создание нового Чек-поинта</h1>
             <form>
                 <div className="name">

@@ -2,9 +2,11 @@ import './App.css'
 import Map from './Map/Map'
 import CheckpointCreationWindow from './CreationWindows/CheckpointCreationWindow/CheckpointCreationWindow';
 import Toolbar from './Toolbar/Toolbar'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef  } from 'react';
 import TrackCreationWindow from './CreationWindows/TrackCreationWindow/TrackCreationWindow';
 import InfoTrackWindow from './InfoWindows/InfoTrackWindow/InfoTrackWindow';
+import Layer from './Layer/Layer';
+import FinderCretionWindow from './CreationWindows/FinderCreationWindow/FinderCreationWindow';
 
 export default function App() {
     const widgetsActive = {
@@ -19,6 +21,7 @@ export default function App() {
     const [isWidgetsActive, setIsWidgetsActive] = useState(widgetsActive);
     const [creationCheckpointWindow, setCreationCheckpointWindow] = useState(false);
     const [creationTrackWindow, setCreationTrackWindow] = useState(false);
+    const [findWindow, setFindWindow] = useState(false);
     const [typeCheckpoint, setTypeCheckpoint] = useState(0);
     const [positionOfNewCheckpoint, setPositionOfNewCheckpoint] = useState(null);
     const [positionOfStartCheckpoint, setPositionOfStartCheckpoint] = useState(null);
@@ -31,6 +34,9 @@ export default function App() {
     const [transport, setTransport] = useState(0)
     const [isInfoWindowActive, setIsInfoWindowActive] = useState([false, 0]);
     const [season, setSeason] = useState(0);
+    const [layerActive, setLayerActive] = useState(false);
+    const [mid, setMid] = useState(null);
+    const mapRef = useRef(null);
 
     const color_type = {
         0: "#2172D4",
@@ -52,37 +58,44 @@ export default function App() {
 
     return (
       <main>
-          <Toolbar 
-              onToggleWidget={(newState) => {setIsWidgetsActive(newState);}}
-              isWidgetsActive={isWidgetsActive}
-              setTypeCheckpoint={(newState) => {setTypeCheckpoint(newState)}}
-          />
+            <Layer layerActive={layerActive} setLayerActive={setLayerActive} isWindowOpen={creationCheckpointWindow || creationTrackWindow || isInfoWindowActive[0]}/>
+            
+            <Toolbar 
+                onToggleWidget={(newState) => {setIsWidgetsActive(newState);}}
+                isWidgetsActive={isWidgetsActive}
+                setTypeCheckpoint={(newState) => {setTypeCheckpoint(newState)}}
+                setFindWindow={setFindWindow}
+            />
 
-          <Map 
-              checkpoints={checkpoints} 
-              isWidgetsActive={isWidgetsActive}
-              setCreationCheckpointWindow={(newState) => {setCreationCheckpointWindow(newState)}}
-              setCreationTrackWindow={(newState) => {setCreationTrackWindow(newState)}}
-              typeCheckpoint={typeCheckpoint}
-              positionOfNewCheckpoint={positionOfNewCheckpoint}
-              setPositionOfNewCheckpoint={(newState) => {setPositionOfNewCheckpoint(newState)}}
-              startCheckpoint={positionOfStartCheckpoint}
-              setPositionOfStartCheckpoint={(newState) => {setPositionOfStartCheckpoint(newState)}}
-              endCheckpoint={positionOfEndCheckpoint}
-              setPositionOfEndCheckpoint={(newState) => {setPositionOfEndCheckpoint(newState)}}
-              intermediateCheckpoint={positionOfIntermediateCheckpoint}
-              setPositionOfIntermediateCheckpoint={(newState) => {setPositionOfIntermediateCheckpoint(newState)}}
-              imagesForCheckpoints={imagesForCheckpoints}
-              track={track}
-              setTrack={(newState) => {setTrack(newState)}}
-              modeBuilding={modeBuilding}
-              setLengthTrack={setLengthTrack}
-              tracks={tracks}
-              setTracks={setTracks}
-              setIsInfoWindowActive={setIsInfoWindowActive}
-              color_type={color_type}
-              season={season}
-          />
+            <Map 
+                checkpoints={checkpoints} 
+                isWidgetsActive={isWidgetsActive}
+                setCreationCheckpointWindow={(newState) => {setCreationCheckpointWindow(newState)}}
+                setCreationTrackWindow={(newState) => {setCreationTrackWindow(newState)}}
+                typeCheckpoint={typeCheckpoint}
+                positionOfNewCheckpoint={positionOfNewCheckpoint}
+                setPositionOfNewCheckpoint={(newState) => {setPositionOfNewCheckpoint(newState)}}
+                startCheckpoint={positionOfStartCheckpoint}
+                setPositionOfStartCheckpoint={(newState) => {setPositionOfStartCheckpoint(newState)}}
+                endCheckpoint={positionOfEndCheckpoint}
+                setPositionOfEndCheckpoint={(newState) => {setPositionOfEndCheckpoint(newState)}}
+                intermediateCheckpoint={positionOfIntermediateCheckpoint}
+                setPositionOfIntermediateCheckpoint={(newState) => {setPositionOfIntermediateCheckpoint(newState)}}
+                imagesForCheckpoints={imagesForCheckpoints}
+                track={track}
+                setTrack={(newState) => {setTrack(newState)}}
+                modeBuilding={modeBuilding}
+                setLengthTrack={setLengthTrack}
+                tracks={tracks}
+                setTracks={setTracks}
+                setIsInfoWindowActive={setIsInfoWindowActive}
+                color_type={color_type}
+                season={season}
+                layerActive={layerActive}
+                setFindWindow={setFindWindow}
+                mid={mid}
+                mapRef={mapRef}
+            />
 
             { creationCheckpointWindow ? <CheckpointCreationWindow 
                                   typeCheckpoint={typeCheckpoint} 
@@ -112,6 +125,9 @@ export default function App() {
                                 season={season}
                                 setSeason={setSeason}
                                 /> : null }
+
+            {findWindow ? <FinderCretionWindow tracks={tracks} setMid={setMid} mapRef={mapRef} /> : null}
+
             { isInfoWindowActive[0] ? <InfoTrackWindow ID={isInfoWindowActive[1]} tracks={tracks} /> : null}
       </main>
   )

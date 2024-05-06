@@ -43,6 +43,24 @@ namespace Terra.Server.Controllers
             return way;
         }
 
+        [HttpGet("{id}/midpoint")]
+        public async Task<ActionResult<Dictionary<string, object>>> GetMidPoint(int id)
+        {
+            var way = await _context.Way
+                .Include(w => w.Cordinates)
+                .FirstOrDefaultAsync(w => w.Id == id);
+
+            if (way == null)
+            {
+                return NotFound();
+            }
+            var responce = new Dictionary<string, object>();
+            var midPoint = new Midpoint(way.Cordinates);
+            responce.Add("zoom", midPoint.Zoom);
+            responce.Add("midpoint", midPoint.Center);
+            return responce;
+        }
+
         // POST: api/Ways
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
