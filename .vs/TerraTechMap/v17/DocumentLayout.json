@@ -1,13 +1,25 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\",
+  "WorkspaceRootPath": "C:\\Users\\arska\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\TerraTech\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FB1C3247-1DF7-45E9-B3C7-D0E0DAF65BE2}|terra1.client\\Terra.client.esproj|c:\\users\\virtical\\desktop\\terratechmap\\terra1.client\\src\\creationwindows\\checkpointcreationwindow\\checkpointcreationwindow.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "AbsoluteMoniker": "D:0:0:{61328AE8-6B56-48DD-848F-85E604C530E3}|Terra1.Server\\Terra.Server.csproj|c:\\users\\arska\\onedrive\\\u0440\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\terratech\\terra1.server\\models\\enums\\pointtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61328AE8-6B56-48DD-848F-85E604C530E3}|Terra1.Server\\Terra.Server.csproj|solutionrelative:terra1.server\\models\\enums\\pointtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61328AE8-6B56-48DD-848F-85E604C530E3}|Terra1.Server\\Terra.Server.csproj|C:\\Users\\arska\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\TerraTech\\terra1.server\\migrations\\20240513091655_initialcreate2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61328AE8-6B56-48DD-848F-85E604C530E3}|Terra1.Server\\Terra.Server.csproj|solutionrelative:terra1.server\\migrations\\20240513091655_initialcreate2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61328AE8-6B56-48DD-848F-85E604C530E3}|Terra1.Server\\Terra.Server.csproj|C:\\Users\\arska\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\TerraTech\\terra1.server\\controllers\\checkpointscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61328AE8-6B56-48DD-848F-85E604C530E3}|Terra1.Server\\Terra.Server.csproj|solutionrelative:terra1.server\\controllers\\checkpointscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB1C3247-1DF7-45E9-B3C7-D0E0DAF65BE2}|terra1.client\\Terra.client.esproj|C:\\Users\\arska\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\TerraTech\\terra1.client\\src\\creationwindows\\checkpointcreationwindow\\checkpointcreationwindow.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{FB1C3247-1DF7-45E9-B3C7-D0E0DAF65BE2}|terra1.client\\Terra.client.esproj|solutionrelative:terra1.client\\src\\creationwindows\\checkpointcreationwindow\\checkpointcreationwindow.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FB1C3247-1DF7-45E9-B3C7-D0E0DAF65BE2}|terra1.client\\Terra.client.esproj|c:\\users\\virtical\\desktop\\terratechmap\\terra1.client\\src\\creationwindows\\checkpointcreationwindow\\checkpointcreationwindow.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{FB1C3247-1DF7-45E9-B3C7-D0E0DAF65BE2}|terra1.client\\Terra.client.esproj|C:\\Users\\arska\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\TerraTech\\terra1.client\\src\\creationwindows\\checkpointcreationwindow\\checkpointcreationwindow.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{FB1C3247-1DF7-45E9-B3C7-D0E0DAF65BE2}|terra1.client\\Terra.client.esproj|solutionrelative:terra1.client\\src\\creationwindows\\checkpointcreationwindow\\checkpointcreationwindow.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     }
   ],
@@ -18,33 +30,72 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CheckpointCreationWindow.css",
-              "DocumentMoniker": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\terra1.client\\src\\CreationWindows\\CheckpointCreationWindow\\CheckpointCreationWindow.css",
-              "RelativeDocumentMoniker": "terra1.client\\src\\CreationWindows\\CheckpointCreationWindow\\CheckpointCreationWindow.css",
-              "ToolTip": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\terra1.client\\src\\CreationWindows\\CheckpointCreationWindow\\CheckpointCreationWindow.css",
-              "RelativeToolTip": "terra1.client\\src\\CreationWindows\\CheckpointCreationWindow\\CheckpointCreationWindow.css",
-              "ViewState": "AQIAAMMAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-05-06T17:46:59.298Z",
+              "Title": "PointType.cs",
+              "DocumentMoniker": "C:\\Users\\arska\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\TerraTech\\Terra1.Server\\Models\\enums\\PointType.cs",
+              "RelativeDocumentMoniker": "Terra1.Server\\Models\\enums\\PointType.cs",
+              "ToolTip": "C:\\Users\\arska\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\TerraTech\\Terra1.Server\\Models\\enums\\PointType.cs",
+              "RelativeToolTip": "Terra1.Server\\Models\\enums\\PointType.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-13T09:24:36.966Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "20240513091655_InitialCreate2.cs",
+              "DocumentMoniker": "C:\\Users\\arska\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\TerraTech\\Terra1.Server\\Migrations\\20240513091655_InitialCreate2.cs",
+              "RelativeDocumentMoniker": "Terra1.Server\\Migrations\\20240513091655_InitialCreate2.cs",
+              "ToolTip": "C:\\Users\\arska\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\TerraTech\\Terra1.Server\\Migrations\\20240513091655_InitialCreate2.cs",
+              "RelativeToolTip": "Terra1.Server\\Migrations\\20240513091655_InitialCreate2.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-13T09:16:55.771Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CheckpointsController.cs",
+              "DocumentMoniker": "C:\\Users\\arska\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\TerraTech\\Terra1.Server\\Controllers\\CheckpointsController.cs",
+              "RelativeDocumentMoniker": "Terra1.Server\\Controllers\\CheckpointsController.cs",
+              "ToolTip": "C:\\Users\\arska\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\TerraTech\\Terra1.Server\\Controllers\\CheckpointsController.cs",
+              "RelativeToolTip": "Terra1.Server\\Controllers\\CheckpointsController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-13T09:16:18.351Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CheckpointCreationWindow.css",
+              "DocumentMoniker": "C:\\Users\\arska\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\TerraTech\\terra1.client\\src\\CreationWindows\\CheckpointCreationWindow\\CheckpointCreationWindow.css",
+              "RelativeDocumentMoniker": "terra1.client\\src\\CreationWindows\\CheckpointCreationWindow\\CheckpointCreationWindow.css",
+              "ToolTip": "C:\\Users\\arska\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\TerraTech\\terra1.client\\src\\CreationWindows\\CheckpointCreationWindow\\CheckpointCreationWindow.css",
+              "RelativeToolTip": "terra1.client\\src\\CreationWindows\\CheckpointCreationWindow\\CheckpointCreationWindow.css",
+              "ViewState": "AQIAAMMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-05-06T17:46:59.298Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "CheckpointCreationWindow.jsx",
-              "DocumentMoniker": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\terra1.client\\src\\CreationWindows\\CheckpointCreationWindow\\CheckpointCreationWindow.jsx",
+              "DocumentMoniker": "C:\\Users\\arska\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\TerraTech\\terra1.client\\src\\CreationWindows\\CheckpointCreationWindow\\CheckpointCreationWindow.jsx",
               "RelativeDocumentMoniker": "terra1.client\\src\\CreationWindows\\CheckpointCreationWindow\\CheckpointCreationWindow.jsx",
-              "ToolTip": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\terra1.client\\src\\CreationWindows\\CheckpointCreationWindow\\CheckpointCreationWindow.jsx",
+              "ToolTip": "C:\\Users\\arska\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\TerraTech\\terra1.client\\src\\CreationWindows\\CheckpointCreationWindow\\CheckpointCreationWindow.jsx",
               "RelativeToolTip": "terra1.client\\src\\CreationWindows\\CheckpointCreationWindow\\CheckpointCreationWindow.jsx",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
-              "WhenOpened": "2024-05-06T17:46:58.184Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-06T17:46:58.184Z"
             }
           ]
         }

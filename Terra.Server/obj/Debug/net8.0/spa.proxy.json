@@ -1,0 +1,10 @@
+{
+"SpaProxyServer": {
+"ServerUrl": "https://localhost:5173",
+"RedirectUrl": "",
+"LaunchCommand": "npm run dev",
+"WorkingDirectory": "C:\\Users\\arska\\OneDrive\\Рабочий стол\\TerraTech\\Terra.Server\\..\\terra.client",
+"MaxTimeoutInSeconds": "120",
+"KeepRunning": "false"
+}
+}
