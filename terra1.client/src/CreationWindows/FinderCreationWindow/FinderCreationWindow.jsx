@@ -13,6 +13,11 @@ export default function FinderCretionWindow({ tracks, setMid, mapRef }) {
     };
 
     async function FindWindow(id) {
+
+        const x = 5;
+        const obj = {x};
+        console.log(obj);
+
         const map = mapRef.current;
         if (!map) return;
 
@@ -30,51 +35,30 @@ export default function FinderCretionWindow({ tracks, setMid, mapRef }) {
         let similarityOrder = {};
 
         listName.forEach(element => {
-            let similarity = LevenshteinDistance(nameOfFind.toLowerCase(), element.toLowerCase());
+            let similarity = CosineSimilarity(nameOfFind.toLowerCase(), element.toLowerCase());
             similarityOrder[element] = similarity;
         });
 
-        const sortedEntries = Object.entries(similarityOrder).sort((a, b) => a[1] - b[1]);
-        const sortedSimilarityOrder = Object.fromEntries(sortedEntries);
+        const sortedEntries = Object.entries(similarityOrder).sort((a, b) => b[1] - a[1]);
 
-        setListName(Object.keys(sortedSimilarityOrder));
+        setListName(sortedEntries.map(item => item[0]));
     }
 
-    function LevenshteinDistance(firstWord, secondWord) {
-        let n = firstWord.length + 1;
-        let m = secondWord.length + 1;
-        const matrixD = [];
-        for (let i = 0; i < n; i++) 
+    function CosineSimilarity(firstWord, secondWord)
+    {
+        let set1 = new Set(firstWord.split(''));
+        let set2 = new Set(secondWord.split(''));
+        let intersection = new Set([...set1].filter(char => set2.has(char))).size;
+
+        var magnitudeA = Math.sqrt(firstWord.length);
+        var magnitudeB = Math.sqrt(secondWord.length);
+
+        if (magnitudeA === 0 || magnitudeB === 0)
         {
-            const line = []
-            for (let j = 0; j < m ; j++)
-            {
-                if (j === 0) {
-                    line.push(i);
-                } else if (i === 0) {
-                    line.push(j);
-                } else {
-                    line.push(0);
-                }
-            }
-            matrixD.push(line)
+                return 0;
         }
 
-        const deletionCost = 1;
-        const insertionCost = 1;
-
-        for (let i = 1; i < n; i++) 
-        {
-            for (let j = 1; j < m ; j++)
-            {
-                var substitutionCost = firstWord[i - 1] == secondWord[j - 1] ? 0 : 1;
-                matrixD[i][j] = Math.min(matrixD[i - 1][j] + deletionCost,
-                        Math.min(matrixD[i][j - 1] + insertionCost,
-                        matrixD[i - 1][j - 1] + substitutionCost));
-            }
-        }
-
-        return matrixD[n-1][m-1] 
+        return intersection / (magnitudeA * magnitudeB);
     }
 
 

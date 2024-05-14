@@ -29,6 +29,7 @@ export default function App() {
     const [positionOfIntermediateCheckpoint, setPositionOfIntermediateCheckpoint] = useState([]);
     const [imagesForCheckpoints, setImagesForCheckpoints] = useState([]);
     const [track, setTrack] = useState([]);
+    const [tempCP, setTempCP] = useState([])
     const [modeBuilding, setModeBuilding] = useState(0)
     const [lengthTrack, setLengthTrack] = useState(0);    
     const [transport, setTransport] = useState(0)
@@ -61,7 +62,7 @@ export default function App() {
             <Layer layerActive={layerActive} setLayerActive={setLayerActive} isWindowOpen={creationCheckpointWindow || creationTrackWindow || isInfoWindowActive[0]}/>
             
             <Toolbar 
-                onToggleWidget={(newState) => {setIsWidgetsActive(newState);}}
+                onToggleWidget={(newState) => {setIsWidgetsActive(newState)}}
                 isWidgetsActive={isWidgetsActive}
                 setTypeCheckpoint={(newState) => {setTypeCheckpoint(newState)}}
                 setFindWindow={setFindWindow}
@@ -95,6 +96,8 @@ export default function App() {
                 setFindWindow={setFindWindow}
                 mid={mid}
                 mapRef={mapRef}
+                tempCP={tempCP}
+                setTempCP={setTempCP}
             />
 
             { creationCheckpointWindow ? <CheckpointCreationWindow 
@@ -104,6 +107,11 @@ export default function App() {
                                   setPositionOfNewCheckpoint={(newState) => {setPositionOfNewCheckpoint(newState)}}
                                   positionOfNewCheckpoint={positionOfNewCheckpoint}
                                   checkpointsData={() => checkpointsData()}
+                                  setPositionOfStartCheckpoint={(newState) => {setPositionOfStartCheckpoint(newState)}}
+                                  setPositionOfEndCheckpoint={(newState) => {setPositionOfEndCheckpoint(newState)}}
+                                  setPositionOfIntermediateCheckpoint={(newState) => {setPositionOfIntermediateCheckpoint(newState)}}
+                                  setIsWidgetsActive={(newState) => {setIsWidgetsActive(newState)}}
+                                  setTempCP={setTempCP}
                               /> : null }
 
             { creationTrackWindow ? <TrackCreationWindow 
@@ -124,6 +132,10 @@ export default function App() {
                                 color_type={color_type}
                                 season={season}
                                 setSeason={setSeason}
+                                setCreationCheckpointWindow={setCreationCheckpointWindow}
+                                setIsWidgetsActive={(newState) => {setIsWidgetsActive(newState)}}
+                                setTempCP={setTempCP}
+                                tempCP={tempCP}
                                 /> : null }
 
             {findWindow ? <FinderCretionWindow tracks={tracks} setMid={setMid} mapRef={mapRef} /> : null}

@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{FB1C3247-1DF7-45E9-B3C7-D0E0DAF65BE2}|terra1.client\\Terra.client.esproj|solutionrelative:terra1.client\\src\\creationwindows\\checkpointcreationwindow\\checkpointcreationwindow.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FB1C3247-1DF7-45E9-B3C7-D0E0DAF65BE2}|terra1.client\\Terra.client.esproj|c:\\users\\virtical\\desktop\\terratechmap\\terra1.client\\src\\creationwindows\\checkpointcreationwindow\\checkpointcreationwindow.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{FB1C3247-1DF7-45E9-B3C7-D0E0DAF65BE2}|terra1.client\\Terra.client.esproj|C:\\Users\\Virtical\\Desktop\\TerraTechMap\\terra1.client\\src\\creationwindows\\checkpointcreationwindow\\checkpointcreationwindow.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{FB1C3247-1DF7-45E9-B3C7-D0E0DAF65BE2}|terra1.client\\Terra.client.esproj|solutionrelative:terra1.client\\src\\creationwindows\\checkpointcreationwindow\\checkpointcreationwindow.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     }
   ],
@@ -28,7 +28,7 @@
               "RelativeDocumentMoniker": "terra1.client\\src\\CreationWindows\\CheckpointCreationWindow\\CheckpointCreationWindow.css",
               "ToolTip": "C:\\Users\\Virtical\\Desktop\\TerraTechMap\\terra1.client\\src\\CreationWindows\\CheckpointCreationWindow\\CheckpointCreationWindow.css",
               "RelativeToolTip": "terra1.client\\src\\CreationWindows\\CheckpointCreationWindow\\CheckpointCreationWindow.css",
-              "ViewState": "AQIAAMMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAANgAAAAAAAAAAAAAAO0AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2024-05-06T17:46:59.298Z",
               "EditorCaption": ""
@@ -43,8 +43,7 @@
               "RelativeToolTip": "terra1.client\\src\\CreationWindows\\CheckpointCreationWindow\\CheckpointCreationWindow.jsx",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
-              "WhenOpened": "2024-05-06T17:46:58.184Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-06T17:46:58.184Z"
             }
           ]
         }

@@ -3,13 +3,15 @@ import { useState, useEffect } from "react";
 import car  from './img/car.svg'
 import bike  from './img/bike.svg'
 import foot  from './img/foot.svg'
+import plus  from './img/plus.svg'
 
-export default function TrackCreationWindow({ season, setSeason, color_type, tracksData, track, setLengthTrack, setPositionOfIntermediateCheckpoint, setPositionOfEndCheckpoint, setPositionOfStartCheckpoint, setTrack, setCreationTrackWindow, lengthTrack, modeBuilding, handleModeBuildingChange, transport, setTransport, setModeBuilding}) {
+export default function TrackCreationWindow({ tempCP, setTempCP, setIsWidgetsActive, setCreationCheckpointWindow, season, setSeason, color_type, tracksData, track, setLengthTrack, setPositionOfIntermediateCheckpoint, setPositionOfEndCheckpoint, setPositionOfStartCheckpoint, setTrack, setCreationTrackWindow, lengthTrack, modeBuilding, handleModeBuildingChange, transport, setTransport, setModeBuilding}) {
     const [name, setName] = useState("");
     const [author, setAuthor] = useState("");
     const [time, setTime] = useState('00:00');
     const [isCombined, setIsCombined] = useState(false);
     const [nameError, setNameError] = useState(true);
+    const [addCP, setAddCP] = useState(false);
 
     const handleSeasonChange = (e, n) => {
         e.preventDefault();
@@ -61,6 +63,7 @@ export default function TrackCreationWindow({ season, setSeason, color_type, tra
         setTransport(0);
         setModeBuilding(0);
         setLengthTrack(0);
+        setTempCP([])
     };
 
     const handleSave = async () => {
@@ -75,6 +78,7 @@ export default function TrackCreationWindow({ season, setSeason, color_type, tra
         let timeNumbers = time2.map(numStr => parseInt(numStr))
 
         let json = {"cordinates": track.map(cords => ({"cords": cords})),
+                    "checkpoints": tempCP.map(cords => cords),
                     "season": season,
                     "transport": isCombined ? 3 : transport,
                     "length": lengthTrack,
@@ -89,6 +93,8 @@ export default function TrackCreationWindow({ season, setSeason, color_type, tra
         if (timeNumbers[0]*60 + timeNumbers[1] !== 0) {
             json["time"] = timeNumbers[0]*60 + timeNumbers[1];
         }
+
+        console.log(json)
     
         await fetch('https://localhost:7152/api/Ways', {
             method: 'POST',
@@ -98,6 +104,15 @@ export default function TrackCreationWindow({ season, setSeason, color_type, tra
            body: JSON.stringify(json)
         });
     };
+
+    function handleAddCP(e) {
+        e.preventDefault();
+        setCreationCheckpointWindow(true);
+        setIsWidgetsActive(prev => ({
+            ...prev,
+            CheckpointActive: true
+          }));
+    }
 
     return (
         <div className="trackCreationWindow">
@@ -121,9 +136,16 @@ export default function TrackCreationWindow({ season, setSeason, color_type, tra
                     </ul>
                 </div>
 
+                <button 
+                        className="CPcreation button" 
+                        style={{"backgroundColor": "#D9D9D9"}} 
+                        disabled={addCP}
+                        onClick={(e) => handleAddCP(e)}
+                        ><p style={{"display":"block"}}>Добавить чек-поинт</p> <img src={plus}/></button>
+
                 <div className="name">
                     <label htmlFor="name">Введите название:</label>
-                    <input type="text" id="name" className="textInput" value={name} onChange={handleChangeName} style={nameError ? {"border": "1.5px solid red"} : null}></input>
+                    <input type="text" id="name" className="textInput" value={name} onChange={handleChangeName} style={nameError ? {"border": "1.5px solid rgba(227, 27, 0, 0.3)"} : null}></input>
                 </div>
 
                 <div className='season'>
@@ -131,25 +153,21 @@ export default function TrackCreationWindow({ season, setSeason, color_type, tra
                     <ul className="seasonInput" id="season">
                         <li><button 
                                     className="button" 
-                                    style={{"backgroundColor": "#7EDAE0"}} 
                                     onClick={(e) => handleSeasonChange(e, 0)}
                                     disabled={season === 0 ? true : false}
                                     >Зима</button></li>
                         <li><button 
                                     className="button" 
-                                    style={{"backgroundColor": "#EBE34D"}} 
                                     onClick={(e) => handleSeasonChange(e, 1)}
                                     disabled={season === 1 ? true : false}
                                     >Весна</button></li>
                         <li><button 
                                     className="button" 
-                                    style={{"backgroundColor": "#B7E07E"}} 
                                     onClick={(e) => handleSeasonChange(e, 2)}
                                     disabled={season === 2 ? true : false}
                                     >Лето</button></li>
                         <li><button 
                                     className="button" 
-                                    style={{"backgroundColor": "#F0C467"}} 
                                     onClick={(e) => handleSeasonChange(e, 3)}
                                     disabled={season === 3 ? true : false}
                                     >Осень</button></li>
@@ -198,12 +216,12 @@ export default function TrackCreationWindow({ season, setSeason, color_type, tra
             </form>
 
             <div className="length">
-                <label htmlFor="length">Длина маршрута: {Math.floor(lengthTrack/1000)} км</label>
+                <label htmlFor="length" className="lengthInput">Длина маршрута: {Math.floor(lengthTrack/1000)} км</label>
             </div>
 
             <div className="buttons">
-                    <button className="button" style={{"backgroundColor": "#58ed5f"}} onClick={handleSave} disabled={nameError || track.length === 0}>Сохранить</button>
-                    <button className="button" style={{"backgroundColor": "#ed5858"}} onClick={handleDelete}>Отменить</button>
+                    <button className="button" onClick={handleSave} disabled={nameError || track.length === 0}>Сохранить</button>
+                    <button className="button" onClick={handleDelete}>Отменить</button>
                 </div>
         </div>
     );

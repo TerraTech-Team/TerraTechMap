@@ -10,11 +10,21 @@ import startCheckpoint from './img/startCheckpoint.svg'
 import endCheckpoint from './img/endCheckpoint.svg'
 import intermediateCheckpoint from './img/intermediateCheckpoint.svg'
 import sizeCheckpoint from './img/size.svg'
+import { useState, useEffect, useRef  } from 'react';
 
-export default function MarkerPoint({ isSetLenght, length, panchor, ianchor, size, position, name, description, imageIcon, isPopup, image }) {
+export default function MarkerPoint({isSetLenght, length, panchor, ianchor, size, position, name, description, imageIcon, isPopup, image }) {
 
     const iconChecpoints = [haltCheckpoint, dangerCheckpoint, noteCheckpoint, sightCheckpoint, startCheckpoint, endCheckpoint, intermediateCheckpoint, sizeCheckpoint]
+    // let popupRef = useRef(null);
 
+    // useEffect(() => {
+    //     if (map.current !== null && popupRef.current !== null)
+    //     {
+    //         console.log(map.current)
+    //         console.log(popupRef.current)
+    //         popupRef.current.openOn(map.current)
+    //     }
+    // }, [popupRef])
 
 
     const icon = new Icon ({
@@ -23,6 +33,7 @@ export default function MarkerPoint({ isSetLenght, length, panchor, ianchor, siz
         iconAnchor: ianchor,
         popupAnchor: panchor
       })
+
     return (
         <Marker position={position} icon={icon}>
             {isPopup ? <Popup closeButton={false}>
@@ -45,5 +56,5 @@ export default function MarkerPoint({ isSetLenght, length, panchor, ianchor, siz
 MarkerPoint.defaultProps = {
     size: [41, 41],
     ianchor: [20, 41],
-    panchor: [4, -30]
+    panchor: [4, -30],
 }

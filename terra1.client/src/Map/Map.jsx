@@ -5,47 +5,42 @@ import MarkerPoint from '../MarkerPoint/MarkerPoint';
 import { useEffect, useState} from 'react';
 
 
-export default function Map({ mapRef, setFindWindow, layerActive, color_type, season, setIsInfoWindowActive, setTracks, tracks, setLengthTrack, intermediateCheckpoint, setPositionOfIntermediateCheckpoint, modeBuilding, checkpoints, isWidgetsActive, setTrack, setCreationCheckpointWindow, setCreationTrackWindow, typeCheckpoint, positionOfNewCheckpoint, setPositionOfNewCheckpoint, startCheckpoint, setPositionOfStartCheckpoint, endCheckpoint, setPositionOfEndCheckpoint, imagesForCheckpoints, track }) {
+export default function Map({ setTempCP, tempCP, mapRef, setFindWindow, layerActive, color_type, season, setIsInfoWindowActive, setTracks, tracks, setLengthTrack, intermediateCheckpoint, setPositionOfIntermediateCheckpoint, modeBuilding, checkpoints, isWidgetsActive, setTrack, setCreationCheckpointWindow, setCreationTrackWindow, typeCheckpoint, positionOfNewCheckpoint, setPositionOfNewCheckpoint, startCheckpoint, setPositionOfStartCheckpoint, endCheckpoint, setPositionOfEndCheckpoint, imagesForCheckpoints, track }) {
 
-  const [rulerCheckpoint, setRulerCheckpoint] = useState([])
-  const [rulerLenght, setRulerLength] = useState(0)
-
-  function CheckpointMarker() {
-    useMapEvents({
-      click(e) {
-        setCreationCheckpointWindow(true);
-        setPositionOfNewCheckpoint([e.latlng.lat, e.latlng.lng]);
-      }
-    })
-  
-    return positionOfNewCheckpoint === null ? null : <MarkerPoint position={positionOfNewCheckpoint} imageIcon={typeCheckpoint} isPopup={false}/>
-  }
+  const [rulerCheckpoint, setRulerCheckpoint] = useState([]);
+  const [rulerLenght, setRulerLength] = useState(0);
 
   function TrackMarker() {
     useMapEvents({
       click(e) {
-        if (startCheckpoint === null)
+        if (!isWidgetsActive.CheckpointActive)
         {
-          setPositionOfStartCheckpoint([e.latlng.lat, e.latlng.lng]);
-          setCreationTrackWindow(true);
-        }
-        else if (startCheckpoint !== null && endCheckpoint === null)
-        {
-          setPositionOfEndCheckpoint([e.latlng.lat, e.latlng.lng]);
-        }
-        else if (startCheckpoint !== null && endCheckpoint !== null)
-        {
-            setPositionOfIntermediateCheckpoint(prev => [...prev, endCheckpoint])
+          if (startCheckpoint === null)
+          {
+            setPositionOfStartCheckpoint([e.latlng.lat, e.latlng.lng]);
+            setCreationTrackWindow(true);
+          }
+          else if (startCheckpoint !== null && endCheckpoint === null)
+          {
             setPositionOfEndCheckpoint([e.latlng.lat, e.latlng.lng]);
+          }
+          else if (startCheckpoint !== null && endCheckpoint !== null)
+          {
+              setPositionOfIntermediateCheckpoint(prev => [...prev, endCheckpoint])
+              setPositionOfEndCheckpoint([e.latlng.lat, e.latlng.lng]);
+          }
+        } else {
+          setPositionOfNewCheckpoint([e.latlng.lat, e.latlng.lng]);
         }
       }
     })
-  
-    return  <>
-              {startCheckpoint === null ? null : <MarkerPoint position={startCheckpoint} imageIcon={4} isPopup={false}/>}
-              {endCheckpoint === null ? null :  <MarkerPoint position={endCheckpoint} imageIcon={5} isPopup={false}/>}
-              {intermediateCheckpoint.map(point => <MarkerPoint position={point} key={point[1]} imageIcon={6} isPopup={false}/>)}
-            </>
+    
+      return  <>
+                {startCheckpoint === null ? null : <MarkerPoint position={startCheckpoint} imageIcon={4} isPopup={false}/>}
+                {endCheckpoint === null ? null :  <MarkerPoint position={endCheckpoint} imageIcon={5} isPopup={false}/>}
+                {intermediateCheckpoint.map(point => <MarkerPoint position={point} key={point[1]} imageIcon={6} isPopup={false}/>)}
+                {positionOfNewCheckpoint === null ? null : <MarkerPoint position={positionOfNewCheckpoint} imageIcon={typeCheckpoint} isPopup={false}/>}
+              </>
   }
 
   useEffect(() => {
@@ -64,6 +59,7 @@ export default function Map({ mapRef, setFindWindow, layerActive, color_type, se
         setPositionOfStartCheckpoint(null);
         setPositionOfEndCheckpoint(null);
         setTrack([]);
+        setTempCP([])
     } else {
       setIsInfoWindowActive([false, 0])
       setTracks(tracks.map(t => {return {...t, active: false}}))
@@ -192,7 +188,12 @@ export default function Map({ mapRef, setFindWindow, layerActive, color_type, se
                     />
                   )}
 
-
+              {tempCP.map((points) => <MarkerPoint 
+                                                  key={points} 
+                                                  position={[points.x, points.y]} 
+                                                  imageIcon={points.type}
+                                                  isPopup={false}
+                                                  />)}
 
               {checkpoints && checkpoints.map((points) => <MarkerPoint 
                                                               idPoint={points.id} 
@@ -204,8 +205,6 @@ export default function Map({ mapRef, setFindWindow, layerActive, color_type, se
                                                               isPopup={true}
                                                               image={imagesForCheckpoints.find(file => file.fileDownloadName === `${points.id}.jpg`) || null}
                                                           />) }
-        
-          {isWidgetsActive.CheckpointActive ? <CheckpointMarker /> : null}
           
           {isWidgetsActive.TrackActive ? <TrackMarker /> : null}
 
@@ -215,7 +214,7 @@ export default function Map({ mapRef, setFindWindow, layerActive, color_type, se
 
           {rulerCheckpoint.slice(0, rulerCheckpoint.length - 1).map(point => <MarkerPoint key={point} position={point} imageIcon={7} isPopup={false} size={[16, 16]} ianchor={[8, 8]}/>)}
 
-          {rulerCheckpoint.length > 0 ? <MarkerPoint key={rulerCheckpoint[rulerCheckpoint.length - 1]} isSetLenght={true} length={rulerLenght} position={rulerCheckpoint[rulerCheckpoint.length - 1]} imageIcon={7} isPopup={false} size={[16, 16]} ianchor={[8, 8]} panchor={[0,0]}/> : null}
+          {rulerCheckpoint.length > 0 ? <MarkerPoint map={mapRef} key={rulerCheckpoint[rulerCheckpoint.length - 1]} isSetLenght={true} length={rulerLenght} position={rulerCheckpoint[rulerCheckpoint.length - 1]} imageIcon={7} isPopup={false} size={[16, 16]} ianchor={[8, 8]} panchor={[0,0]}/> : null}
           
           <Polyline positions={track.map(point => [point[1], point[0]])} 
                     pathOptions={{color: color_type[season], weight: 5}}/>
