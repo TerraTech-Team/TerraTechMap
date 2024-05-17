@@ -21,7 +21,7 @@ export default function FinderCretionWindow({ tracks, setMid, mapRef }) {
         const map = mapRef.current;
         if (!map) return;
 
-        const response = await fetch(`https://localhost:7152/api/Ways/${id}/midpoint`);
+        const response = await fetch(`https://localhost:7263/api/Ways/${id}/midpoint`);
         if (response.status == 200) 
         {
             const data = await response.json();

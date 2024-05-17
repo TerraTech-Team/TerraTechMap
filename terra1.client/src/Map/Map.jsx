@@ -2,13 +2,14 @@ import { MapContainer, TileLayer, useMapEvents, Polyline, Marker } from 'react-l
 import 'leaflet/dist/leaflet.css';
 import './Map.css';
 import MarkerPoint from '../MarkerPoint/MarkerPoint';
-import { useEffect, useState} from 'react';
+import { useEffect, useState, useRef} from 'react';
 
 
-export default function Map({ setTempCP, tempCP, mapRef, setFindWindow, layerActive, color_type, season, setIsInfoWindowActive, setTracks, tracks, setLengthTrack, intermediateCheckpoint, setPositionOfIntermediateCheckpoint, modeBuilding, checkpoints, isWidgetsActive, setTrack, setCreationCheckpointWindow, setCreationTrackWindow, typeCheckpoint, positionOfNewCheckpoint, setPositionOfNewCheckpoint, startCheckpoint, setPositionOfStartCheckpoint, endCheckpoint, setPositionOfEndCheckpoint, imagesForCheckpoints, track }) {
+export default function Map({ isInfoWindowActive, setTempCP, tempCP, mapRef, setFindWindow, layerActive, color_type, season, setIsInfoWindowActive, setTracks, tracks, setLengthTrack, intermediateCheckpoint, setPositionOfIntermediateCheckpoint, modeBuilding, checkpoints, isWidgetsActive, setTrack, setCreationCheckpointWindow, setCreationTrackWindow, typeCheckpoint, positionOfNewCheckpoint, setPositionOfNewCheckpoint, startCheckpoint, setPositionOfStartCheckpoint, endCheckpoint, setPositionOfEndCheckpoint, imagesForCheckpoints, track }) {
 
   const [rulerCheckpoint, setRulerCheckpoint] = useState([]);
   const [rulerLenght, setRulerLength] = useState(0);
+  const popRef = useRef(null);
 
   function TrackMarker() {
     useMapEvents({
@@ -65,7 +66,6 @@ export default function Map({ setTempCP, tempCP, mapRef, setFindWindow, layerAct
       setTracks(tracks.map(t => {return {...t, active: false}}))
     }
   }, [isWidgetsActive.TrackActive]);
-
 
   useEffect(() => {
     if (startCheckpoint !== null && endCheckpoint !== null) {
@@ -163,6 +163,19 @@ export default function Map({ setTempCP, tempCP, mapRef, setFindWindow, layerAct
     }
   }, [isWidgetsActive.MagnifierActive])
 
+  useEffect(() => {
+    if (popRef.current !== null)
+    {
+
+        const marker = popRef.current
+        setTimeout(() => {
+          if (marker) {
+            marker.openPopup();
+          }
+        }, 5);
+    }
+  }, [popRef.current])
+
   return (
       <>
         <MapContainer 
@@ -195,16 +208,16 @@ export default function Map({ setTempCP, tempCP, mapRef, setFindWindow, layerAct
                                                   isPopup={false}
                                                   />)}
 
-              {checkpoints && checkpoints.map((points) => <MarkerPoint 
-                                                              idPoint={points.id} 
-                                                              key={points.id} 
-                                                              position={[points.x, points.y]} 
-                                                              name={points.name} 
-                                                              description={points.description} 
-                                                              imageIcon={points.type}
+              {isInfoWindowActive[0] ? checkpoints[isInfoWindowActive[1]].map(CP => <MarkerPoint 
+                                                              idPoint={CP.id} 
+                                                              key={CP.id} 
+                                                              position={[CP.x, CP.y]} 
+                                                              name={CP.name} 
+                                                              description={CP.description} 
+                                                              imageIcon={CP.type}
                                                               isPopup={true}
                                                               image={imagesForCheckpoints.find(file => file.fileDownloadName === `${points.id}.jpg`) || null}
-                                                          />) }
+                                                          />) : null}
           
           {isWidgetsActive.TrackActive ? <TrackMarker /> : null}
 
@@ -214,7 +227,7 @@ export default function Map({ setTempCP, tempCP, mapRef, setFindWindow, layerAct
 
           {rulerCheckpoint.slice(0, rulerCheckpoint.length - 1).map(point => <MarkerPoint key={point} position={point} imageIcon={7} isPopup={false} size={[16, 16]} ianchor={[8, 8]}/>)}
 
-          {rulerCheckpoint.length > 0 ? <MarkerPoint map={mapRef} key={rulerCheckpoint[rulerCheckpoint.length - 1]} isSetLenght={true} length={rulerLenght} position={rulerCheckpoint[rulerCheckpoint.length - 1]} imageIcon={7} isPopup={false} size={[16, 16]} ianchor={[8, 8]} panchor={[0,0]}/> : null}
+          {rulerCheckpoint.length > 0 ? <MarkerPoint popRef={popRef} key={rulerCheckpoint[rulerCheckpoint.length - 1]} isSetLenght={true} length={rulerLenght} position={rulerCheckpoint[rulerCheckpoint.length - 1]} imageIcon={7} isPopup={false} size={[16, 16]} ianchor={[8, 8]} panchor={[0,0]}/> : null}
           
           <Polyline positions={track.map(point => [point[1], point[0]])} 
                     pathOptions={{color: color_type[season], weight: 5}}/>

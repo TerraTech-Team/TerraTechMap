@@ -43,11 +43,11 @@ export default function CheckpointCreationWindow({ setTempCP, setIsWidgetsActive
     };
     
     const handleSave = async () => {
-        const id = await sendChecpoints();
+        sendChecpoints();
         handleDelete()
     };
     
-    async function sendChecpoints() {
+    function sendChecpoints() {
         const [lat, lng] = positionOfNewCheckpoint;
         let json = {"x": lat, "y": lng, "type": typeCheckpoint};
         if (name.length > 0) {
@@ -67,7 +67,7 @@ export default function CheckpointCreationWindow({ setTempCP, setIsWidgetsActive
                 data.append("file", file, `${id}.jpg`);
               });
       
-              await fetch("https://localhost:7152/api/Image/UploadFile", { method: "POST", body: data })
+              await fetch('https://localhost:7263/api/Image/UploadFile', { method: "POST", body: data })
                 .then((response) => response.json())
                 .then(() => setFiles([]))
                 .catch(() => setFiles([]));

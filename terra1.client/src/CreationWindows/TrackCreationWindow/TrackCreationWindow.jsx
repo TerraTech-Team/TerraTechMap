@@ -96,7 +96,7 @@ export default function TrackCreationWindow({ tempCP, setTempCP, setIsWidgetsAct
 
         console.log(json)
     
-        await fetch('https://localhost:7152/api/Ways', {
+        await fetch('https://localhost:7263/api/Ways', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
