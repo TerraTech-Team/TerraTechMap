@@ -19,72 +19,12 @@
     outline: 3px solid rgba(0, 0, 0, 0.3);
 }
 
-div.mode {
-    box-sizing: border-box;
-    margin-bottom: 2rem;
-}
-
-.buildingMode {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    width: 100%;
-    margin-top: auto;
-}
-
-div.name {
-    box-sizing: border-box;
-    margin-bottom: 2rem;
-}
-
-.textInput {
-    margin-bottom: 0;
-}
-
-div.season {
-    box-sizing: border-box;
-    margin-bottom: 2rem;
-}
-
-.seasonInput {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: auto;
-    margin-bottom: 2rem;
-}
-
-.seasonInput li .button {
-    padding-left: 18px;
-    padding-right: 18px;
-}
-
 label {
     display: inline-block;
     font-size: 18px;
     margin-bottom: 10px;
     width: 100%;
     text-align: center;
-}
-
-.lengthInput {
-    width: 100%;
-    background-color: #fff;
-    margin-bottom: 0;
-}
-
-div.length {
-    box-sizing: border-box;
-    margin-bottom: 2rem;
-    margin-top: auto;
 }
 
 div.time {
@@ -103,28 +43,215 @@ div.time {
     border: 3px solid rgba(0, 0, 0);
 }
 
-.trackCreationWindow .buttons {
+.trackCreationWindow h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+}
+
+.trackCreationWindow form {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.trackCreationWindow .mode {
+    margin-top: 42px;
+}
+
+.trackCreationWindow .buildingMode {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    width: 100%;
+    margin-top: auto;
+}
+
+.trackCreationWindow button {
+    font-size: 16px;
+    border: 3px solid rgba(0, 0, 0, 0.12);
+}
+
+.trackCreationWindow .buildingMode button {
+    width: 150px;
+    height: 45px;
+    border-radius: 18px;
+}
+
+.trackCreationWindow .CPcreation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    width: 200px;
+    height: 45px;
+    border-radius: 18px;
+}
+
+.trackCreationWindow .CPcreation img {
+    width: 25px;
+    height: 100%;
+    display: block;
+}
+
+.trackCreationWindow div.name {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.trackCreationWindow .textInput {
+    box-sizing: border-box;
+    padding-left: 10px;
+    margin: 0;
+    width: 100%;
+    height: 2rem;
+    border: 1.5px solid rgba(0, 117, 255, 0.3);
+    border-radius: 1rem;
+}
+
+div.season {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.seasonInput {
+    margin: 0;
+    padding: 0;
+    list-style: none;
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     width: 100%;
-    margin-top: 0;
+}
+
+.seasonInput li .button {
+    border-radius: 15px;
+    height: 40px;
+    width: 83px;
+    background-color: rgba(187, 207, 208, 0.3);
+}
+
+
+div.transport{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    margin-top: 30px;
+    width: 100%;
 }
 
 .transport .button {
     padding: 5px;
-    margin-left: 10px;
-    margin-right: 10px;
+    width: 60px;
+    height: 100%;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.button img {
+.transport .button:disabled {
+    opacity: 0.4;
+}
+
+.transportInput img {
     display: block;
     width: 40px;
     height: 100%;
 }
 
-.transport .button:disabled {
-    opacity: 0.4;
+.transportInput {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+}
+
+div.time {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.timeInput {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 50px;
+    font-size: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    border: 3px solid rgba(0, 0, 0);
+    font-weight: 400;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+    display: none !important;
+}
+
+div.author {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    margin-top: 30px;
+    width: 100%;
+}
+.authorInput {
+    box-sizing: border-box;
+    padding-left: 10px;
+    margin: 0;
+    width: 100%;
+    height: 2rem;
+    border: 1.5px solid rgba(0, 117, 255, 0.3);
+    border-radius: 1rem;
+}
+
+div.length {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.lengthInput {
+    width: 100%;
+    font-size: 16px;
+}
+
+.trackCreationWindow .buttons {
+    margin-top: auto;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.trackCreationWindow .buttons .button {
+    width: 150px;
+    height: 45px;
+    border-radius: 18px;
 }
 
 .button:disabled {
@@ -135,30 +262,4 @@ div.time {
 .button:disabled:hover {
     opacity: 0.7;
     cursor: default;
-}
-
-.transportInput {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-top: auto;
-    margin-bottom: 2rem;
-}
-
-div.author {
-    box-sizing: border-box;
-    margin-bottom: 2rem;
-}
-.authorInput {
-    box-sizing: border-box;
-    border: 1.5px solid #ccc;
-	border-radius: 5px;
-	padding: 0.5rem 1rem;
-	width: 100%;
-	margin-bottom: 1rem;
-    resize: none;
 }

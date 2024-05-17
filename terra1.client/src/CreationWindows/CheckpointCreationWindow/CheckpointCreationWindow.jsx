@@ -5,7 +5,7 @@ import haltImage from './img/halt.svg';
 import noteImage from './img/note.svg';
 import sightImage from './img/sight.svg';
 
-export default function CheckpointCreationWindow({ checkpointsData, typeCheckpoint, setTypeCheckpoint, setCreationCheckpointWindow, setPositionOfNewCheckpoint, positionOfNewCheckpoint }) {
+export default function CheckpointCreationWindow({ setTempCP, setIsWidgetsActive, typeCheckpoint, setTypeCheckpoint, setCreationCheckpointWindow, setPositionOfNewCheckpoint, positionOfNewCheckpoint }) {
 
     const [files, setFiles] = useState([])
     const [dragActive, setDragActive] = useState(false)
@@ -43,13 +43,11 @@ export default function CheckpointCreationWindow({ checkpointsData, typeCheckpoi
     };
     
     const handleSave = async () => {
-        const id = await sendChecpoints();
-        await sendPhoto(id);
-        checkpointsData();
+        sendChecpoints();
         handleDelete()
     };
     
-    async function sendChecpoints() {
+    function sendChecpoints() {
         const [lat, lng] = positionOfNewCheckpoint;
         let json = {"x": lat, "y": lng, "type": typeCheckpoint};
         if (name.length > 0) {
@@ -58,17 +56,7 @@ export default function CheckpointCreationWindow({ checkpointsData, typeCheckpoi
         if (description.length > 0) {
             json["description"] = description;
         }
-    
-        const response = await fetch('https://localhost:7152/api/checkpoints', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8'
-            },
-            body: JSON.stringify(json)
-        });
-
-        const responseData = await response.json();
-        return responseData.id;
+        setTempCP(prev => [...prev, json])
     };
 
     async function sendPhoto(id) {
@@ -79,7 +67,7 @@ export default function CheckpointCreationWindow({ checkpointsData, typeCheckpoi
                 data.append("file", file, `${id}.jpg`);
               });
       
-              await fetch("https://localhost:7152/api/Image/UploadFile", { method: "POST", body: data })
+              await fetch('https://localhost:7263/api/Image/UploadFile', { method: "POST", body: data })
                 .then((response) => response.json())
                 .then(() => setFiles([]))
                 .catch(() => setFiles([]));
@@ -90,7 +78,10 @@ export default function CheckpointCreationWindow({ checkpointsData, typeCheckpoi
         setCreationCheckpointWindow(false);
         setPositionOfNewCheckpoint(null);
         setTypeCheckpoint(0);
-        
+        setIsWidgetsActive(prev => ({
+            ...prev,
+            CheckpointActive: false
+          }));
     };
 
     const handleChangeName = (e) => {
@@ -110,7 +101,7 @@ export default function CheckpointCreationWindow({ checkpointsData, typeCheckpoi
             <form>
                 <div className="name">
                     <label htmlFor="name">Введите название:</label>
-                    <input type="text" id="name" className="textInput" value={name} onChange={handleChangeName} style={hasNameError ? {"border": "1.5px solid red"} : null}></input>
+                    <input type="text" id="name" className="textInput" value={name} onChange={handleChangeName} style={hasNameError ? {"border": "1.5px solid rgba(227, 27, 0, 0.3)"} : null}></input>
                 </div>
 
                 <div className="description">
@@ -122,25 +113,21 @@ export default function CheckpointCreationWindow({ checkpointsData, typeCheckpoi
                     <label htmlFor='type'>Тип точки:</label>
                     <ul id="type" className="typeSelection">
                         <li className={`typeSelectionItem ${typeCheckpoint === 0 ? "activeType" : ""}`} 
-                            style={{"backgroundColor": "#90F79A"}} 
                             onClick={() => setTypeCheckpoint(0)}
                             >
                                 <img src={haltImage} alt="haltType" />
                         </li>
                         <li className={`typeSelectionItem ${typeCheckpoint === 1 ? "activeType" : ""}`} 
-                            style={{"backgroundColor": "#F37C7C"}} 
                             onClick={() => setTypeCheckpoint(1)}
                             >
                                 <img src={dangerImage} alt="dangerType" />
                         </li>
                         <li className={`typeSelectionItem ${typeCheckpoint === 2 ? "activeType" : ""}`} 
-                            style={{"backgroundColor": "#76EFEF"}} 
                             onClick={() => setTypeCheckpoint(2)}
                             >
                                 <img src={noteImage} alt="noteType" />
                         </li>
                         <li className={`typeSelectionItem ${typeCheckpoint === 3 ? "activeType" : ""}`} 
-                            style={{"backgroundColor": "#EDF772"}} 
                             onClick={() => setTypeCheckpoint(3)}
                             >
                                 <img src={sightImage} alt="sightType" />
@@ -174,7 +161,7 @@ export default function CheckpointCreationWindow({ checkpointsData, typeCheckpoi
 
             <div className="buttons">
                 <button className="button" style={{"backgroundColor": "#58ed5f"}} onClick={handleSave} disabled={hasNameError}>Сохранить</button>
-                <button className="button" style={{"backgroundColor": "#ed5858"}} onClick={handleDelete}>Отменить</button>
+                <button className="button" style={{"backgroundColor": "#ed5858"}} onClick={handleDelete}>Вернуться</button>
             </div>
         </div>
     );

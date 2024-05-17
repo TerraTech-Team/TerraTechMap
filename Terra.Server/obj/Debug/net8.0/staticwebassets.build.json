@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "2ZaogXkiWpvCntQ4o4gz/uDQRNnQarXEmgr4pssaaqk=",
+  "Source": "Terra.Server",
+  "BasePath": "_content/Terra.Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

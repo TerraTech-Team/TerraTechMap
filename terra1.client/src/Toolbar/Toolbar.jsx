@@ -21,12 +21,6 @@ export default function Toolbar({ setFindWindow, onToggleWidget, isWidgetsActive
     return(
         <div className="toolbar">
             <Widget 
-                image={checkpointWidgetImage} 
-                onClick={() => {toggleWidget('CheckpointActive'); setTypeCheckpoint(0)}} 
-                isActive={isWidgetsActive.CheckpointActive}
-                isReady={true}/>
-
-            <Widget 
                 image={trackWidgetImage}
                 onClick={() => {toggleWidget('TrackActive')} }
                 isActive={isWidgetsActive.TrackActive}

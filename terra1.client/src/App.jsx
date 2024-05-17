@@ -16,7 +16,7 @@ export default function App() {
       "RulerActive": false
     }
 
-    const [checkpoints, setCheckpoints] = useState(null);
+    const [checkpoints, setCheckpoints] = useState({});
     const [tracks, setTracks] = useState([]);
     const [isWidgetsActive, setIsWidgetsActive] = useState(widgetsActive);
     const [creationCheckpointWindow, setCreationCheckpointWindow] = useState(false);
@@ -29,6 +29,7 @@ export default function App() {
     const [positionOfIntermediateCheckpoint, setPositionOfIntermediateCheckpoint] = useState([]);
     const [imagesForCheckpoints, setImagesForCheckpoints] = useState([]);
     const [track, setTrack] = useState([]);
+    const [tempCP, setTempCP] = useState([])
     const [modeBuilding, setModeBuilding] = useState(0)
     const [lengthTrack, setLengthTrack] = useState(0);    
     const [transport, setTransport] = useState(0)
@@ -37,6 +38,7 @@ export default function App() {
     const [layerActive, setLayerActive] = useState(false);
     const [mid, setMid] = useState(null);
     const mapRef = useRef(null);
+    const popRef = useRef(null);
 
     const color_type = {
         0: "#2172D4",
@@ -50,6 +52,13 @@ export default function App() {
         tracksData();
     }, []);
 
+    useEffect(() => {
+        if (mapRef.current !== null)
+        {
+            console.log(mapRef.current)
+        }
+    }, [mapRef.current])
+
     const handleModeBuildingChange = (e, n) => {
         e.preventDefault();
         setModeBuilding(n);
@@ -61,7 +70,7 @@ export default function App() {
             <Layer layerActive={layerActive} setLayerActive={setLayerActive} isWindowOpen={creationCheckpointWindow || creationTrackWindow || isInfoWindowActive[0]}/>
             
             <Toolbar 
-                onToggleWidget={(newState) => {setIsWidgetsActive(newState);}}
+                onToggleWidget={(newState) => {setIsWidgetsActive(newState)}}
                 isWidgetsActive={isWidgetsActive}
                 setTypeCheckpoint={(newState) => {setTypeCheckpoint(newState)}}
                 setFindWindow={setFindWindow}
@@ -95,6 +104,9 @@ export default function App() {
                 setFindWindow={setFindWindow}
                 mid={mid}
                 mapRef={mapRef}
+                tempCP={tempCP}
+                setTempCP={setTempCP}
+                isInfoWindowActive={isInfoWindowActive}
             />
 
             { creationCheckpointWindow ? <CheckpointCreationWindow 
@@ -104,6 +116,11 @@ export default function App() {
                                   setPositionOfNewCheckpoint={(newState) => {setPositionOfNewCheckpoint(newState)}}
                                   positionOfNewCheckpoint={positionOfNewCheckpoint}
                                   checkpointsData={() => checkpointsData()}
+                                  setPositionOfStartCheckpoint={(newState) => {setPositionOfStartCheckpoint(newState)}}
+                                  setPositionOfEndCheckpoint={(newState) => {setPositionOfEndCheckpoint(newState)}}
+                                  setPositionOfIntermediateCheckpoint={(newState) => {setPositionOfIntermediateCheckpoint(newState)}}
+                                  setIsWidgetsActive={(newState) => {setIsWidgetsActive(newState)}}
+                                  setTempCP={setTempCP}
                               /> : null }
 
             { creationTrackWindow ? <TrackCreationWindow 
@@ -124,6 +141,10 @@ export default function App() {
                                 color_type={color_type}
                                 season={season}
                                 setSeason={setSeason}
+                                setCreationCheckpointWindow={setCreationCheckpointWindow}
+                                setIsWidgetsActive={(newState) => {setIsWidgetsActive(newState)}}
+                                setTempCP={setTempCP}
+                                tempCP={tempCP}
                                 /> : null }
 
             {findWindow ? <FinderCretionWindow tracks={tracks} setMid={setMid} mapRef={mapRef} /> : null}
@@ -133,17 +154,13 @@ export default function App() {
   )
     /*Загрузка актуальных Чек-поинтов из БД*/
     async function checkpointsData() {
-        const response = await fetch('https://localhost:7152/api/checkpoints')
-        const data = await response.json();
-        setCheckpoints(data);
-
-        const response1 = await fetch('https://localhost:7152/api/Image')
+        const response1 = await fetch('https://localhost:7263/api/Image')
         const data1 = await response1.json();
         setImagesForCheckpoints(data1);
     }
 
     async function tracksData() {
-        const response = await fetch('https://localhost:7152/api/Ways')
+        const response = await fetch('https://localhost:7263/api/Ways')
         const data = await response.json();
         let ways = data.map(item => {
             return {
@@ -151,6 +168,12 @@ export default function App() {
                 active: false
             };
         });
+
+        let CPs = {}
+        data.map(item => {
+            CPs[item.id] = item.checkpoints;
+        });
+        setCheckpoints(CPs);
         setTracks(ways);
     }
 }
