@@ -21,11 +21,6 @@ export default function TrackCreationWindow({ tempCP, setTempCP, setIsWidgetsAct
     const handleTransportChange = (e, n) => {
         e.preventDefault();
         setTransport(n);
-        if (n === 0){
-            setModeBuilding(0);
-        } else {
-            setModeBuilding(1);
-        }
     }
 
     useEffect(() => {
