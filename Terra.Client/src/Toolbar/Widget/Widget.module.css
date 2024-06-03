@@ -1,0 +1,32 @@
+.widget {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5vh;
+    height: 5vh;
+    margin: 2vh;
+    background-color: rgb(255, 255, 255);
+    box-sizing: border-box;
+    border-radius: 1vh;
+    border: 0;
+    outline: 0.3vh solid rgba(0, 0, 0, 0.3)
+}
+
+.widget img {
+    display: block;
+    width: 80%;
+    height: 80%;
+}
+
+.widget:hover {
+    background-color: rgb(177, 177, 177);
+}
+
+.active_widget {
+    background-color: rgb(187, 187, 187);
+}
+
+.active_widget:hover {
+    background-color: rgb(177, 177, 177);
+}
