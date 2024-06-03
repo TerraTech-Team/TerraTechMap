@@ -5,7 +5,7 @@ import MarkerPoint from '../MarkerPoint/MarkerPoint';
 import { useEffect, useState, useRef} from 'react';
 
 
-export default function Map({ isInfoWindowActive, setTempCP, tempCP, mapRef, setFindWindow, layerActive, color_type, season, setIsInfoWindowActive, setTracks, tracks, setLengthTrack, intermediateCheckpoint, setPositionOfIntermediateCheckpoint, modeBuilding, checkpoints, isWidgetsActive, setTrack, setCreationCheckpointWindow, setCreationTrackWindow, typeCheckpoint, positionOfNewCheckpoint, setPositionOfNewCheckpoint, startCheckpoint, setPositionOfStartCheckpoint, endCheckpoint, setPositionOfEndCheckpoint, imagesForCheckpoints, track }) {
+export default function Map({ transport, isInfoWindowActive, setTempCP, tempCP, mapRef, setFindWindow, layerActive, color_type, season, setIsInfoWindowActive, setTracks, tracks, setLengthTrack, intermediateCheckpoint, setPositionOfIntermediateCheckpoint, modeBuilding, checkpoints, isWidgetsActive, setTrack, setCreationCheckpointWindow, setCreationTrackWindow, typeCheckpoint, positionOfNewCheckpoint, setPositionOfNewCheckpoint, startCheckpoint, setPositionOfStartCheckpoint, endCheckpoint, setPositionOfEndCheckpoint, imagesForCheckpoints, track }) {
 
   const [rulerCheckpoint, setRulerCheckpoint] = useState([]);
   const [rulerLenght, setRulerLength] = useState(0);
@@ -176,6 +176,12 @@ export default function Map({ isInfoWindowActive, setTempCP, tempCP, mapRef, set
     }
   }, [popRef.current])
 
+  const transportTable = {
+    0 : "car",
+    1 : "bike",
+    2 : "foot"
+}
+
   return (
       <>
         <MapContainer 
@@ -242,7 +248,7 @@ export default function Map({ isInfoWindowActive, setTempCP, tempCP, mapRef, set
   )
 
   async function getRequest(start, end) {
-    let response = await fetch(`https://router.project-osrm.org/route/v1/foot-walking/${start[1]},${start[0]};${end[1]},${end[0]}?alternatives=false&geometries=geojson`)
+    let response = await fetch(`https://routing.openstreetmap.de/routed-${transportTable[transport]}/route/v1/driving/${start[1]},${start[0]};${end[1]},${end[0]}?alternatives=false&geometries=geojson`)
     let data = await response.json()
     setLengthTrack(prev => prev += data.routes[0].distance)
     let routes = data.routes[0].geometry.coordinates;

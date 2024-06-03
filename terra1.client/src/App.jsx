@@ -38,7 +38,6 @@ export default function App() {
     const [layerActive, setLayerActive] = useState(false);
     const [mid, setMid] = useState(null);
     const mapRef = useRef(null);
-    const popRef = useRef(null);
 
     const color_type = {
         0: "#2172D4",
@@ -62,7 +61,6 @@ export default function App() {
     const handleModeBuildingChange = (e, n) => {
         e.preventDefault();
         setModeBuilding(n);
-        setTransport(n);
     }
 
     return (
@@ -107,6 +105,7 @@ export default function App() {
                 tempCP={tempCP}
                 setTempCP={setTempCP}
                 isInfoWindowActive={isInfoWindowActive}
+                transport={transport}
             />
 
             { creationCheckpointWindow ? <CheckpointCreationWindow 
