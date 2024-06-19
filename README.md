@@ -7,6 +7,7 @@ With an interactive map, you can easily find places of interest, mark them on th
 TerraTechMap is your reliable guide to the most beautiful and amazing corners of our country. The convenience and relevance of the app make it an indispensable companion for all travelers!
 
 ___
+## You can visit our web-app by link: http://u168293.test-handyhost.ru
 
 ## Tools
 
@@ -35,9 +36,6 @@ Double click on the solution file (usually ending with .sln) to open the project
 7. The project should now start running on your local host. You can access it by opening a web browser and going to the specified localhost address (usually http://localhost:portnumber).
 8. You can now interact with the web application on your local machine and test its functionality.
 
-## How to use our map
-
-Detailed instructions will be added after the end of the main stage of development :)
 
 ## Creators
 * **Frontend** — [Virtical](https://github.com/Virtical)
